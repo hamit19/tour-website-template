@@ -7,5 +7,69 @@
     <link rel="stylesheet" href="../../dist/output.css" />
     <title>تور-گردشگری</title>
   </head>
-  <body class="bg-gray-300"></body>
+  <body class="bg-gray-50 dark:bg-gray-900">
+    <!-- Navbar Section start -->
+    <nav class="w-full border-b border-gray-300 shadow-md h-28">
+      <section class="container flex items-center justify-between py-8">
+        <!-- hamburger menu -->
+
+        <div class="cursor-pointer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-12 h-12"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+            width="30px"
+            height="30px"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </div>
+
+        <!-- Avatar Dark-mode languages -->
+        <div class="flex flex-row-reverse items-center gap-4">
+          <!-- Avatar -->
+          <a href="#">
+            <img
+              src="../images/avatar-img2.jpg"
+              alt="Profile"
+              class="rounded-full w-14 h-14"
+            />
+          </a>
+          <!-- languages -->
+
+          <div
+            class="bg-transparent rounded-full cursor-pointer w-14 h-14 hover:shadow-lg custom-transition flex-center"
+          >
+            <img src="../images/rtl.png" alt="languages flag" />
+          </div>
+          <div
+            class="bg-transparent rounded-full cursor-pointer w-14 h-14 hover:shadow-lg custom-transition flex-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-10 h-10"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+              />
+            </svg>
+          </div>
+        </div>
+      </section>
+    </nav>
+    <!-- Navbar Section end -->
+  </body>
 </html>
