@@ -7,7 +7,11 @@ module.exports = {
       center: true,
       padding: "2rem",
     },
-    extend: {},
+    extend: {
+      padding: {
+        md: "56%",
+      },
+    },
   },
   plugins: [require("@tailwindcss/typography")],
 };
