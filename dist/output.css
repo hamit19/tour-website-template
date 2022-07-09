@@ -661,10 +661,6 @@ h1 {
   height: 3.5rem;
 }
 
-.h-6 {
-  height: 1.5rem;
-}
-
 .h-10 {
   height: 2.5rem;
 }
@@ -681,10 +677,6 @@ h1 {
   width: 3.5rem;
 }
 
-.w-6 {
-  width: 1.5rem;
-}
-
 .w-10 {
   width: 2.5rem;
 }
@@ -695,10 +687,6 @@ h1 {
 
 .flex-row-reverse {
   flex-direction: row-reverse;
-}
-
-.flex-wrap-reverse {
-  flex-wrap: wrap-reverse;
 }
 
 .items-center {
