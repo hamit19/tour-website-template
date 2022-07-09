@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../dist/output.css" />
+    <link rel="stylesheet" href="../css/swiper-bundle.min.css" />
+
     <title>تور-گردشگری</title>
   </head>
   <body class="bg-gray-50 dark:bg-gray-900">
@@ -71,5 +73,85 @@
       </section>
     </nav>
     <!-- Navbar Section end -->
+
+    <main class="">
+      <!-- Slider Section start -->
+      <div class="container grid grid-cols-1 gap-4 mt-8 sm:grid-cols-3">
+        <div class="relative w-full mb-8 pt-md sm:col-span-2">
+          <div class="absolute inset-0">
+            <div class="w-full h-full overflow-hidden swiper rounded-2xl">
+              <div class="swiper-wrapper">
+                <a class="w-full h-full swiper-slide" href="#">
+                  <img src="../images/slide5.jpg" alt="image of woods" />
+                </a>
+
+                <a class="w-full h-full swiper-slide" href="#">
+                  <img src="../images/slide6.jpg" alt="image of woods" />
+                </a>
+
+                <a class="w-full h-full swiper-slide" href="#">
+                  <img src="../images/slide3.jpg" alt="image of woods" />
+                </a>
+              </div>
+              <div class="swiper-pagination"></div>
+              <!-- If we need navigation buttons -->
+              <!-- <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div> -->
+
+              <!-- If we need scrollbar -->
+              <!-- <div class="swiper-scrollbar"></div> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="col-span-1">
+          <div class="grid grid-cols-2 gap-4 sm:grid-cols-1">
+            <a href="#" class="overflow-hidden aspect-video rounded-xl">
+              <img
+                src="../images/slide4.jpg"
+                alt="image of animals"
+                class="w-full h-full"
+              />
+            </a>
+
+            <a href="#" class="overflow-hidden aspect-video rounded-xl">
+              <img
+                src="../images/slide2.jpg"
+                alt="image of animals"
+                class="w-full h-full"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Slider Section end -->
+    </main>
+
+    <!-- Scripts -->
+
+    <script src="../js/swiper-bundle.min.js"></script>
+
+    <script>
+      const swiper = new Swiper(".swiper", {
+        loop: true,
+        // If we need pagination
+        pagination: {
+          el: ".swiper-pagination",
+        },
+
+        // Navigation arrows
+        // navigation: {
+        //   nextEl: ".swiper-button-next",
+        //   prevEl: ".swiper-button-prev",
+        // },
+
+        // And if we need scrollbar
+        // scrollbar: {
+        //   el: ".swiper-scrollbar",
+        // },
+      });
+    </script>
+
+    <!-- Scripts -->
   </body>
 </html>
