@@ -6,19 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../dist/output.css" />
     <link rel="stylesheet" href="../css/swiper-bundle.min.css" />
-
+    <script src="//unpkg.com/alpinejs" defer></script>
     <title>تور-گردشگری</title>
   </head>
   <body class="bg-gray-50 dark:bg-gray-900">
     <!-- Navbar Section start -->
-    <nav class="w-full border-b border-gray-300 shadow-md h-28">
+    <nav class="w-full bg-white border-b border-gray-300 shadow-md h-28">
       <section class="container flex items-center justify-between py-8">
         <!-- hamburger menu -->
-
-        <div class="cursor-pointer">
+        <div class="cursor-pointer sm:w-2/3">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="w-12 h-12"
+            class="w-12 h-12 sm:hidden"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -32,6 +31,155 @@
               d="M4 6h16M4 12h16M4 18h16"
             />
           </svg>
+          <ul
+            class="items-center hidden w-full list-none title-color sm:flex justify-evenly"
+          >
+            <li>
+              <a href="#" class="text-s-w title-color">خانه</a>
+            </li>
+            <li
+              x-data="{
+                  open:false,
+                }"
+              class="relative flex items-center"
+              @click.outside="open=false"
+            >
+              <span @click="open=true" class="text-s-w">تور های داخلی</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5 custom-transition"
+                x-bind:class="open ? 'rotate-180 w-5 h-5  ' : 'w-5 h-5' "
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+
+              <ul
+                x-cloak
+                x-show="open"
+                x-transition.duration.300ms
+                class="absolute left-0 z-20 flex flex-col w-64 p-2 list-none bg-white border-t-2 rounded-md shadow-lg border-t-purple-200 top-12"
+              >
+                <li class="px-8 py-4 li-custom-style">
+                  <a href="#">تور کیش</a>
+                </li>
+                <li class="relative px-8 py-4 li-custom-style group">
+                  <a href="#">تور کوهنوردی</a>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5 ml-auto rotate-90 group-hover:rotate-0 custom-transition"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <ul
+                    class="hidden custom-transition group-hover:flex flex-col absolute top-0 z-30 p-4 bg-white border-l-2 rounded-md shadow-lg left-[150px] w-60 border-l-purple-200"
+                  >
+                    <li class="px-8 py-4 text-gray-800 li-custom-style">
+                      <a href="#"> رشته کوه البرز </a>
+                    </li>
+                    <li class="px-8 py-4 text-gray-800 li-custom-style">
+                      <a href="#"> رشته کوه زاگرس </a>
+                    </li>
+                    <li class="px-8 py-4 text-gray-800 li-custom-style">
+                      <a href="#"> کوه دماوند </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="px-8 py-4 li-custom-style">
+                  <a href="#">تور قشم</a>
+                </li>
+                <li class="px-8 py-4 li-custom-style">
+                  <a href="#">تور اصفهان</a>
+                </li>
+              </ul>
+            </li>
+            <li
+              x-data="{ open : false }"
+              @click="open=true"
+              class="relative flex items-center"
+              @click.outside="open=false"
+            >
+              <span class="text-s-w">تور های خارجی</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5 custom-transition"
+                x-bind:class="open ? 'rotate-180 w-5 h-5 ' : 'w-5 h-5' "
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <ul
+                x-show="open"
+                x-transition.duration.300ms
+                x-cloak
+                class="absolute left-0 z-30 w-64 p-2 list-none bg-white border-t-2 rounded-md shadow-xl top-12 border-t-purple-100"
+              >
+                <li class="px-8 py-4 li-custom-style">
+                  <a href="#"> تور آنتالیا </a>
+                </li>
+                <li class="relative px-8 py-4 li-custom-style group">
+                  <a href="#"> تور قاره ای </a>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5 ml-auto rotate-90 group-hover:rotate-0 custom-transition"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+
+                  <ul
+                    class="hidden group-hover:flex flex-col list-none custom-transition w-64 bg-white p-2 border-l-2 border-l-purple-100 shadow-xl rounded-md absolute left-[150px] top-0"
+                  >
+                    <li class="px-8 py-4 text-gray-800 li-custom-style">
+                      <a href="#"> تور آسیا </a>
+                    </li>
+                    <li class="px-8 py-4 text-gray-800 li-custom-style">
+                      <a href="#"> تور آمریکا </a>
+                    </li>
+                    <li class="px-8 py-4 text-gray-800 li-custom-style">
+                      <a href="#"> تور آفریقا </a>
+                    </li>
+                    <li class="px-8 py-4 text-gray-800 li-custom-style">
+                      <a href="#"> تور اروپا </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="px-8 py-4 li-custom-style">
+                  <a href="#"> تور هند </a>
+                </li>
+                <li class="px-8 py-4 li-custom-style">
+                  <a href="#"> تور کره </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" class="text-s-w">مجله</a>
+            </li>
+            <li>
+              <a href="#" class="text-s-w">افتخارات</a>
+            </li>
+          </ul>
         </div>
 
         <!-- Avatar Dark-mode languages -->
@@ -76,7 +224,7 @@
 
     <main class="">
       <!-- Slider Section start -->
-      <div class="container grid grid-cols-1 gap-4 mt-8 sm:grid-cols-3">
+      <div class="container z-10 grid grid-cols-1 gap-4 mt-8 sm:grid-cols-3">
         <div class="relative w-full mb-8 pt-md sm:col-span-2">
           <div class="absolute inset-0">
             <div class="w-full h-full overflow-hidden swiper rounded-2xl">
@@ -128,7 +276,6 @@
     </main>
 
     <!-- Scripts -->
-
     <script src="../js/swiper-bundle.min.js"></script>
 
     <script>
@@ -151,7 +298,6 @@
         // },
       });
     </script>
-
     <!-- Scripts -->
   </body>
 </html>
