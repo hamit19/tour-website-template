@@ -3,17 +3,36 @@
 @layer base {
   html {
     font-family: "IranSans", Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: normal;
     font-size: 62.5%;
   }
 
   @font-face {
     font-family: "IranSans";
     style: normal;
-    src: url("../fonts/IRANSans.eot") format("eot"),
-      url("../fonts/IRANSans.otf") format("otf"),
-      url("../fonts/IRANSans.ttf") format("ttf"),
-      url("../fonts/IRANSans.woff") format("woff");
+    src: url("../fonts/eot/IRANSansWeb.eot") format("eot"),
+      url("../fonts/ttf/IRANSansWeb.ttf") format("ttf"),
+      url("../fonts/woff/IRANSansWeb.woff") format("woff"),
+      url("../fonts/woff2/IRANSansWeb.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "IranSans";
+    style: medium;
+    font-weight: 500;
+    src: url("../fonts/eot/IRANSansWeb_Medium.eot") format("eot"),
+      url("../fonts/ttf/IRANSansWeb_Medium.ttf") format("ttf"),
+      url("../fonts/woff/IRANSansWeb_Medium.woff") format("woff"),
+      url("../fonts/woff2/IRANSansWeb_Medium.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "IranSans";
+    style: bold;
+    font-weight: 700;
+    src: url("../fonts/eot/IRANSansWeb_Bold.eot") format("eot"),
+      url("../fonts/ttf/IRANSansWeb_Bold.ttf") format("ttf"),
+      url("../fonts/woff/IRANSansWeb_Bold.woff") format("woff"),
+      url("../fonts/woff2/IRANSansWeb_Bold.woff2") format("woff2");
   }
 
   input,
@@ -56,6 +75,14 @@
   .text-s-w {
     @apply text-xl font-medium;
   }
+
+  .li-custom-style {
+    @apply flex items-center w-full gap-1 rounded-md whitespace-nowrap hover:pl-10 hover:text-purple-700 text-s-w custom-transition hover:bg-purple-50;
+  }
 }
 
 @tailwind utilities;
+
+[x-cloak] {
+  display: none !important;
+}
