@@ -1056,3 +1056,9 @@ h1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
+
+@media (min-width: 768px) {
+  .md\:w-2\/4 {
+    width: 50%;
+  }
+}
