@@ -103,3 +103,20 @@
 .top-swiper-container .top-swiper-next::after {
   @apply text-3xl font-bold text-gray-700;
 }
+
+.slider-container .bottom-swiper-prev,
+.slider-container .bottom-swiper-next {
+  @apply hidden px-6 border-2 border-gray-100 rounded-full lg:flex py-14 backdrop-blur-md;
+}
+
+.slider-container .bottom-swiper-prev::after,
+.slider-container .bottom-swiper-next::after {
+  @apply text-3xl font-bold text-gray-700;
+}
+
+.slider-container .bottom-swiper-prev {
+  @apply -left-4;
+}
+.slider-container .bottom-swiper-next {
+  @apply -right-4;
+}
