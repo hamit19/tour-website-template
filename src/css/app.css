@@ -86,3 +86,20 @@
 [x-cloak] {
   display: none !important;
 }
+
+.top-swiper-container .top-swiper-prev,
+.top-swiper-container .top-swiper-next {
+  @apply hidden px-6 border-2 border-gray-100 rounded-full lg:flex py-14 backdrop-blur-md;
+}
+
+.top-swiper-container .top-swiper-next {
+  @apply -right-6;
+}
+.top-swiper-container .top-swiper-prev {
+  @apply -left-6;
+}
+
+.top-swiper-container .top-swiper-prev::after,
+.top-swiper-container .top-swiper-next::after {
+  @apply text-3xl font-bold text-gray-700;
+}
