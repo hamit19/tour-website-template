@@ -7,9 +7,13 @@ module.exports = {
       center: true,
       padding: "2rem",
     },
+
     extend: {
       padding: {
         md: "56%",
+      },
+      gridTemplateColumns: {
+        "auto-fit": "repeat(auto-fit, minmax(240px, 1fr))",
       },
     },
   },
