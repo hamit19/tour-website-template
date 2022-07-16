@@ -227,6 +227,303 @@
     <!-- Navbar Section end -->
 
     <main class="">
+      <!-- modal section start -->
+      <!-- modal wrapper -->
+      <div
+        x-data="{
+          modal: false,
+          mainModal:false,
+
+          openModal(e){
+            setTimeout(() => {
+              this.modal= true;
+            }, 2000);
+
+            setTimeout(() => {
+              this.mainModal= true;
+            }, 2050);
+
+          }
+      }"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-300"
+        x-transition:leave-start="opacity-100 "
+        x-transition:leave-end="opacity-0"
+        x-show="modal"
+        @keyup.Escape.window="modal=false; mainModal=false"
+        @open-modal.window="openModal($event)"
+        x-cloak
+        class="fixed inset-0 z-30 bg-gray-900 bg-opacity-50 flex-center backdrop-blur-sm"
+      >
+        <!-- main modal -->
+        <form
+          @click.outside="modal=false; mainModal=false"
+          class="sm:max-w-3xl"
+          :class="mainModal ? 'main-modal translate-y-0 custom-transition ' : 'main-modal custom-transition'"
+        >
+          <!-- list -->
+          <ul class="flex flex-col items-center w-full h-full list-none">
+            <!-- title -->
+            <li class="py-4 title-color odd:bg-gray-50 even:bg-gray-100">
+              <h3>ویژگی های سفرتان را انتخاب کنید</h3>
+            </li>
+            <!-- meal details -->
+            <li
+              class="flex flex-row-reverse w-full py-4 odd:bg-gray-50 even:bg-gray-100"
+            >
+              <ul class="flex w-3/4 gap-3 px-4 list-none">
+                <li class="relative flex-1 bg-transparent flex-center">
+                  <input
+                    class="absolute invisible radio-checked:bg-purple-700 radio-checked:text-gray-50"
+                    type="checkbox"
+                    name="meal"
+                    id="breakfast"
+                  />
+                  <label
+                    class="w-full h-full text-purple-700 bg-transparent border border-purple-700 rounded-md cursor-pointer custom-transition flex-center"
+                    for="breakfast"
+                    >صبحانه</label
+                  >
+                </li>
+
+                <li class="relative flex-1 bg-transparent flex-center">
+                  <input
+                    class="absolute invisible radio-checked:bg-purple-700 radio-checked:text-gray-50"
+                    type="checkbox"
+                    name="meal"
+                    id="lunch"
+                  />
+                  <label
+                    class="w-full h-full text-purple-700 bg-transparent border border-purple-700 rounded-md cursor-pointer custom-transition flex-center"
+                    for="lunch"
+                    >ناهار</label
+                  >
+                </li>
+
+                <li class="relative flex-1 bg-transparent flex-center">
+                  <input
+                    class="absolute invisible radio-checked:bg-purple-700 radio-checked:text-gray-50"
+                    type="checkbox"
+                    name="meal"
+                    id="dinner"
+                  />
+                  <label
+                    class="w-full h-full text-purple-700 bg-transparent border border-purple-700 rounded-md cursor-pointer custom-transition flex-center"
+                    for="dinner"
+                    >شام</label
+                  >
+                </li>
+              </ul>
+              <div class="flex-1 py-4 bg-transparent flex-center">
+                <h4>غذا</h4>
+              </div>
+            </li>
+            <!-- visit of places details -->
+            <li
+              class="flex flex-row-reverse w-full py-4 odd:bg-gray-50 even:bg-gray-100"
+            >
+              <ul class="flex w-3/4 gap-3 px-4 list-none">
+                <li class="relative flex-1 bg-transparent flex-center">
+                  <input
+                    class="absolute invisible radio-checked:bg-green-500 radio-checked:text-gray-50"
+                    type="checkbox"
+                    name="places"
+                    id="funny"
+                  />
+                  <label
+                    class="w-full h-full text-green-500 bg-transparent border border-green-500 rounded-md cursor-pointer custom-transition flex-center"
+                    for="funny"
+                    >تفریحی</label
+                  >
+                </li>
+
+                <li class="relative flex-1 bg-transparent flex-center">
+                  <input
+                    class="absolute invisible radio-checked:bg-green-500 radio-checked:text-gray-50"
+                    type="checkbox"
+                    name="places"
+                    id="historical"
+                  />
+                  <label
+                    class="w-full h-full text-green-500 bg-transparent border border-green-500 rounded-md cursor-pointer custom-transition flex-center"
+                    for="historical"
+                    >تاریخی</label
+                  >
+                </li>
+
+                <li class="relative flex-1 bg-transparent flex-center">
+                  <input
+                    class="absolute invisible radio-checked:bg-green-500 radio-checked:text-gray-50"
+                    type="checkbox"
+                    name="places"
+                    id="sports"
+                  />
+                  <label
+                    class="w-full h-full text-green-500 bg-transparent border border-green-500 rounded-md cursor-pointer custom-transition flex-center"
+                    for="sports"
+                    >ورزشی</label
+                  >
+                </li>
+              </ul>
+              <div
+                class="flex-1 py-4 bg-transparent whitespace-nowrap flex-center"
+              >
+                <h4>مکان های دیدنی</h4>
+              </div>
+            </li>
+            <!-- hotel (stars) -->
+            <li
+              class="flex flex-row-reverse w-full py-4 odd:bg-gray-50 even:bg-gray-100"
+            >
+              <ul class="flex w-3/4 gap-3 px-4 list-none">
+                <li class="relative flex-1 bg-transparent flex-center">
+                  <input
+                    class="absolute invisible radio-checked:bg-yellow-500 radio-checked:text-gray-50"
+                    type="radio"
+                    name="hotel"
+                    id="three-stars"
+                  />
+                  <label
+                    class="w-full h-full text-yellow-500 bg-transparent border border-yellow-500 rounded-md cursor-pointer custom-transition flex-center"
+                    for="three-stars"
+                    >3</label
+                  >
+                </li>
+
+                <li class="relative flex-1 bg-transparent flex-center">
+                  <input
+                    class="absolute invisible radio-checked:bg-yellow-500 radio-checked:text-gray-50"
+                    type="radio"
+                    name="hotel"
+                    id="foure-stars"
+                  />
+                  <label
+                    class="w-full h-full text-yellow-500 bg-transparent border border-yellow-500 rounded-md cursor-pointer custom-transition flex-center"
+                    for="foure-stars"
+                    >4</label
+                  >
+                </li>
+
+                <li class="relative flex-1 bg-transparent flex-center">
+                  <input
+                    class="absolute invisible radio-checked:bg-yellow-500 radio-checked:text-gray-50"
+                    type="radio"
+                    name="hotel"
+                    id="five-stars"
+                  />
+                  <label
+                    class="w-full h-full text-yellow-500 bg-transparent border border-yellow-500 rounded-md cursor-pointer custom-transition flex-center"
+                    for="five-stars"
+                    >5</label
+                  >
+                </li>
+              </ul>
+              <div class="flex-1 py-4 bg-transparent flex-center">
+                <h4>هتل (ستاره)</h4>
+              </div>
+            </li>
+            <!-- Transfer details -->
+            <li
+              class="flex flex-row-reverse justify-around w-full py-4 odd:bg-gray-50 even:bg-gray-100"
+            >
+              <div
+                x-data="{
+                 tab:false,
+                }"
+                class="relative flex items-center w-2/4 border border-purple-700 rounded-full"
+              >
+                <div
+                  @click="tab=false;$dispatch('disabled-event', { detail: true})"
+                  class="z-10 flex-1 text-purple-700 bg-transparent rounded-full cursor-pointer flex-center"
+                  x-bind:class="!tab ? 'text-gray-50' : 'text-purple-700'"
+                >
+                  <span>هوایی</span>
+                </div>
+                <div
+                  @click="tab=true; $dispatch('disabled-event', { detail: false })"
+                  class="z-10 flex-1 text-purple-700 bg-transparent rounded-full cursor-pointer flex-center"
+                  x-bind:class="tab ? 'text-gray-50' : 'text-purple-700'"
+                >
+                  <span>زمینی</span>
+                </div>
+                <input
+                  type="radio"
+                  name="transfer"
+                  id="transfer"
+                  class="absolute top-0 left-0 invisible"
+                />
+                <label
+                  for="transfer"
+                  class="absolute w-1/2 h-full transition-all duration-500 ease-linear bg-purple-700 rounded-full"
+                  x-bind:class="tab ? 'right-0': 'left-0'"
+                ></label>
+              </div>
+
+              <div class="py-4 bg-transparent flex-center">
+                <h4>انتقال</h4>
+              </div>
+            </li>
+            <!-- Transfer method -->
+            <li
+              x-data="{
+                disabled:true,
+                
+                handleDisabled(e){
+                  this.disabled = e.detail.detail;
+                }
+              }"
+              class="flex flex-row-reverse w-full py-4 odd:bg-gray-50 even:bg-gray-100"
+              @disabled-event.window="handleDisabled($event)"
+              x-bind:class="disabled ? 'pointer-events-none opacity-60 ' :'pointer-events-auto'"
+            >
+              <ul class="flex w-3/4 gap-3 px-4">
+                <li class="relative flex-1 bg-transparent flex-center">
+                  <input
+                    class="absolute invisible radio-checked:bg-rose-500 radio-checked:text-gray-50"
+                    type="radio"
+                    name="landT"
+                    id="buss"
+                  />
+                  <label
+                    class="w-full h-full bg-transparent border rounded-md cursor-pointer custom-transition text-rose-600 border-rose-500 flex-center"
+                    for="buss"
+                    >اتوبوس</label
+                  >
+                </li>
+
+                <li class="relative flex-1 bg-transparent flex-center">
+                  <input
+                    class="absolute invisible radio-checked:bg-rose-500 radio-checked:text-gray-50"
+                    type="radio"
+                    name="landT"
+                    id="train"
+                  />
+                  <label
+                    class="w-full h-full bg-transparent border rounded-md cursor-pointer custom-transition text-rose-600 border-rose-500 flex-center"
+                    for="train"
+                    >قطار</label
+                  >
+                </li>
+              </ul>
+              <div class="flex-1 py-4 bg-transparent flex-center">
+                <h4>روش انتقال</h4>
+              </div>
+            </li>
+            <!-- submit btn -->
+            <div class="w-full px-3 mt-8 btn">
+              <button
+                class="w-full py-5 text-xl font-medium shadow-lg rounded-xl bg-rose-600 text-gray-50"
+              >
+                اعمال
+              </button>
+            </div>
+          </ul>
+        </form>
+      </div>
+      <!-- modal section end -->
+
       <!-- Slider Section start -->
       <div class="container z-10 grid grid-cols-1 gap-4 mt-8 sm:grid-cols-3">
         <div class="relative w-full mb-8 pt-md sm:col-span-2">
@@ -838,7 +1135,11 @@
       <!-- Request for going on a journey section start  -->
       <section class="container py-4 bg-gray-200">
         <!-- request form -->
-        <form class="flex flex-col px-8 py-2 bg-white shadow-xl rounded-xl">
+        <form
+          x-data
+          @submit.prevent
+          class="flex flex-col px-8 py-2 bg-white shadow-xl sm:max-w-[60rem] sm:mx-auto rounded-xl"
+        >
           <!-- title -->
           <div
             class="h-20 py-2 border-b border-b-gray-400 title-color flex-center"
@@ -857,7 +1158,7 @@
                 <h3 class="pb-6 font-thin title-color">تعداد افراد</h3>
                 <div class="flex gap-4 pb-6 xl:w-3/4 xl:mx-auto">
                   <div
-                    class="relative flex-1 text-xl font-bold text-gray-700 border border-purple-800 rounded-md shadow-lg"
+                    class="relative flex-1 text-xl font-bold text-gray-700 shadow-lg"
                   >
                     <input
                       class="absolute invisible radio-checked:bg-purple-700 radio-checked:text-gray-50"
@@ -866,13 +1167,13 @@
                       id="one"
                     />
                     <label
-                      class="w-full h-full py-4 cursor-pointer custom-transition flex-center"
+                      class="w-full h-full py-4 border border-purple-800 rounded-md cursor-pointer custom-transition flex-center"
                       for="one"
                       >1</label
                     >
                   </div>
                   <div
-                    class="relative flex-1 text-xl font-bold text-gray-700 border border-purple-800 rounded-md shadow-lg"
+                    class="relative flex-1 text-xl font-bold text-gray-700 shadow-lg"
                   >
                     <input
                       class="absolute invisible radio-checked:bg-purple-700 radio-checked:text-gray-50"
@@ -881,13 +1182,13 @@
                       id="tow"
                     />
                     <label
-                      class="w-full h-full py-4 cursor-pointer custom-transition flex-center"
+                      class="w-full h-full py-4 border border-purple-800 rounded-md cursor-pointer custom-transition flex-center"
                       for="tow"
                       >2</label
                     >
                   </div>
                   <div
-                    class="relative flex-1 text-xl font-bold text-gray-700 border border-purple-800 rounded-md shadow-lg"
+                    class="relative flex-1 text-xl font-bold text-gray-700 shadow-lg"
                   >
                     <input
                       class="absolute invisible radio-checked:bg-purple-700 radio-checked:text-gray-50"
@@ -896,13 +1197,13 @@
                       id="three"
                     />
                     <label
-                      class="w-full h-full py-4 cursor-pointer custom-transition flex-center"
+                      class="w-full h-full py-4 border border-purple-800 rounded-md cursor-pointer custom-transition flex-center"
                       for="three"
                       >3</label
                     >
                   </div>
                   <div
-                    class="relative flex-1 text-xl font-bold text-gray-700 border border-purple-800 rounded-md shadow-lg"
+                    class="relative flex-1 text-xl font-bold text-gray-700 shadow-lg"
                   >
                     <input
                       class="absolute invisible w-full h-full radio-checked:bg-purple-700 radio-checked:text-gray-50"
@@ -911,7 +1212,7 @@
                       id="foure"
                     />
                     <label
-                      class="w-full h-full py-4 cursor-pointer custom-transition flex-center"
+                      class="w-full h-full py-4 border border-purple-800 rounded-md cursor-pointer custom-transition flex-center"
                       for="foure"
                       >4</label
                     >
@@ -948,7 +1249,7 @@
             </div>
           </div>
 
-          <!-- personal and payment method wrapper -->
+          <!-- personal info and payment method wrapper -->
           <div class="grid grid-cols-1 py-4 sm:grid-cols-2">
             <!-- input personal inof  -->
             <div
@@ -1045,11 +1346,28 @@
               </div>
             </div>
           </div>
-          <div class="w-full py-2 sm:w-52">
+          <div
+            x-data="{
+            openModal:false,
+            callOpenModal(){
+              this.openModal= true;
+              $dispatch('open-modal');
+              setTimeout(()=>{
+                this.openModal=false;
+              },2000)
+            }
+            
+            }"
+            class="w-full py-2 sm:w-52"
+          >
             <button
-              class="flex flex-row-reverse items-center justify-center w-full gap-3 py-6 text-xl font-bold rounded-lg hover:shadow-xl custom-transition bg-amber-500 text-gray-50"
+              type="submit"
+              @click="callOpenModal()"
+              x-data
+              class="relative flex flex-row-reverse items-center justify-center w-full h-[58px] gap-3 py-4 text-xl font-bold rounded-lg bg-amber-500 text-gray-50"
             >
               <svg
+                x-show="!openModal"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24px"
                 height="24px"
@@ -1065,7 +1383,65 @@
                   d="M14 5l7 7m0 0l-7 7m7-7H3"
                 />
               </svg>
-              مرحله بعدی
+              <!-- waiting svg -->
+              <svg
+                x-show="openModal"
+                x-cloak
+                width="28"
+                height="28"
+                viewBox="0 0 44 44"
+                xmlns="http://www.w3.org/2000/svg"
+                stroke="#fff"
+              >
+                <g fill="none" fill-rule="evenodd" stroke-width="2">
+                  <circle cx="22" cy="22" r="1">
+                    <animate
+                      attributeName="r"
+                      begin="0s"
+                      dur="1.8s"
+                      values="1; 20"
+                      calcMode="spline"
+                      keyTimes="0; 1"
+                      keySplines="0.165, 0.84, 0.44, 1"
+                      repeatCount="indefinite"
+                    />
+                    <animate
+                      attributeName="stroke-opacity"
+                      begin="0s"
+                      dur="1.8s"
+                      values="1; 0"
+                      calcMode="spline"
+                      keyTimes="0; 1"
+                      keySplines="0.3, 0.61, 0.355, 1"
+                      repeatCount="indefinite"
+                    />
+                  </circle>
+                  <circle cx="22" cy="22" r="1">
+                    <animate
+                      attributeName="r"
+                      begin="-0.9s"
+                      dur="1.8s"
+                      values="1; 20"
+                      calcMode="spline"
+                      keyTimes="0; 1"
+                      keySplines="0.165, 0.84, 0.44, 1"
+                      repeatCount="indefinite"
+                    />
+                    <animate
+                      attributeName="stroke-opacity"
+                      begin="-0.9s"
+                      dur="1.8s"
+                      values="1; 0"
+                      calcMode="spline"
+                      keyTimes="0; 1"
+                      keySplines="0.3, 0.61, 0.355, 1"
+                      repeatCount="indefinite"
+                    />
+                  </circle>
+                </g>
+              </svg>
+
+              <span x-text="openModal ? 'Please wait!' : ' Next'"></span>
             </button>
           </div>
         </form>
