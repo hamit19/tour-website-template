@@ -88,6 +88,9 @@
   .li-custom-style {
     @apply flex items-center w-full gap-1 rounded-md whitespace-nowrap hover:pl-10 hover:text-purple-700 text-s-w custom-transition hover:bg-purple-50;
   }
+  .main-modal {
+    @apply absolute w-3/4 py-8 -translate-y-full bg-gray-50 rounded-xl;
+  }
 }
 
 @tailwind utilities;
