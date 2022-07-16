@@ -1824,3 +1824,14 @@ input[type="number"] {
     line-height: 2.5rem;
   }
 }
+
+@media (min-width: 1280px) {
+  .xl\:mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .xl\:w-3\/4 {
+    width: 75%;
+  }
+}
