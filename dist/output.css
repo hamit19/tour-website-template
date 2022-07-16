@@ -1311,6 +1311,11 @@ p {
   --tw-bg-opacity: 0;
 }
 
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .p-2 {
   padding: 0.5rem;
 }
