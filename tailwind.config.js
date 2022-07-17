@@ -16,6 +16,9 @@ module.exports = {
       gridTemplateColumns: {
         "auto-fit": "repeat(auto-fit, minmax(240px, 1fr))",
       },
+      transitionTimingFunction: {
+        "custom-cubic": "cubic-bezier(.7,-0.2,.07,1.48)",
+      },
     },
   },
   plugins: [
