@@ -242,8 +242,8 @@
             setTimeout(() => {
               this.mainModal= true;
             }, 2050);
-
           }
+
       }"
         x-transition:enter="transition ease-out duration-300"
         x-transition:enter-start="opacity-0"
@@ -257,9 +257,72 @@
         x-cloak
         class="fixed inset-0 z-30 bg-gray-900 bg-opacity-50 flex-center backdrop-blur-sm"
       >
+        <!-- message box section start -->
+        <div
+          x-data="{
+          messageBox:false,
+          showTooltip: false,
+          bottomLine: false,
+          tooltipHandler(){
+            this.messageBox = true;
+            setTimeout(()=>{
+              this.showTooltip = true;
+            },9)
+
+            setTimeout(()=>{
+                this.bottomLine = true;
+            },800)
+
+            setTimeout(()=>{
+              this.showTooltip = false;
+              
+            },2000)
+
+            setTimeout(() => {
+              this.bottomLine = false;
+            }, 2100);
+
+            setTimeout(() => {
+              this.messageBox = false;
+            }, 2600);
+
+            setTimeout(() => {
+              dispatch('info-received')
+            }, 2700);
+ 
+          }
+        }"
+          x-cloak
+          x-show="messageBox"
+          @tooltip-event.window="tooltipHandler()"
+          class="absolute flex z-30 flex-col w-2/4 sm:max-w-[200px] h-[7rem] transition-all duration-700 ease-custom-cubic pt-6 overflow-hidden bg-green-500 -translate-x-full top-6 rounded-xl text-gray-50"
+          :class="showTooltip ? ' -translate-x-32  md:-translate-x-[100%] ' : '-translate-x-[150%]  md:-translate-x-[600%]'"
+        >
+          <div class="py-6 text-xl flex-center">
+            <h4>اطلاعات دریافت شد</h4>
+          </div>
+          <div
+            class="absolute bottom-0 h-2 transition-all duration-1000 ease-linear bg-rose-200"
+            :class="bottomLine ? 'w-full':'w-0'"
+          ></div>
+        </div>
+        <!-- message box section end -->
+
         <!-- main modal -->
         <form
+          x-data="{
+            
+          infoReceived() {
+            setTimeout(()=> {
+              this.mainModal= false;
+              this.modal= false
+            },3000)
+          }
+          
+          }"
+          @submit.prevent
           @click.outside="modal=false; mainModal=false"
+          @info-received.window="infoReceived()"
           class="sm:max-w-3xl"
           :class="mainModal ? 'main-modal translate-y-0 custom-transition ' : 'main-modal custom-transition'"
         >
@@ -436,15 +499,15 @@
               >
                 <div
                   @click="tab=false;$dispatch('disabled-event', { detail: true})"
-                  class="z-10 flex-1 text-purple-700 bg-transparent rounded-full cursor-pointer flex-center"
-                  x-bind:class="!tab ? 'text-gray-50' : 'text-purple-700'"
+                  class="relative z-20 flex-1 text-purple-700 bg-transparent rounded-full cursor-pointer flex-center"
+                  x-bind:class="!tab ? 'text-white' : 'text-purple-700'"
                 >
                   <span>هوایی</span>
                 </div>
                 <div
                   @click="tab=true; $dispatch('disabled-event', { detail: false })"
-                  class="z-10 flex-1 text-purple-700 bg-transparent rounded-full cursor-pointer flex-center"
-                  x-bind:class="tab ? 'text-gray-50' : 'text-purple-700'"
+                  class="relative z-20 flex-1 text-purple-700 bg-transparent rounded-full cursor-pointer flex-center"
+                  x-bind:class="tab ? 'text-white' : 'text-purple-700'"
                 >
                   <span>زمینی</span>
                 </div>
@@ -456,7 +519,7 @@
                 />
                 <label
                   for="transfer"
-                  class="absolute w-1/2 h-full transition-all duration-500 ease-linear bg-purple-700 rounded-full"
+                  class="absolute z-10 w-1/2 h-full transition-all duration-500 ease-linear bg-purple-700 rounded-full"
                   x-bind:class="tab ? 'right-0': 'left-0'"
                 ></label>
               </div>
@@ -514,6 +577,9 @@
             <!-- submit btn -->
             <div class="w-full px-3 mt-8 btn">
               <button
+                x-data
+                @click="$dispatch('tooltip-event'); $dispatch('info-received')"
+                type="submit"
                 class="w-full py-5 text-xl font-medium shadow-lg rounded-xl bg-rose-600 text-gray-50"
               >
                 اعمال
@@ -1138,7 +1204,7 @@
         <form
           x-data
           @submit.prevent
-          class="flex flex-col px-8 py-2 bg-white shadow-xl sm:max-w-[60rem] sm:mx-auto rounded-xl"
+          class="flex flex-col px-8 py-2 bg-white shadow-xl sm:max-w-[60rem] md:max-w-[70rem] lg:max-w-[80rem] sm:mx-auto rounded-xl"
         >
           <!-- title -->
           <div
@@ -1248,7 +1314,6 @@
               </div>
             </div>
           </div>
-
           <!-- personal info and payment method wrapper -->
           <div class="grid grid-cols-1 py-4 sm:grid-cols-2">
             <!-- input personal inof  -->
