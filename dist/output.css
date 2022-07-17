@@ -1045,16 +1045,16 @@ p {
   height: 1.25rem;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .h-14 {
   height: 3.5rem;
 }
 
 .h-10 {
   height: 2.5rem;
-}
-
-.h-full {
-  height: 100%;
 }
 
 .h-8 {
@@ -1551,14 +1551,6 @@ p {
   opacity: 1;
 }
 
-.opacity-5 {
-  opacity: 0.05;
-}
-
-.opacity-50 {
-  opacity: 0.5;
-}
-
 .opacity-60 {
   opacity: 0.6;
 }
@@ -1795,12 +1787,6 @@ input[type="number"] {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.hover\:shadow-xl:hover {
-  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
 .focus\:border:focus {
   border-width: 1px;
 }
@@ -1829,11 +1815,6 @@ input[type="number"] {
 
 .focus\:ring-offset-0:focus {
   --tw-ring-offset-width: 0px;
-}
-
-.disabled\:bg-gray-200:disabled {
-  --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
 .group:hover .group-hover\:left-0 {
@@ -1928,16 +1909,12 @@ input[type="number"] {
     width: 13rem;
   }
 
-  .sm\:max-w-\[60rem\] {
-    max-width: 60rem;
-  }
-
-  .sm\:max-w-xl {
-    max-width: 36rem;
-  }
-
   .sm\:max-w-3xl {
     max-width: 48rem;
+  }
+
+  .sm\:max-w-\[60rem\] {
+    max-width: 60rem;
   }
 
   .sm\:grid-cols-3 {
@@ -2046,16 +2023,5 @@ input[type="number"] {
   .lg\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
-  }
-}
-
-@media (min-width: 1280px) {
-  .xl\:mx-auto {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .xl\:w-3\/4 {
-    width: 75%;
   }
 }
