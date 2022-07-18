@@ -264,10 +264,12 @@
           showTooltip: false,
           bottomLine: false,
           tooltipHandler(){
+
             this.messageBox = true;
+
             setTimeout(()=>{
               this.showTooltip = true;
-            },9)
+            },100)
 
             setTimeout(()=>{
                 this.bottomLine = true;
@@ -285,18 +287,14 @@
             setTimeout(() => {
               this.messageBox = false;
             }, 2600);
-
-            setTimeout(() => {
-              dispatch('info-received')
-            }, 2700);
- 
+            
           }
         }"
           x-cloak
           x-show="messageBox"
           @tooltip-event.window="tooltipHandler()"
-          class="absolute flex z-30 flex-col w-2/4 sm:max-w-[200px] h-[7rem] transition-all duration-700 ease-custom-cubic pt-6 overflow-hidden bg-green-500 -translate-x-full top-6 rounded-xl text-gray-50"
-          :class="showTooltip ? ' -translate-x-32  md:-translate-x-[100%] ' : '-translate-x-[150%]  md:-translate-x-[600%]'"
+          class="absolute flex z-30 flex-col w-2/4 md:duration-1000 sm:max-w-[200px] h-[7rem] transition-all duration-700 ease-custom-cubic pt-6 overflow-hidden bg-green-500 -translate-x-full top-6 rounded-xl text-gray-50"
+          :class="showTooltip ? ' -translate-x-32 sm:-translate-x-52  md:-translate-x-[100%] ' : '-translate-x-[150%] sm:-translate-x-[210%]  md:-translate-x-[600%]'"
         >
           <div class="py-6 text-xl flex-center">
             <h4>اطلاعات دریافت شد</h4>
