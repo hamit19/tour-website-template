@@ -91,6 +91,9 @@
   .main-modal {
     @apply absolute w-3/4 py-8 -translate-y-full bg-gray-50 rounded-xl;
   }
+  .disable-scroll {
+    @apply h-full overflow-hidden;
+  }
 }
 
 @tailwind utilities;
