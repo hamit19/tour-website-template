@@ -709,7 +709,7 @@
               <div class="swiper-wrapper" style="height: auto">
                 <!-- slide -->
                 <div
-                  class="relative overflow-hidden bg-white shadow-xl cursor-pointer swiper-slide rounded-xl group"
+                  class="relative overflow-hidden bg-white shadow-xl cursor-pointer title-color swiper-slide rounded-xl group"
                   style="width: 34rem !important"
                 >
                   <!-- head of slider -->
@@ -767,7 +767,7 @@
                 </div>
                 <!-- slide -->
                 <div
-                  class="relative overflow-hidden bg-white shadow-xl cursor-pointer swiper-slide rounded-xl group"
+                  class="relative overflow-hidden bg-white shadow-xl cursor-pointer title-color swiper-slide rounded-xl group"
                   style="width: 34rem"
                 >
                   <!-- head of slider -->
@@ -825,7 +825,7 @@
                 </div>
                 <!-- slide -->
                 <div
-                  class="relative overflow-hidden bg-white shadow-xl cursor-pointer swiper-slide rounded-xl group"
+                  class="relative overflow-hidden bg-white shadow-xl cursor-pointer title-color swiper-slide rounded-xl group"
                   style="width: 34rem"
                 >
                   <!-- head of slider -->
@@ -883,7 +883,7 @@
                 </div>
                 <!-- slide -->
                 <div
-                  class="relative overflow-hidden bg-white shadow-xl cursor-pointer swiper-slide rounded-xl group"
+                  class="relative overflow-hidden bg-white shadow-xl cursor-pointer title-color swiper-slide rounded-xl group"
                   style="width: 34rem"
                 >
                   <!-- head of slider -->
@@ -941,7 +941,7 @@
                 </div>
                 <!-- slide -->
                 <div
-                  class="relative overflow-hidden bg-white shadow-xl cursor-pointer swiper-slide rounded-xl group"
+                  class="relative overflow-hidden bg-white shadow-xl cursor-pointer title-color swiper-slide rounded-xl group"
                   style="width: 34rem"
                 >
                   <!-- head of slider -->
@@ -1197,107 +1197,247 @@
       <!-- Most visited places section end -->
 
       <!-- Request for going on a journey section start  -->
-      <section class="container py-4 bg-gray-200">
-        <!-- request form -->
-        <form
-          x-data
-          @submit.prevent
-          class="flex flex-col px-8 py-2 bg-white shadow-xl sm:max-w-[60rem] md:max-w-[70rem] lg:max-w-[80rem] sm:mx-auto rounded-xl"
-        >
-          <!-- title -->
-          <div
-            class="h-20 py-2 border-b border-b-gray-400 title-color flex-center"
+      <section class="py-8 bg-gray-200">
+        <div class="container">
+          <!-- request form -->
+          <form
+            x-data
+            @submit.prevent
+            class="flex flex-col px-8 py-2 bg-white shadow-xl sm:max-w-[60rem] md:max-w-[70rem] lg:max-w-[80rem] sm:mx-auto rounded-xl"
           >
-            <h3>درخواست سفر</h3>
-          </div>
-          <!-- count of people wrapper -->
-          <div
-            class="grid grid-cols-1 border-b border-gray-400 border-dashed sm:grid-cols-2"
-          >
-            <!-- select count of people -->
-            <div class="sm:py-8">
+            <!-- title -->
+            <div
+              class="h-20 py-2 border-b border-b-gray-400 title-color flex-center"
+            >
+              <h3>درخواست سفر</h3>
+            </div>
+            <!-- count of people wrapper -->
+            <div
+              class="grid grid-cols-1 border-b border-gray-400 border-dashed sm:grid-cols-2"
+            >
+              <!-- select count of people -->
+              <div class="sm:py-8">
+                <div
+                  class="py-8 border-b sm:py-0 sm:border-b-0 sm:border-r sm:border-r-gray-300 sm:px-4 border-b-gray-400"
+                >
+                  <h3 class="pb-6 font-thin title-color">تعداد افراد</h3>
+                  <div class="flex gap-4 pb-6">
+                    <div
+                      class="relative flex-1 text-xl font-bold text-gray-700 shadow-lg"
+                    >
+                      <input
+                        class="absolute invisible radio-checked:bg-purple-700 radio-checked:text-gray-50"
+                        type="radio"
+                        name="count"
+                        id="one"
+                      />
+                      <label
+                        class="w-full h-full py-4 border border-purple-800 rounded-md cursor-pointer custom-transition flex-center"
+                        for="one"
+                        >1</label
+                      >
+                    </div>
+                    <div
+                      class="relative flex-1 text-xl font-bold text-gray-700 shadow-lg"
+                    >
+                      <input
+                        class="absolute invisible radio-checked:bg-purple-700 radio-checked:text-gray-50"
+                        type="radio"
+                        name="count"
+                        id="tow"
+                      />
+                      <label
+                        class="w-full h-full py-4 border border-purple-800 rounded-md cursor-pointer custom-transition flex-center"
+                        for="tow"
+                        >2</label
+                      >
+                    </div>
+                    <div
+                      class="relative flex-1 text-xl font-bold text-gray-700 shadow-lg"
+                    >
+                      <input
+                        class="absolute invisible radio-checked:bg-purple-700 radio-checked:text-gray-50"
+                        type="radio"
+                        name="count"
+                        id="three"
+                      />
+                      <label
+                        class="w-full h-full py-4 border border-purple-800 rounded-md cursor-pointer custom-transition flex-center"
+                        for="three"
+                        >3</label
+                      >
+                    </div>
+                    <div
+                      class="relative flex-1 text-xl font-bold text-gray-700 shadow-lg"
+                    >
+                      <input
+                        class="absolute invisible w-full h-full radio-checked:bg-purple-700 radio-checked:text-gray-50"
+                        type="radio"
+                        name="count"
+                        id="foure"
+                      />
+                      <label
+                        class="w-full h-full py-4 border border-purple-800 rounded-md cursor-pointer custom-transition flex-center"
+                        for="foure"
+                        >4</label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- input the counts over 4 counts of people -->
+              <div class="py-8 sm:px-4 border-b-gray-400">
+                <h3 class="pb-6 font-thin title-color">تعداد دلخواه</h3>
+                <div class="relative">
+                  <input
+                    placeholder="5"
+                    type="number"
+                    class="w-full py-4 text-lg font-bold text-purple-700 border border-gray-300 rounded-md shadow-sm outline-none focus:border-purple-400 focus:ring-0 custom-transition focus:shadow-md placeholder:text-purple-300 input-focused:text-purple-700 pl-14"
+                  />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20px"
+                    height="20px"
+                    class="absolute w-8 h-8 text-gray-700 svg top-3 left-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <!-- personal info and payment method wrapper -->
+            <div class="grid grid-cols-1 py-4 sm:grid-cols-2">
+              <!-- input personal inof  -->
               <div
-                class="py-8 border-b sm:py-0 sm:border-b-0 sm:border-r sm:border-r-gray-300 sm:px-4 border-b-gray-400"
+                class="border-b border-gray-300 sm:py-8 sm:border-b-0 sm:border-r"
               >
-                <h3 class="pb-6 font-thin title-color">تعداد افراد</h3>
-                <div class="flex gap-4 pb-6">
-                  <div
-                    class="relative flex-1 text-xl font-bold text-gray-700 shadow-lg"
-                  >
+                <div class="px-4 py-4 sm:py-0">
+                  <h3 class="pb-6 title-color">اطلاعات شخصی</h3>
+                  <div class="flex flex-col gap-4">
                     <input
-                      class="absolute invisible radio-checked:bg-purple-700 radio-checked:text-gray-50"
-                      type="radio"
-                      name="count"
-                      id="one"
+                      placeholder="...نام"
+                      class="w-full px-4 py-4 text-lg font-bold text-gray-700 border border-gray-300 rounded-md shadow-sm outline-none focus:border focus:border-purple-400 focus:ring-0 custom-transition focus:shadow-md"
+                      type="text"
+                      name="name"
                     />
-                    <label
-                      class="w-full h-full py-4 border border-purple-800 rounded-md cursor-pointer custom-transition flex-center"
-                      for="one"
-                      >1</label
-                    >
+                    <input
+                      placeholder="...نام خانوادگی"
+                      class="w-full px-4 py-4 text-lg font-bold text-gray-700 border border-gray-300 rounded-md shadow-sm outline-none focus:border-purple-400 focus:ring-0 custom-transition focus:shadow-md"
+                      type="text"
+                      name="family"
+                    />
+                    <input
+                      placeholder="ایمیل..."
+                      class="w-full px-4 py-4 text-lg font-bold text-gray-700 border border-gray-300 rounded-md shadow-sm outline-none focus:border-purple-400 focus:ring-0 invalid:text-rose-600 invalid:border-rose- peer custom-transition focus:shadow-md"
+                      type="email"
+                      name="email"
+                    />
+                    <span class="invisible text-rose-600 peer-invalid:visible">
+                      The email is invalid!
+                    </span>
+
+                    <div class="flex items-center gap-3">
+                      <h4 class="txt-2xl title-color">جنسیت</h4>
+                      <input
+                        class="cursor-pointer focus:ring-offset-0 focus:ring-0"
+                        type="radio"
+                        name="gender"
+                        id="male"
+                      />
+                      <label class="text-xl cursor-pointer" for="male">
+                        آقا
+                      </label>
+                      <input
+                        class="cursor-pointer focus:ring-offset-0 focus:ring-0"
+                        type="radio"
+                        name="gender"
+                        id="female"
+                      />
+                      <label class="text-xl cursor-pointer" for="female"
+                        >خانوم</label
+                      >
+                    </div>
                   </div>
-                  <div
-                    class="relative flex-1 text-xl font-bold text-gray-700 shadow-lg"
+                </div>
+              </div>
+
+              <!-- payment method -->
+              <div class="px-4 py-8">
+                <h3 class="pb-6 font-thin title-color">روش پرداخت</h3>
+                <select
+                  name="payment"
+                  class="w-full py-4 text-xl border-gray-400 rounded-md focus:ring-0 focus:border-purple-500 title-color"
+                >
+                  <option class="relative w-full h-12 text-xl" value="PayPal">
+                    پی پال
+                  </option>
+                  <option
+                    class="relative w-full h-12 text-xl"
+                    value="visa-credit"
                   >
+                    ویزا کارت یا کردیت کارت
+                  </option>
+                </select>
+                <!-- suggest  inputs -->
+                <div class="flex flex-col py-8">
+                  <h4 class="py-4 title-color">
+                    از طرح های تخفیف بعدی با خبرم کن
+                  </h4>
+                  <div class="flex items-center gap-3">
                     <input
-                      class="absolute invisible radio-checked:bg-purple-700 radio-checked:text-gray-50"
+                      class="cursor-pointer focus:ring-offset-0 focus:ring-0"
                       type="radio"
-                      name="count"
-                      id="tow"
+                      name="suggest"
+                      id="yes"
                     />
-                    <label
-                      class="w-full h-full py-4 border border-purple-800 rounded-md cursor-pointer custom-transition flex-center"
-                      for="tow"
-                      >2</label
-                    >
-                  </div>
-                  <div
-                    class="relative flex-1 text-xl font-bold text-gray-700 shadow-lg"
-                  >
+                    <label class="text-xl cursor-pointer" for="yes">
+                      بله
+                    </label>
                     <input
-                      class="absolute invisible radio-checked:bg-purple-700 radio-checked:text-gray-50"
+                      class="cursor-pointer focus:ring-offset-0 focus:ring-0"
                       type="radio"
-                      name="count"
-                      id="three"
+                      name="suggest"
+                      id="no"
                     />
-                    <label
-                      class="w-full h-full py-4 border border-purple-800 rounded-md cursor-pointer custom-transition flex-center"
-                      for="three"
-                      >3</label
-                    >
-                  </div>
-                  <div
-                    class="relative flex-1 text-xl font-bold text-gray-700 shadow-lg"
-                  >
-                    <input
-                      class="absolute invisible w-full h-full radio-checked:bg-purple-700 radio-checked:text-gray-50"
-                      type="radio"
-                      name="count"
-                      id="foure"
-                    />
-                    <label
-                      class="w-full h-full py-4 border border-purple-800 rounded-md cursor-pointer custom-transition flex-center"
-                      for="foure"
-                      >4</label
-                    >
+                    <label class="text-xl cursor-pointer" for="no">خیر</label>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- input the counts over 4 counts of people -->
-            <div class="py-8 sm:px-4 border-b-gray-400">
-              <h3 class="pb-6 font-thin title-color">تعداد دلخواه</h3>
-              <div class="relative">
-                <input
-                  placeholder="5"
-                  type="number"
-                  class="w-full py-4 text-lg font-bold text-purple-700 border border-gray-300 rounded-md shadow-sm outline-none focus:border-purple-400 focus:ring-0 custom-transition focus:shadow-md placeholder:text-purple-300 input-focused:text-purple-700 pl-14"
-                />
+            <div
+              x-data="{
+                  openModal:false,
+                  
+                  callOpenModal(){
+                    this.openModal= true;
+                      $dispatch('open-modal');
+                      setTimeout(()=>{
+                        this.openModal=false;
+                      },2000)
+                  }
+             }"
+              class="w-full py-2 sm:w-52"
+            >
+              <button
+                type="submit"
+                @click="callOpenModal()"
+                x-data
+                class="relative flex flex-row-reverse items-center justify-center w-full h-[58px] gap-3 py-4 text-xl font-bold rounded-lg bg-amber-500 text-gray-50"
+              >
                 <svg
+                  x-show="!openModal"
                   xmlns="http://www.w3.org/2000/svg"
-                  width="20px"
-                  height="20px"
-                  class="absolute w-8 h-8 text-gray-700 svg top-3 left-4"
+                  width="24px"
+                  height="24px"
+                  class="hidden w-6 h-6 sm:flex"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -1306,208 +1446,72 @@
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
                   />
                 </svg>
-              </div>
-            </div>
-          </div>
-          <!-- personal info and payment method wrapper -->
-          <div class="grid grid-cols-1 py-4 sm:grid-cols-2">
-            <!-- input personal inof  -->
-            <div
-              class="border-b border-gray-300 sm:py-8 sm:border-b-0 sm:border-r"
-            >
-              <div class="px-4 py-4 sm:py-0">
-                <h3 class="pb-6 title-color">اطلاعات شخصی</h3>
-                <div class="flex flex-col gap-4">
-                  <input
-                    placeholder="...نام"
-                    class="w-full px-4 py-4 text-lg font-bold text-gray-700 border border-gray-300 rounded-md shadow-sm outline-none focus:border focus:border-purple-400 focus:ring-0 custom-transition focus:shadow-md"
-                    type="text"
-                    name="name"
-                  />
-                  <input
-                    placeholder="...نام خانوادگی"
-                    class="w-full px-4 py-4 text-lg font-bold text-gray-700 border border-gray-300 rounded-md shadow-sm outline-none focus:border-purple-400 focus:ring-0 custom-transition focus:shadow-md"
-                    type="text"
-                    name="family"
-                  />
-                  <input
-                    placeholder="ایمیل..."
-                    class="w-full px-4 py-4 text-lg font-bold text-gray-700 border border-gray-300 rounded-md shadow-sm outline-none focus:border-purple-400 focus:ring-0 invalid:text-rose-600 invalid:border-rose- peer custom-transition focus:shadow-md"
-                    type="email"
-                    name="email"
-                  />
-                  <span class="invisible text-rose-600 peer-invalid:visible">
-                    The email is invalid!
-                  </span>
-
-                  <div class="flex items-center gap-3">
-                    <h4 class="txt-2xl title-color">جنسیت</h4>
-                    <input
-                      class="cursor-pointer focus:ring-offset-0 focus:ring-0"
-                      type="radio"
-                      name="gender"
-                      id="male"
-                    />
-                    <label class="text-xl cursor-pointer" for="male">
-                      آقا
-                    </label>
-                    <input
-                      class="cursor-pointer focus:ring-offset-0 focus:ring-0"
-                      type="radio"
-                      name="gender"
-                      id="female"
-                    />
-                    <label class="text-xl cursor-pointer" for="female"
-                      >خانوم</label
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- payment method -->
-            <div class="px-4 py-8">
-              <h3 class="pb-6 font-thin title-color">روش پرداخت</h3>
-              <select
-                name="payment"
-                class="w-full py-4 text-xl border-gray-400 rounded-md focus:ring-0 focus:border-purple-500 title-color"
-              >
-                <option class="relative w-full h-12 text-xl" value="PayPal">
-                  پی پال
-                </option>
-                <option
-                  class="relative w-full h-12 text-xl"
-                  value="visa-credit"
+                <!-- waiting svg -->
+                <svg
+                  x-show="openModal"
+                  x-cloak
+                  width="28"
+                  height="28"
+                  viewBox="0 0 44 44"
+                  xmlns="http://www.w3.org/2000/svg"
+                  stroke="#fff"
                 >
-                  ویزا کارت یا کردیت کارت
-                </option>
-              </select>
-              <!-- suggest  inputs -->
-              <div class="flex flex-col py-8">
-                <h4 class="py-4 title-color">
-                  از طرح های تخفیف بعدی با خبرم کن
-                </h4>
-                <div class="flex items-center gap-3">
-                  <input
-                    class="cursor-pointer focus:ring-offset-0 focus:ring-0"
-                    type="radio"
-                    name="suggest"
-                    id="yes"
-                  />
-                  <label class="text-xl cursor-pointer" for="yes"> بله </label>
-                  <input
-                    class="cursor-pointer focus:ring-offset-0 focus:ring-0"
-                    type="radio"
-                    name="suggest"
-                    id="no"
-                  />
-                  <label class="text-xl cursor-pointer" for="no">خیر</label>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            x-data="{
-            openModal:false,
-            callOpenModal(){
-              this.openModal= true;
-              $dispatch('open-modal');
-              setTimeout(()=>{
-                this.openModal=false;
-              },2000)
-            }
-            
-            }"
-            class="w-full py-2 sm:w-52"
-          >
-            <button
-              type="submit"
-              @click="callOpenModal()"
-              x-data
-              class="relative flex flex-row-reverse items-center justify-center w-full h-[58px] gap-3 py-4 text-xl font-bold rounded-lg bg-amber-500 text-gray-50"
-            >
-              <svg
-                x-show="!openModal"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24px"
-                height="24px"
-                class="hidden w-6 h-6 sm:flex"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                />
-              </svg>
-              <!-- waiting svg -->
-              <svg
-                x-show="openModal"
-                x-cloak
-                width="28"
-                height="28"
-                viewBox="0 0 44 44"
-                xmlns="http://www.w3.org/2000/svg"
-                stroke="#fff"
-              >
-                <g fill="none" fill-rule="evenodd" stroke-width="2">
-                  <circle cx="22" cy="22" r="1">
-                    <animate
-                      attributeName="r"
-                      begin="0s"
-                      dur="1.8s"
-                      values="1; 20"
-                      calcMode="spline"
-                      keyTimes="0; 1"
-                      keySplines="0.165, 0.84, 0.44, 1"
-                      repeatCount="indefinite"
-                    />
-                    <animate
-                      attributeName="stroke-opacity"
-                      begin="0s"
-                      dur="1.8s"
-                      values="1; 0"
-                      calcMode="spline"
-                      keyTimes="0; 1"
-                      keySplines="0.3, 0.61, 0.355, 1"
-                      repeatCount="indefinite"
-                    />
-                  </circle>
-                  <circle cx="22" cy="22" r="1">
-                    <animate
-                      attributeName="r"
-                      begin="-0.9s"
-                      dur="1.8s"
-                      values="1; 20"
-                      calcMode="spline"
-                      keyTimes="0; 1"
-                      keySplines="0.165, 0.84, 0.44, 1"
-                      repeatCount="indefinite"
-                    />
-                    <animate
-                      attributeName="stroke-opacity"
-                      begin="-0.9s"
-                      dur="1.8s"
-                      values="1; 0"
-                      calcMode="spline"
-                      keyTimes="0; 1"
-                      keySplines="0.3, 0.61, 0.355, 1"
-                      repeatCount="indefinite"
-                    />
-                  </circle>
-                </g>
-              </svg>
+                  <g fill="none" fill-rule="evenodd" stroke-width="2">
+                    <circle cx="22" cy="22" r="1">
+                      <animate
+                        attributeName="r"
+                        begin="0s"
+                        dur="1.8s"
+                        values="1; 20"
+                        calcMode="spline"
+                        keyTimes="0; 1"
+                        keySplines="0.165, 0.84, 0.44, 1"
+                        repeatCount="indefinite"
+                      />
+                      <animate
+                        attributeName="stroke-opacity"
+                        begin="0s"
+                        dur="1.8s"
+                        values="1; 0"
+                        calcMode="spline"
+                        keyTimes="0; 1"
+                        keySplines="0.3, 0.61, 0.355, 1"
+                        repeatCount="indefinite"
+                      />
+                    </circle>
+                    <circle cx="22" cy="22" r="1">
+                      <animate
+                        attributeName="r"
+                        begin="-0.9s"
+                        dur="1.8s"
+                        values="1; 20"
+                        calcMode="spline"
+                        keyTimes="0; 1"
+                        keySplines="0.165, 0.84, 0.44, 1"
+                        repeatCount="indefinite"
+                      />
+                      <animate
+                        attributeName="stroke-opacity"
+                        begin="-0.9s"
+                        dur="1.8s"
+                        values="1; 0"
+                        calcMode="spline"
+                        keyTimes="0; 1"
+                        keySplines="0.3, 0.61, 0.355, 1"
+                        repeatCount="indefinite"
+                      />
+                    </circle>
+                  </g>
+                </svg>
 
-              <span x-text="openModal ? 'Please wait!' : ' Next'"></span>
-            </button>
-          </div>
-        </form>
+                <span x-text="openModal ? 'Please wait!' : ' Next'"></span>
+              </button>
+            </div>
+          </form>
+        </div>
       </section>
       <!-- Request for going on a journey section end  -->
 
