@@ -136,6 +136,22 @@
   @apply -right-4;
 }
 
+.handle-direction .rtl-flag {
+  @apply flex !important;
+}
+
+.handle-direction .ltr-flag {
+  @apply hidden !important;
+}
+
+.handle-direction.rtl .rtl-flag {
+  @apply hidden !important;
+}
+
+.handle-direction.rtl .ltr-flag {
+  @apply flex !important;
+}
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

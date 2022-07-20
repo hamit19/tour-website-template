@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html dir="ltr" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -200,13 +200,29 @@
               class="w-full h-full rounded-full"
             />
           </a>
-          <!-- languages -->
 
-          <div
-            class="bg-transparent rounded-full cursor-pointer w-14 h-14 hover:shadow-lg custom-transition flex-center"
-          >
-            <img src="../images/rtl.png" alt="languages flag" />
+          <!-- languages -->
+          <div x-data="handleActions" x-ref="dirRef" class="handle-direction">
+            <!-- right to left btn -->
+            <div
+              @click="makeRTL($refs)"
+              x-ref="dirRTL"
+              class="bg-transparent rounded-full cursor-pointer rtl-flag w-14 h-14 hover:shadow-lg custom-transition flex-center"
+            >
+              <img src="../images/rtl.png" alt="languages flag" />
+            </div>
+
+            <!-- left to right btn -->
+            <div
+              @click="makeLTR($refs)"
+              x-ref="dirLTR"
+              class="hidden bg-transparent rounded-full cursor-pointer ltr-flag w-14 h-14 hover:shadow-lg custom-transition flex-center"
+            >
+              <img src="../images/ltr.png" alt="languages flag" />
+            </div>
           </div>
+
+          <!-- dark mode btn -->
           <div
             class="bg-transparent rounded-full cursor-pointer w-14 h-14 hover:shadow-lg custom-transition flex-center"
           >
@@ -855,7 +871,7 @@
 
       <!-- Slider Section start -->
       <div class="container z-10 grid grid-cols-1 gap-4 mt-8 sm:grid-cols-3">
-        <div class="relative w-full mb-8 pt-md sm:col-span-2">
+        <div dir="ltr" class="relative w-full mb-8 pt-md sm:col-span-2">
           <div class="absolute inset-0 top-swiper-container">
             <div class="w-full h-full overflow-hidden swiper rounded-2xl">
               <div class="swiper-wrapper">
@@ -953,7 +969,7 @@
             </a>
           </div>
           <!-- slider container -->
-          <div class="relative slider-container lg:col-span-3">
+          <div dir="ltr" class="relative slider-container lg:col-span-3">
             <!-- slider -->
             <div
               class="overflow-hidden visits-of-places-slider"
@@ -2231,7 +2247,7 @@
     <script>
       const swiper = new Swiper(".swiper", {
         loop: true,
-        // If we need pagination
+
         pagination: {
           el: ".swiper-pagination",
         },
@@ -2277,6 +2293,36 @@
           },
         };
       }
+
+      //handle actions such as directions, dark mode, and languages function
+      function handleActions() {
+        return {
+          makeRTL(refs) {
+            // this is make the dir right to left
+            document.documentElement.dir = "rtl";
+            localStorage.setItem("dir", "rtl");
+
+            refs.dirRef.classList.add("rtl");
+          },
+
+          makeLTR(refs) {
+            // this is make the dir left to right
+            document.documentElement.dir = "ltr";
+
+            localStorage.setItem("dir", "ltr");
+
+            refs.dirRef.classList.remove("rtl");
+          },
+        };
+      }
+
+      window.onload = () => {
+        document.documentElement.dir = localStorage.getItem("dir");
+
+        if (localStorage.getItem("dir") === "rtl") {
+          document.querySelector(".handle-direction").classList.add("rtl");
+        }
+      };
     </script>
     <!-- Scripts -->
   </body>
