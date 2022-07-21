@@ -262,11 +262,11 @@
           @click.outside="closeMenuHandler()"
           class="absolute inset-y-0 right-auto flex flex-col w-2/4 gap-3 p-6 pt-10 text-2xl font-medium bg-gray-100 title-color"
           x-transition:enter="transition-all ease-out duration-300"
-          x-transition:enter-start="-left-96"
-          x-transition:enter-end="left-0"
+          x-transition:enter-start="-left-96  rtl:left-auto rtl:-right-96"
+          x-transition:enter-end="left-0  rtl:right-0 rtl:left-auto"
           x-transition:leave="transition-all ease-in duration-300"
-          x-transition:leave-start="left-0"
-          x-transition:leave-end="-left-96"
+          x-transition:leave-start="left-0 rtl:right-0"
+          x-transition:leave-end="-left-96 rtl:-right-96"
         >
           <!-- close btn -->
           <svg
@@ -288,7 +288,7 @@
           <div class="relative left-0 py-2">
             <!-- get home page -->
             <li
-              class="p-4 rounded-md cursor-pointer custom-transition hover:bg-purple-100 hover:text-purple-700 hover:pl-8"
+              class="p-4 rounded-md cursor-pointer custom-transition hover:bg-purple-100 hover:text-purple-700 hover:pl-8 rtl:hover:pr-8"
             >
               <a href="#"> خانه </a>
             </li>
@@ -301,13 +301,13 @@
               <li
                 @click="open=!open"
                 class="flex items-start justify-between p-4 rounded-md cursor-pointer custom-transition"
-                x-bind:class="open ? 'bg-purple-100 text-purple-700 pl-8 custom-transition':''"
+                x-bind:class="open ? 'bg-purple-100 text-purple-700 pl-8 rtl:pr-8 custom-transition':''"
               >
                 <a href="#"> تور های داخلی </a>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="w-5 h-5 custom-transition"
-                  x-bind:class="open ? 'rotate-90':''"
+                  class="w-5 h-5 custom-transition rtl:rotate-180"
+                  x-bind:class="open ? 'rotate-90 rtl:rotate-90 ':''"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
@@ -324,7 +324,7 @@
                 class="flex flex-col gap-3 px-8 py-6"
               >
                 <li
-                  class="py-3 rounded-md hover:pl-6 hover:bg-purple-100 hover:text-purple-600 custom-transition"
+                  class="py-3 rounded-md hover:pl-6 rtl:hover:pr-6 hover:bg-purple-100 hover:text-purple-600 custom-transition"
                 >
                   <a href="#"> تور کیش</a>
                 </li>
@@ -335,14 +335,14 @@
                 >
                   <li
                     @click="open=!open"
-                    class="relative flex items-center justify-between py-3 pr-4 rounded-md cursor-pointer custom-transition"
-                    x-bind:class="open ? 'bg-purple-100 text-purple-700 pl-8 custom-transition':''"
+                    class="relative flex items-center justify-between py-3 rounded-md cursor-pointer ltr:pr-4 rtl:pl-4 custom-transition"
+                    x-bind:class="open ? 'bg-purple-100 text-purple-700 ltr:pl-8 rtl:pr-8 custom-transition':''"
                   >
                     <a href="#"> تور کوهنوردی</a>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="w-5 h-5 custom-transition"
-                      x-bind:class="open ? 'rotate-90':''"
+                      class="w-5 h-5 custom-transition rtl:rotate-180"
+                      x-bind:class="open ? 'rotate-90 rtl:rotate-90 ':''"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
@@ -360,29 +360,29 @@
                     class="flex flex-col gap-3 py-4 pl-8 bg-transparent"
                   >
                     <li
-                      class="relative flex items-center justify-between py-3 rounded-md hover:pl-6 group hover:bg-purple-100 hover:text-purple-600 custom-transition"
+                      class="relative flex items-center justify-between py-3 rounded-md hover:pl-6 rtl:hover:pr-6 group hover:bg-purple-100 hover:text-purple-600 custom-transition"
                     >
                       <a href="#">رشته کوه زاگرس</a>
                     </li>
                     <li
-                      class="relative flex items-center justify-between py-3 rounded-md hover:pl-6 group hover:bg-purple-100 hover:text-purple-600 custom-transition"
+                      class="relative flex items-center justify-between py-3 rounded-md hover:pl-6 rtl:hover:pr-6 group hover:bg-purple-100 hover:text-purple-600 custom-transition"
                     >
                       <a href="#">رشته کوه البرز</a>
                     </li>
                     <li
-                      class="relative flex items-center justify-between py-3 rounded-md hover:pl-6 group hover:bg-purple-100 hover:text-purple-600 custom-transition"
+                      class="relative flex items-center justify-between py-3 rounded-md hover:pl-6 rtl:hover:pr-6 group hover:bg-purple-100 hover:text-purple-600 custom-transition"
                     >
                       <a href="#"> کوه دماوند</a>
                     </li>
                   </ul>
                 </div>
                 <li
-                  class="py-3 rounded-md hover:pl-6 hover:bg-purple-100 hover:text-purple-600 custom-transition"
+                  class="py-3 rounded-md hover:pl-6 rtl:hover:pr-6 hover:bg-purple-100 hover:text-purple-600 custom-transition"
                 >
                   <a href="#"> تور قشم</a>
                 </li>
                 <li
-                  class="py-3 rounded-md hover:pl-6 hover:bg-purple-100 hover:text-purple-600 custom-transition"
+                  class="py-3 rounded-md hover:pl-6 rtl:hover:pr-6 hover:bg-purple-100 hover:text-purple-600 custom-transition"
                 >
                   <a href="#"> تور اصفهان</a>
                 </li>
@@ -391,19 +391,19 @@
             <!-- foreign tours -->
             <div
               x-data="{
-         open:false,
-       }"
+               open:false,
+              }"
             >
               <li
                 @click="open=!open"
                 class="flex items-start justify-between p-4 rounded-md cursor-pointer custom-transition"
-                x-bind:class="open ? 'bg-purple-100 text-purple-700 pl-8 custom-transition':''"
+                x-bind:class="open ? 'bg-purple-100 text-purple-700 pl-8 rtl:pr-8 custom-transition':''"
               >
                 <a href="#"> تور های خارجی </a>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="w-5 h-5 custom-transition"
-                  x-bind:class="open ? 'rotate-90':''"
+                  class="w-5 h-5 custom-transition rtl:rotate-180"
+                  x-bind:class="open ? 'rotate-90 rtl:rotate-90 ':''"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
@@ -420,25 +420,25 @@
                 class="flex flex-col gap-3 px-8 py-6"
               >
                 <li
-                  class="py-3 rounded-md hover:pl-6 hover:bg-purple-100 hover:text-purple-600 custom-transition"
+                  class="py-3 rounded-md hover:pl-6 rtl:hover:pr-6 hover:bg-purple-100 hover:text-purple-600 custom-transition"
                 >
                   <a href="#"> تور آنتالیا</a>
                 </li>
                 <div
                   x-data="{
-             open:false,
-           }"
+                     open:false,
+                 }"
                 >
                   <li
                     @click="open=!open"
-                    class="relative flex items-center justify-between py-3 pr-4 rounded-md cursor-pointer custom-transition"
-                    x-bind:class="open ? 'bg-purple-100 text-purple-700 pl-8 custom-transition':''"
+                    class="relative flex items-center justify-between py-3 rounded-md cursor-pointer ltr:pr-4 rtl:pl-4 custom-transition"
+                    x-bind:class="open ? 'bg-purple-100 text-purple-700 pl-8 rtl:pr-8 custom-transition':''"
                   >
                     <a href="#"> تور قاره ای</a>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="w-5 h-5 custom-transition"
-                      x-bind:class="open ? 'rotate-90':''"
+                      class="w-5 h-5 custom-transition rtl:rotate-180"
+                      x-bind:class="open ? 'rotate-90 rtl:rotate-90':''"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
@@ -456,34 +456,34 @@
                     class="flex flex-col gap-3 py-4 pl-8 bg-transparent"
                   >
                     <li
-                      class="relative flex items-center justify-between py-3 rounded-md hover:pl-6 group hover:bg-purple-100 hover:text-purple-600 custom-transition"
+                      class="relative flex items-center justify-between py-3 rounded-md hover:pl-6 rtl:hover:pr-6 group hover:bg-purple-100 hover:text-purple-600 custom-transition"
                     >
                       <a href="#">قاره آسیا</a>
                     </li>
                     <li
-                      class="relative flex items-center justify-between py-3 rounded-md hover:pl-6 group hover:bg-purple-100 hover:text-purple-600 custom-transition"
+                      class="relative flex items-center justify-between py-3 rounded-md hover:pl-6 rtl:hover:pr-6 group hover:bg-purple-100 hover:text-purple-600 custom-transition"
                     >
                       <a href="#">قاره آمریکا</a>
                     </li>
                     <li
-                      class="relative flex items-center justify-between py-3 rounded-md hover:pl-6 group hover:bg-purple-100 hover:text-purple-600 custom-transition"
+                      class="relative flex items-center justify-between py-3 rounded-md hover:pl-6 rtl:hover:pr-6 group hover:bg-purple-100 hover:text-purple-600 custom-transition"
                     >
                       <a href="#"> قاره آفریقا</a>
                     </li>
                     <li
-                      class="relative flex items-center justify-between py-3 rounded-md hover:pl-6 group hover:bg-purple-100 hover:text-purple-600 custom-transition"
+                      class="relative flex items-center justify-between py-3 rounded-md hover:pl-6 rtl:hover:pr-6 group hover:bg-purple-100 hover:text-purple-600 custom-transition"
                     >
                       <a href="#"> قاره اروپا</a>
                     </li>
                   </ul>
                 </div>
                 <li
-                  class="py-3 rounded-md hover:pl-6 hover:bg-purple-100 hover:text-purple-600 custom-transition"
+                  class="py-3 rounded-md hover:pl-6 rtl:hover:pr-6 hover:bg-purple-100 hover:text-purple-600 custom-transition"
                 >
                   <a href="#"> تور هند</a>
                 </li>
                 <li
-                  class="py-3 rounded-md hover:pl-6 hover:bg-purple-100 hover:text-purple-600 custom-transition"
+                  class="py-3 rounded-md hover:pl-6 rtl:hover:pr-6 hover:bg-purple-100 hover:text-purple-600 custom-transition"
                 >
                   <a href="#"> تور کره</a>
                 </li>
@@ -491,13 +491,13 @@
             </div>
             <!-- magazine -->
             <li
-              class="p-4 rounded-md cursor-pointer custom-transition hover:bg-purple-100 hover:text-purple-700 hover:pl-8"
+              class="p-4 rounded-md cursor-pointer custom-transition hover:bg-purple-100 hover:text-purple-700 hover:pl-8 rtl:hover:pr-8"
             >
               <a href="#"> مجلات </a>
             </li>
             <!-- honors -->
             <li
-              class="p-4 rounded-md cursor-pointer custom-transition hover:bg-purple-100 hover:text-purple-700 hover:pl-8"
+              class="p-4 rounded-md cursor-pointer custom-transition hover:bg-purple-100 hover:text-purple-700 hover:pl-8 rtl:hover:pr-8"
             >
               <a href="#"> افتخارات </a>
             </li>
@@ -541,41 +541,41 @@
         <!-- message box section start -->
         <div
           x-data="{
-          messageBox:false,
-          showTooltip: false,
-          bottomLine: false,
-          tooltipHandler(){
+            messageBox:false,
+            showTooltip: false,
+            bottomLine: false,
+            tooltipHandler(){
 
-            this.messageBox = true;
+              this.messageBox = true;
 
-            setTimeout(()=>{
-              this.showTooltip = true;
-            },100)
+              setTimeout(()=>{
+                this.showTooltip = true;
+              },100)
 
-            setTimeout(()=>{
-                this.bottomLine = true;
-            },800)
+              setTimeout(()=>{
+                  this.bottomLine = true;
+              },800)
 
-            setTimeout(()=>{
-              this.showTooltip = false;
+              setTimeout(()=>{
+                this.showTooltip = false;
+                
+              },2000)
+
+              setTimeout(() => {
+                this.bottomLine = false;
+              }, 2100);
+
+              setTimeout(() => {
+                this.messageBox = false;
+              }, 2600);
               
-            },2000)
-
-            setTimeout(() => {
-              this.bottomLine = false;
-            }, 2100);
-
-            setTimeout(() => {
-              this.messageBox = false;
-            }, 2600);
-            
-          }
+            }
         }"
           x-cloak
           x-show="messageBox"
           @tooltip-event.window="tooltipHandler()"
           class="absolute flex z-30 flex-col w-2/4 md:duration-1000 sm:max-w-[200px] h-[7rem] transition-all duration-700 ease-custom-cubic pt-6 overflow-hidden bg-green-500 -translate-x-full top-6 rounded-xl text-gray-50"
-          :class="showTooltip ? ' -translate-x-32 sm:-translate-x-52  md:-translate-x-[100%] ' : '-translate-x-[150%] sm:-translate-x-[210%]  md:-translate-x-[600%]'"
+          :class="showTooltip ? ' -translate-x-32 sm:-translate-x-52  md:-translate-x-[100%] sm:rtl:translate-x-[100%] rtl:translate-x-[50%] ' : ' rtl:translate-x-[200%]  sm:rtl:translate-x-[350%] -translate-x-[150%] sm:-translate-x-[210%]  md:-translate-x-[600%]'"
         >
           <div class="py-6 text-xl flex-center">
             <h4>اطلاعات دریافت شد</h4>
@@ -778,7 +778,7 @@
               >
                 <div
                   @click="tab=false;$dispatch('disabled-event', { detail: true})"
-                  class="relative z-20 flex-1 text-purple-700 bg-transparent rounded-full cursor-pointer flex-center"
+                  class="relative z-20 flex-1 text-purple-700 bg-transparent rounded-full cursor-pointer custom-transition flex-center"
                   x-bind:class="!tab ? 'text-white' : 'text-purple-700'"
                 >
                   <span>هوایی</span>
@@ -798,8 +798,8 @@
                 />
                 <label
                   for="transfer"
-                  class="absolute z-10 w-1/2 h-full transition-all duration-500 ease-linear bg-purple-700 rounded-full"
-                  x-bind:class="tab ? 'right-0': 'left-0'"
+                  class="absolute left-auto z-10 w-1/2 h-full transition-all duration-500 ease-linear bg-purple-700 rounded-full"
+                  x-bind:class="tab ? 'right-0 rtl:right-auto rtl:left-0': 'left-0 rtl:left-auto rtl:right-0 '"
                 ></label>
               </div>
 
@@ -939,7 +939,7 @@
                 xmlns="http://www.w3.org/2000/svg"
                 width="40px"
                 height="40px"
-                class="w-8 h-8"
+                class="w-8 h-8 rtl:rotate-180"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -969,10 +969,10 @@
             </a>
           </div>
           <!-- slider container -->
-          <div dir="ltr" class="relative slider-container lg:col-span-3">
+          <div class="relative slider-container lg:col-span-3">
             <!-- slider -->
             <div
-              class="overflow-hidden visits-of-places-slider"
+              class="overflow-hidden rtl:text-ltr visits-of-places-slider"
               style="padding: 1rem"
               id="visits-of-places-slider"
             >
@@ -998,8 +998,7 @@
                     class="relative overflow-hidden rounded-tr-xl rounded-tl-xl pt-md"
                   >
                     <span
-                      class="absolute -left-[4rem] group-hover:left-0 custom-transition z-20 flex items-center justify-end w-32 h-12 p-2 text-xl bg-red-700 rounded-tr-xl rounded-br-xl text-gray-50 top-4"
-                      style="direction: rtl"
+                      class="absolute -left-[4rem] group-hover:left-0 custom-transition z-20 flex items-center justify-end w-32 h-12 p-2 text-xl bg-red-700 rounded-r-xl rtl:left-auto rtl:-right-[4rem] rtl:group-hover:right-0 rtl:group-hover:left-auto rtl:rounded-r-none rtl:rounded-l-xl text-gray-50 top-4"
                     >
                       30% تخفیف
                     </span>
@@ -1012,7 +1011,7 @@
                     </div>
                   </div>
                   <!-- info -->
-                  <div class="flex flex-col gap-8 p-4">
+                  <div class="flex flex-col gap-8 p-4 rtl:text-rtl">
                     <h3 class="text-2xl line-clamp-2">جنگل آمازون</h3>
                     <p class="text-xl h-14 line-clamp-2 md:line-clamp-3">
                       تصوری که مشاهده میکنید تصویری از جنگل آمازون است که یکی از
@@ -1056,8 +1055,7 @@
                     class="relative overflow-hidden rounded-tr-xl rounded-tl-xl pt-md"
                   >
                     <span
-                      class="absolute -left-[4rem] group-hover:left-0 custom-transition z-20 flex items-center justify-end w-32 h-12 p-2 text-xl bg-red-700 rounded-tr-xl rounded-br-xl text-gray-50 top-4"
-                      style="direction: rtl"
+                      class="absolute -left-[4rem] rtl:left-auto rtl:-right-[4rem] rtl:group-hover:right-0 rtl:group-hover:left-auto rtl:rounded-r-none rtl:rounded-l-xl group-hover:left-0 custom-transition z-20 flex items-center justify-end w-32 h-12 p-2 text-xl bg-red-700 rounded-tr-xl rounded-br-xl text-gray-50 top-4"
                     >
                       30% تخفیف
                     </span>
@@ -1070,7 +1068,7 @@
                     </div>
                   </div>
                   <!-- info -->
-                  <div class="flex flex-col gap-8 p-4">
+                  <div class="flex flex-col gap-8 p-4 rtl:text-rtl">
                     <h3 class="text-2xl line-clamp-2">جنگل آمازون</h3>
                     <p class="text-xl h-14 line-clamp-2 md:line-clamp-3">
                       تصوری که مشاهده میکنید تصویری از جنگل آمازون است که یکی از
@@ -1114,8 +1112,7 @@
                     class="relative overflow-hidden rounded-tr-xl rounded-tl-xl pt-md"
                   >
                     <span
-                      class="absolute -left-[4rem] group-hover:left-0 custom-transition z-20 flex items-center justify-end w-32 h-12 p-2 text-xl bg-red-700 rounded-tr-xl rounded-br-xl text-gray-50 top-4"
-                      style="direction: rtl"
+                      class="absolute -left-[4rem] rtl:left-auto rtl:-right-[4rem] rtl:group-hover:right-0 rtl:group-hover:left-auto rtl:rounded-r-none rtl:rounded-l-xl group-hover:left-0 custom-transition z-20 flex items-center justify-end w-32 h-12 p-2 text-xl bg-red-700 rounded-tr-xl rounded-br-xl text-gray-50 top-4"
                     >
                       30% تخفیف
                     </span>
@@ -1128,7 +1125,7 @@
                     </div>
                   </div>
                   <!-- info -->
-                  <div class="flex flex-col gap-8 p-4">
+                  <div class="flex flex-col gap-8 p-4 rtl:text-rtl">
                     <h3 class="text-2xl line-clamp-2">جنگل آمازون</h3>
                     <p class="text-xl h-14 line-clamp-2 md:line-clamp-3">
                       تصوری که مشاهده میکنید تصویری از جنگل آمازون است که یکی از
@@ -1172,8 +1169,7 @@
                     class="relative overflow-hidden rounded-tr-xl rounded-tl-xl pt-md"
                   >
                     <span
-                      class="absolute -left-[4rem] group-hover:left-0 custom-transition z-20 flex items-center justify-end w-32 h-12 p-2 text-xl bg-red-700 rounded-tr-xl rounded-br-xl text-gray-50 top-4"
-                      style="direction: rtl"
+                      class="absolute -left-[4rem] rtl:left-auto rtl:-right-[4rem] rtl:group-hover:right-0 rtl:group-hover:left-auto rtl:rounded-r-none rtl:rounded-l-xl group-hover:left-0 custom-transition z-20 flex items-center justify-end w-32 h-12 p-2 text-xl bg-red-700 rounded-tr-xl rounded-br-xl text-gray-50 top-4"
                     >
                       30% تخفیف
                     </span>
@@ -1186,7 +1182,7 @@
                     </div>
                   </div>
                   <!-- info -->
-                  <div class="flex flex-col gap-8 p-4">
+                  <div class="flex flex-col gap-8 p-4 rtl:text-rtl">
                     <h3 class="text-2xl line-clamp-2">جنگل آمازون</h3>
                     <p class="text-xl h-14 line-clamp-2 md:line-clamp-3">
                       تصوری که مشاهده میکنید تصویری از جنگل آمازون است که یکی از
@@ -1230,8 +1226,7 @@
                     class="relative overflow-hidden rounded-tr-xl rounded-tl-xl pt-md"
                   >
                     <span
-                      class="absolute -left-[4rem] group-hover:left-0 custom-transition z-20 flex items-center justify-end w-32 h-12 p-2 text-xl bg-red-700 rounded-tr-xl rounded-br-xl text-gray-50 top-4"
-                      style="direction: rtl"
+                      class="absolute -left-[4rem] rtl:left-auto rtl:-right-[4rem] rtl:group-hover:right-0 rtl:group-hover:left-auto rtl:rounded-r-none rtl:rounded-l-xl group-hover:left-0 custom-transition z-20 flex items-center justify-end w-32 h-12 p-2 text-xl bg-red-700 rounded-tr-xl rounded-br-xl text-gray-50 top-4"
                     >
                       30% تخفیف
                     </span>
@@ -1244,7 +1239,7 @@
                     </div>
                   </div>
                   <!-- info -->
-                  <div class="flex flex-col gap-8 p-4">
+                  <div class="flex flex-col gap-8 p-4 rtl:text-rtl">
                     <h3 class="text-2xl line-clamp-2">جنگل آمازون</h3>
                     <p class="text-xl h-14 line-clamp-2 md:line-clamp-3">
                       تصوری که مشاهده میکنید تصویری از جنگل آمازون است که یکی از
@@ -1499,7 +1494,7 @@
               <!-- select count of people -->
               <div class="sm:py-8">
                 <div
-                  class="py-8 border-b sm:py-0 sm:border-b-0 sm:border-r sm:border-r-gray-300 sm:px-4 border-b-gray-400"
+                  class="py-8 border-b sm:py-0 sm:border-b-0 sm:border-r sm:rtl:border-r-0 sm:rtl:border-l sm:border-r-gray-300 sm:px-4 border-b-gray-400"
                 >
                   <h3 class="pb-6 font-thin title-color">تعداد افراد</h3>
                   <div class="flex gap-4 pb-6">
@@ -1573,13 +1568,13 @@
                   <input
                     placeholder="5"
                     type="number"
-                    class="w-full py-4 text-lg font-bold text-purple-700 border border-gray-300 rounded-md shadow-sm outline-none focus:border-purple-400 focus:ring-0 custom-transition focus:shadow-md placeholder:text-purple-300 input-focused:text-purple-700 pl-14"
+                    class="w-full py-4 text-lg font-bold text-purple-700 border border-gray-300 rounded-md shadow-sm outline-none rtl:pr-14 focus:border-purple-400 focus:ring-0 custom-transition focus:shadow-md placeholder:text-purple-300 input-focused:text-purple-700 pl-14"
                   />
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20px"
                     height="20px"
-                    class="absolute w-8 h-8 text-gray-700 svg top-3 left-4"
+                    class="absolute w-8 h-8 text-gray-700 svg top-3 left-4 rtl:left-auto rtl:right-4"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -1598,19 +1593,19 @@
             <div class="grid grid-cols-1 py-4 sm:grid-cols-2">
               <!-- input personal inof  -->
               <div
-                class="border-b border-gray-300 sm:py-8 sm:border-b-0 sm:border-r"
+                class="border-b border-gray-300 sm:py-8 sm:border-b-0 sm:border-r sm:rtl:border-r-0 sm:rtl:border-l"
               >
                 <div class="px-4 py-4 sm:py-0">
                   <h3 class="pb-6 title-color">اطلاعات شخصی</h3>
                   <div class="flex flex-col gap-4">
                     <input
-                      placeholder="...نام"
+                      placeholder="نام ..."
                       class="w-full px-4 py-4 text-lg font-bold text-gray-700 border border-gray-300 rounded-md shadow-sm outline-none focus:border focus:border-purple-400 focus:ring-0 custom-transition focus:shadow-md"
                       type="text"
                       name="name"
                     />
                     <input
-                      placeholder="...نام خانوادگی"
+                      placeholder="نام خانوادگی..."
                       class="w-full px-4 py-4 text-lg font-bold text-gray-700 border border-gray-300 rounded-md shadow-sm outline-none focus:border-purple-400 focus:ring-0 custom-transition focus:shadow-md"
                       type="text"
                       name="family"
@@ -1655,7 +1650,7 @@
                 <h3 class="pb-6 font-thin title-color">روش پرداخت</h3>
                 <select
                   name="payment"
-                  class="w-full py-4 text-xl border-gray-400 rounded-md focus:ring-0 focus:border-purple-500 title-color"
+                  class="w-full py-4 text-xl border-gray-400 rounded-md outline-none rtl:bg-left-center focus:ring-0 focus:shadow-md custom-transition focus:border-purple-500 title-color"
                 >
                   <option class="relative w-full h-12 text-xl" value="PayPal">
                     پی پال
@@ -1669,8 +1664,8 @@
                 </select>
                 <!-- suggest  inputs -->
                 <div class="flex flex-col py-8">
-                  <h4 class="py-4 title-color">
-                    از طرح های تخفیف بعدی با خبرم کن
+                  <h4 class="py-4 text-xl title-color">
+                    از طرح های تخفیف بعدی با خبرم کن!
                   </h4>
                   <div class="flex items-center gap-3">
                     <input
@@ -1847,7 +1842,7 @@
                   </div>
                   <!-- activi sign -->
                   <span
-                    class="absolute z-20 w-4 h-4 rounded-full bottom-1 right-1 bg-lime-500"
+                    class="absolute z-20 w-4 h-4 rounded-full bottom-1 right-1 rtl:right-auto rtl:left-1 bg-lime-500"
                   >
                     <span
                       class="absolute z-10 w-4 h-4 rounded-full bg-lime-600 animate-ping"
@@ -1950,7 +1945,7 @@
                   </div>
                   <!-- activi sign -->
                   <span
-                    class="absolute z-20 w-4 h-4 rounded-full bottom-1 right-1 bg-rose-500"
+                    class="absolute z-20 w-4 h-4 rounded-full bottom-1 right-1 rtl:right-auto rtl:left-1 bg-rose-500"
                   >
                     <span
                       class="absolute z-10 w-4 h-4 rounded-full bg-rose-600 animate-ping"
@@ -2053,7 +2048,7 @@
                   </div>
                   <!-- activi sign -->
                   <span
-                    class="absolute z-20 w-4 h-4 rounded-full bottom-1 right-1 bg-lime-500"
+                    class="absolute z-20 w-4 h-4 rounded-full bottom-1 right-1 rtl:right-auto rtl:left-1 bg-lime-500"
                   >
                     <span
                       class="absolute z-10 w-4 h-4 rounded-full bg-lime-600 animate-ping"
@@ -2156,7 +2151,7 @@
                   </div>
                   <!-- activi sign -->
                   <span
-                    class="absolute z-20 w-4 h-4 rounded-full bottom-1 right-1 bg-lime-500"
+                    class="absolute z-20 w-4 h-4 rounded-full bottom-1 right-1 rtl:right-auto rtl:left-1 bg-lime-500"
                   >
                     <span
                       class="absolute z-10 w-4 h-4 rounded-full bg-lime-600 animate-ping"
@@ -2245,6 +2240,12 @@
     <script src="../js/swiper-bundle.min.js"></script>
 
     <script>
+      document.documentElement.dir = localStorage.getItem("dir");
+
+      if (localStorage.getItem("dir") === "rtl") {
+        document.querySelector(".handle-direction").classList.add("rtl");
+      }
+
       const swiper = new Swiper(".swiper", {
         loop: true,
 
@@ -2294,7 +2295,7 @@
         };
       }
 
-      //handle actions such as directions, dark mode, and languages function
+      //handle actions such as directions, and languages function
       function handleActions() {
         return {
           makeRTL(refs) {
@@ -2315,14 +2316,6 @@
           },
         };
       }
-
-      window.onload = () => {
-        document.documentElement.dir = localStorage.getItem("dir");
-
-        if (localStorage.getItem("dir") === "rtl") {
-          document.querySelector(".handle-direction").classList.add("rtl");
-        }
-      };
     </script>
     <!-- Scripts -->
   </body>

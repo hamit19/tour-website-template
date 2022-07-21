@@ -98,6 +98,16 @@
 
 @tailwind utilities;
 
+@layer utilities {
+  .text-rtl {
+    direction: rtl;
+  }
+
+  .text-ltr {
+    direction: ltr;
+  }
+}
+
 [x-cloak] {
   display: none !important;
 }

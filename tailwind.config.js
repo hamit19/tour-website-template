@@ -9,6 +9,10 @@ module.exports = {
       padding: "2rem",
     },
 
+    backgroundPosition: {
+      "left-center": "left 0.5rem center",
+    },
+
     extend: {
       padding: {
         md: "56%",
