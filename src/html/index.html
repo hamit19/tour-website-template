@@ -2240,8 +2240,10 @@
     <script src="../js/swiper-bundle.min.js"></script>
 
     <script>
+      // after reload fixs the direction
       document.documentElement.dir = localStorage.getItem("dir");
 
+      // after reload fixs the flag rtl or ltr dir!
       if (localStorage.getItem("dir") === "rtl") {
         document.querySelector(".handle-direction").classList.add("rtl");
       }
@@ -2298,14 +2300,17 @@
       //handle actions such as directions, and languages function
       function handleActions() {
         return {
+          // handle the right to left direction
           makeRTL(refs) {
             // this is make the dir right to left
             document.documentElement.dir = "rtl";
+
             localStorage.setItem("dir", "rtl");
 
             refs.dirRef.classList.add("rtl");
           },
 
+          // handle the  left to right  direction
           makeLTR(refs) {
             // this is make the dir left to right
             document.documentElement.dir = "ltr";
