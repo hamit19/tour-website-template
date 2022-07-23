@@ -23,6 +23,22 @@ module.exports = {
       transitionTimingFunction: {
         "custom-cubic": "cubic-bezier(.7,-0.2,.07,1.48)",
       },
+      colors: {
+        dark: {
+          800: "#232326",
+          600: "#3b3b41",
+          500: "#45454A",
+        },
+      },
+      animation: {
+        wiggle: "wiggle 1s ease-in-out infinite",
+      },
+      keyframes: {
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-8deg)" },
+          "50%": { transform: "rotate(8deg)" },
+        },
+      },
     },
   },
   plugins: [

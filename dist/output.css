@@ -592,40 +592,68 @@ html {
 }
 
 @font-face {
-  font-family: "IranSans";
+  font-family: IRANSans;
 
-  style: normal;
+  font-style: normal;
 
-  src: url("../fonts/eot/IRANSansWeb.eot") format("eot"),
-      url("../fonts/ttf/IRANSansWeb.ttf") format("ttf"),
+  font-weight: normal;
+
+  src: url("../fonts/eot/IRANSansWeb.eot");
+
+  src: url("../fonts/eot/IRANSansWeb.eot?#iefix") format("embedded-opentype"),
+      url("../fonts/woff2/IRANSansWeb.woff2") format("woff2"),
       url("../fonts/woff/IRANSansWeb.woff") format("woff"),
-      url("../fonts/woff2/IRANSansWeb.woff2") format("woff2");
+      url("../fonts/ttf/IRANSansWeb.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: "IranSans";
+  font-family: IRANSans;
 
-  style: medium;
+  font-style: normal;
 
   font-weight: 500;
 
-  src: url("../fonts/eot/IRANSansWeb_Medium.eot") format("eot"),
-      url("../fonts/ttf/IRANSansWeb_Medium.ttf") format("ttf"),
+  src: url("../fonts/eot/IRANSansWeb_Medium.eot");
+
+  src: url("../fonts/eot/IRANSansWeb_Medium.eot?#iefix")
+        format("embedded-opentype"),
+      url("../fonts/woff2/IRANSansWeb_Medium.woff2") format("woff2"),
       url("../fonts/woff/IRANSansWeb_Medium.woff") format("woff"),
-      url("../fonts/woff2/IRANSansWeb_Medium.woff2") format("woff2");
+      url("../fonts/ttf/IRANSansWeb_Medium.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: "IranSans";
+  font-family: IRANSans;
 
-  style: bold;
+  font-style: normal;
 
-  font-weight: 700;
+  font-weight: bold;
 
-  src: url("../fonts/eot/IRANSansWeb_Bold.eot") format("eot"),
-      url("../fonts/ttf/IRANSansWeb_Bold.ttf") format("ttf"),
+  src: url("../fonts/eot/IRANSansWeb_Bold.eot");
+
+  src: url("../fonts/eot/IRANSansWeb_Bold.eot?#iefix")
+        format("embedded-opentype"),
+      url("../fonts/woff2/IRANSansWeb_Bold.woff2") format("woff2"),
       url("../fonts/woff/IRANSansWeb_Bold.woff") format("woff"),
-      url("../fonts/woff2/IRANSansWeb_Bold.woff2") format("woff2");
+      url("../fonts/ttf/IRANSansWeb_Bold.ttf") format("truetype");
+}
+
+/* this font is for the Persian numbers */
+
+@font-face {
+  font-family: IRANSansNumber;
+
+  font-style: normal;
+
+  font-weight: normal;
+
+  src: url("../fontsNumber/eot/IRANSansWeb(FaNum).eot");
+
+  src: url("../fontsNumber/eot/IRANSansWeb(FaNum).eot?#iefix")
+        format("embedded-opentype"),
+      url("../fontsNumber/woff2/IRANSansWeb(FaNum).woff2") format("woff2"),
+      url("../fontsNumber/woff/IRANSansWeb(FaNum).woff") format("woff"),
+      url("../fontsNumber/ttf/IRANSansWeb(FaNum).ttf") format("truetype");
 }
 
 input,
@@ -846,7 +874,23 @@ p {
 
 .dark .title-color {
   --tw-text-opacity: 1;
-  color: rgb(243 244 246 / var(--tw-text-opacity));
+  color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+
+.dark-mode {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+
+.dark .dark-mode {
+  --tw-border-opacity: 1;
+  border-color: rgb(156 163 175 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 59 65 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
 }
 
 .flex-center {
@@ -871,9 +915,6 @@ p {
   transition-property: all;
   transition-duration: 300ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-  font-weight: 500;
   display: flex;
   width: 100%;
   align-items: center;
@@ -884,10 +925,36 @@ p {
 
 .li-custom-style:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(250 245 255 / var(--tw-bg-opacity));
+  background-color: rgb(243 232 255 / var(--tw-bg-opacity));
   padding-left: 2.5rem;
   --tw-text-opacity: 1;
   color: rgb(126 34 206 / var(--tw-text-opacity));
+}
+
+[dir="rtl"] .li-custom-style:hover {
+  padding-right: 2.5rem;
+}
+
+.dark .li-custom-style {
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+
+.dark .li-custom-style:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(69 69 74 / var(--tw-bg-opacity));
+}
+
+@media (min-width: 640px) {
+  .li-custom-style {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .li-custom-style:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(250 245 255 / var(--tw-bg-opacity));
+  }
 }
 
 .main-modal {
@@ -975,6 +1042,10 @@ p {
   bottom: 0px;
 }
 
+.left-auto {
+  left: auto;
+}
+
 .right-0 {
   right: 0px;
 }
@@ -1009,10 +1080,6 @@ p {
 
 .right-5 {
   right: 1.25rem;
-}
-
-.left-auto {
-  left: auto;
 }
 
 .z-20 {
@@ -1251,6 +1318,31 @@ p {
 .rotate-90 {
   --tw-rotate: 90deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+@-webkit-keyframes wiggle {
+  0%, 100% {
+    transform: rotate(-8deg);
+  }
+
+  50% {
+    transform: rotate(8deg);
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(-8deg);
+  }
+
+  50% {
+    transform: rotate(8deg);
+  }
+}
+
+.animate-wiggle {
+  -webkit-animation: wiggle 1s ease-in-out infinite;
+          animation: wiggle 1s ease-in-out infinite;
 }
 
 @-webkit-keyframes ping {
@@ -1741,6 +1833,11 @@ p {
   color: rgb(31 41 55 / var(--tw-text-opacity));
 }
 
+.text-yellow-500 {
+  --tw-text-opacity: 1;
+  color: rgb(234 179 8 / var(--tw-text-opacity));
+}
+
 .text-purple-700 {
   --tw-text-opacity: 1;
   color: rgb(126 34 206 / var(--tw-text-opacity));
@@ -1754,11 +1851,6 @@ p {
 .text-green-500 {
   --tw-text-opacity: 1;
   color: rgb(34 197 94 / var(--tw-text-opacity));
-}
-
-.text-yellow-500 {
-  --tw-text-opacity: 1;
-  color: rgb(234 179 8 / var(--tw-text-opacity));
 }
 
 .text-white {
@@ -1937,6 +2029,12 @@ p {
   color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 
+.dark .top-swiper-container .top-swiper-prev::after, .dark 
+.top-swiper-container .top-swiper-next::after {
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+
 .slider-container .bottom-swiper-prev, 
 .slider-container .bottom-swiper-next {
   display: none;
@@ -1967,6 +2065,12 @@ p {
   font-weight: 700;
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+
+.dark .slider-container .bottom-swiper-prev::after, .dark 
+.slider-container .bottom-swiper-next::after {
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
 }
 
 .slider-container .bottom-swiper-prev {
@@ -2007,6 +2111,22 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+.handle-modes .moon {
+  display: block;
+}
+
+.handle-modes .sun {
+  display: none;
+}
+
+.handle-modes.darkMode .moon {
+  display: none;
+}
+
+.handle-modes.darkMode .sun {
+  display: block;
+}
+
 .placeholder\:text-purple-300::-moz-placeholder {
   --tw-text-opacity: 1;
   color: rgb(216 180 254 / var(--tw-text-opacity));
@@ -2042,11 +2162,6 @@ input[type="number"] {
   border-color: rgb(249 250 251 / var(--tw-border-opacity));
 }
 
-.hover\:bg-purple-100:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 232 255 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-purple-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(147 51 234 / var(--tw-bg-opacity));
@@ -2057,22 +2172,9 @@ input[type="number"] {
   background-color: rgb(126 34 206 / var(--tw-bg-opacity));
 }
 
-.hover\:pl-8:hover {
-  padding-left: 2rem;
-}
-
-.hover\:pl-6:hover {
-  padding-left: 1.5rem;
-}
-
 .hover\:text-purple-700:hover {
   --tw-text-opacity: 1;
   color: rgb(126 34 206 / var(--tw-text-opacity));
-}
-
-.hover\:text-purple-600:hover {
-  --tw-text-opacity: 1;
-  color: rgb(147 51 234 / var(--tw-text-opacity));
 }
 
 .hover\:text-gray-50:hover {
@@ -2195,24 +2297,25 @@ input[type="number"] {
   padding-left: 2rem;
 }
 
-[dir="rtl"] .rtl\:left-auto {
-  left: auto;
-}
-
-[dir="rtl"] .rtl\:-right-96 {
-  right: -24rem;
+[dir="ltr"] .group:hover .ltr\:group-hover\:rotate-0 {
+  --tw-rotate: 0deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 [dir="rtl"] .rtl\:right-0 {
   right: 0px;
 }
 
-[dir="rtl"] .rtl\:-right-\[4rem\] {
-  right: -4rem;
+[dir="rtl"] .rtl\:left-auto {
+  left: auto;
 }
 
-[dir="rtl"] .rtl\:right-4 {
-  right: 1rem;
+[dir="rtl"] .rtl\:right-\[150px\] {
+  right: 150px;
+}
+
+[dir="rtl"] .rtl\:-right-96 {
+  right: -24rem;
 }
 
 [dir="rtl"] .rtl\:right-auto {
@@ -2223,33 +2326,16 @@ input[type="number"] {
   left: 0px;
 }
 
+[dir="rtl"] .rtl\:-right-\[4rem\] {
+  right: -4rem;
+}
+
+[dir="rtl"] .rtl\:right-4 {
+  right: 1rem;
+}
+
 [dir="rtl"] .rtl\:left-1 {
   left: 0.25rem;
-}
-
-[dir="rtl"] .rtl\:translate-x-0 {
-  --tw-translate-x: 0px;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-[dir="rtl"] .rtl\:translate-x-\[100\%\] {
-  --tw-translate-x: 100%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-[dir="rtl"] .rtl\:translate-x-\[200\%\] {
-  --tw-translate-x: 200%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-[dir="rtl"] .rtl\:translate-x-\[0\] {
-  --tw-translate-x: 0;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-[dir="rtl"] .rtl\:translate-x-\[10\%\] {
-  --tw-translate-x: 10%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 [dir="rtl"] .rtl\:translate-x-\[50\%\] {
@@ -2257,33 +2343,8 @@ input[type="number"] {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-[dir="rtl"] .rtl\:translate-x-\[60\%\] {
-  --tw-translate-x: 60%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-[dir="rtl"] .rtl\:translate-x-\[80\%\] {
-  --tw-translate-x: 80%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-[dir="rtl"] .rtl\:translate-x-\[30\%\] {
-  --tw-translate-x: 30%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-[dir="rtl"] .rtl\:translate-x-\[55\%\] {
-  --tw-translate-x: 55%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-[dir="rtl"] .rtl\:translate-x-\[300\%\] {
-  --tw-translate-x: 300%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-[dir="rtl"] .rtl\:translate-x-\[350\%\] {
-  --tw-translate-x: 350%;
+[dir="rtl"] .rtl\:translate-x-\[200\%\] {
+  --tw-translate-x: 200%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -2305,6 +2366,19 @@ input[type="number"] {
 [dir="rtl"] .rtl\:rounded-l-xl {
   border-top-left-radius: 0.75rem;
   border-bottom-left-radius: 0.75rem;
+}
+
+[dir="rtl"] .rtl\:border-l-0 {
+  border-left-width: 0px;
+}
+
+[dir="rtl"] .rtl\:border-r-2 {
+  border-right-width: 2px;
+}
+
+[dir="rtl"] .rtl\:border-r-purple-200 {
+  --tw-border-opacity: 1;
+  border-right-color: rgb(233 213 255 / var(--tw-border-opacity));
 }
 
 [dir="rtl"] .rtl\:bg-left-center {
@@ -2331,14 +2405,6 @@ input[type="number"] {
   direction: ltr;
 }
 
-[dir="rtl"] .rtl\:hover\:pr-8:hover {
-  padding-right: 2rem;
-}
-
-[dir="rtl"] .rtl\:hover\:pr-6:hover {
-  padding-right: 1.5rem;
-}
-
 [dir="rtl"] .group:hover .rtl\:group-hover\:right-0 {
   right: 0px;
 }
@@ -2347,9 +2413,119 @@ input[type="number"] {
   left: auto;
 }
 
-.dark .dark\:bg-gray-900 {
+[dir="rtl"] .group:hover .rtl\:group-hover\:rotate-180 {
+  --tw-rotate: 180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.dark .dark\:border-indigo-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(129 140 248 / var(--tw-border-opacity));
+}
+
+.dark .dark\:border-gray-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(107 114 128 / var(--tw-border-opacity));
+}
+
+.dark .dark\:border-gray-600 {
+  --tw-border-opacity: 1;
+  border-color: rgb(75 85 99 / var(--tw-border-opacity));
+}
+
+.dark .dark\:bg-dark-800 {
   --tw-bg-opacity: 1;
-  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+  background-color: rgb(35 35 38 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:bg-dark-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(69 69 74 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:bg-indigo-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(129 140 248 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:bg-zinc-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(113 113 122 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:text-gray-300 {
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+
+.dark .dark\:text-purple-400 {
+  --tw-text-opacity: 1;
+  color: rgb(192 132 252 / var(--tw-text-opacity));
+}
+
+.dark .dark\:text-indigo-400 {
+  --tw-text-opacity: 1;
+  color: rgb(129 140 248 / var(--tw-text-opacity));
+}
+
+.dark .dark\:text-rose-500 {
+  --tw-text-opacity: 1;
+  color: rgb(244 63 94 / var(--tw-text-opacity));
+}
+
+.dark .dark\:text-indigo-200 {
+  --tw-text-opacity: 1;
+  color: rgb(199 210 254 / var(--tw-text-opacity));
+}
+
+.dark .dark\:placeholder\:text-indigo-400::-moz-placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(129 140 248 / var(--tw-text-opacity));
+}
+
+.dark .dark\:placeholder\:text-indigo-400:-ms-input-placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(129 140 248 / var(--tw-text-opacity));
+}
+
+.dark .dark\:placeholder\:text-indigo-400::placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(129 140 248 / var(--tw-text-opacity));
+}
+
+.dark .dark\:odd\:bg-dark-600:nth-child(odd) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 59 65 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:even\:bg-dark-500:nth-child(even) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(69 69 74 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:hover\:bg-indigo-400:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(129 140 248 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:hover\:text-gray-200:hover {
+  --tw-text-opacity: 1;
+  color: rgb(229 231 235 / var(--tw-text-opacity));
+}
+
+.dark .dark\:focus\:border-indigo-400:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(129 140 248 / var(--tw-border-opacity));
+}
+
+.dark .dark\:radio-checked\:bg-indigo-400:checked ~ label {
+  --tw-bg-opacity: 1;
+  background-color: rgb(129 140 248 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:input-focused\:text-indigo-400:focus ~ svg {
+  --tw-text-opacity: 1;
+  color: rgb(129 140 248 / var(--tw-text-opacity));
 }
 
 @media (min-width: 640px) {
@@ -2446,21 +2622,6 @@ input[type="number"] {
 
   [dir="rtl"] .sm\:rtl\:translate-x-\[100\%\] {
     --tw-translate-x: 100%;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  }
-
-  [dir="rtl"] .sm\:rtl\:translate-x-\[200\%\] {
-    --tw-translate-x: 200%;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  }
-
-  [dir="rtl"] .sm\:rtl\:translate-x-\[90\%\] {
-    --tw-translate-x: 90%;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  }
-
-  [dir="rtl"] .sm\:rtl\:translate-x-\[300\%\] {
-    --tw-translate-x: 300%;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
@@ -2625,6 +2786,14 @@ input[type="number"] {
   }
 
   .lg\:even\:bg-transparent:nth-child(even) {
+    background-color: transparent;
+  }
+
+  .dark .lg\:dark\:odd\:bg-transparent:nth-child(odd) {
+    background-color: transparent;
+  }
+
+  .dark .lg\:dark\:even\:bg-transparent:nth-child(even) {
     background-color: transparent;
   }
 }
