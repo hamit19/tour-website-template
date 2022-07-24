@@ -4,6 +4,7 @@
   html {
     font-family: "IranSans", Verdana, Geneva, Tahoma, sans-serif;
     font-size: 62.5%;
+    scroll-behavior: smooth;
   }
 
   @font-face {
@@ -105,7 +106,7 @@
   }
 
   .li-custom-style {
-    @apply flex items-center w-full gap-1 rounded-md whitespace-nowrap hover:pl-10 rtl:hover:pr-10 hover:dark:bg-dark-500 hover:text-purple-700 custom-transition sm:text-xl dark:text-gray-300 hover:bg-purple-100 sm:hover:bg-purple-50;
+    @apply flex items-center w-full gap-1 rounded-md whitespace-nowrap hover:pl-8 sm:rtl:hover:pr-10 rtl:hover:pr-10 hover:dark:bg-dark-500 hover:text-purple-700 custom-transition sm:text-xl dark:text-gray-300 dark:hover:text-indigo-300 hover:bg-purple-100 sm:hover:bg-purple-50;
   }
   .main-modal {
     @apply absolute w-3/4 py-8 -translate-y-full bg-gray-50 rounded-xl;
@@ -205,4 +206,12 @@ input[type="number"] {
 }
 .handle-modes.darkMode .sun {
   @apply block;
+}
+
+nav.scroll-handler {
+  @apply fixed inset-x-0 top-0 bottom-auto z-50 transition-all duration-300 ease-linear;
+}
+
+.navbar_item.active {
+  @apply text-purple-700 dark:text-indigo-300;
 }
