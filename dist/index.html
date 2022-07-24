@@ -1,0 +1,2624 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <title>تور-گردشگری</title>
+    <link rel="stylesheet" href="/assets/index.d0fe9214.css" />
+  </head>
+  <body class="bg-gray-100 dark-mode">
+    <!-- Navbar Section start -->
+    <nav
+      x-data="openMobileMenuHandler"
+      id="nav-bar"
+      style="z-index: 30"
+      class="w-full bg-white border-b border-gray-300 shadow-md custom-transition h-28 dark-mode dark:bg-dark-800"
+    >
+      <section class="container flex items-center justify-between py-8">
+        <!-- hamburger menu -->
+        <div class="cursor-pointer sm:w-2/3 md:w-2/4">
+          <svg
+            @click="openMenuHandler()"
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-12 h-12 select-none sm:hidden hover:text-purple-700 dark:hover:text-indigo-400 custom-transition"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+            width="30px"
+            height="30px"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+          <ul
+            class="items-center hidden w-full list-none title-color sm:flex justify-evenly"
+          >
+            <li>
+              <a href="#" class="text-s-w title-color">خانه</a>
+            </li>
+            <li
+              x-data="{
+                  open:false,
+                }"
+              class="relative flex items-center"
+              @click.outside="open=false"
+            >
+              <span @click="open=true" class="text-s-w">تور های داخلی</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24px"
+                height="24px"
+                class="w-6 h-6 custom-transition"
+                x-bind:class="open ? 'rotate-180 w-5 h-5  ' : 'w-5 h-5' "
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+
+              <ul
+                x-cloak
+                x-show="open"
+                x-transition.duration.300ms
+                class="absolute left-0 z-20 flex flex-col w-64 p-2 list-none bg-white border-t-2 rounded-md shadow-lg dark-mode rtl:right-0 rtl:left-auto border-t-purple-200 top-12"
+              >
+                <li class="px-8 py-4 li-custom-style">
+                  <a href="#">تور کیش</a>
+                </li>
+                <li class="relative px-8 py-4 li-custom-style group">
+                  <a href="#">تور کوهنوردی</a>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5 ml-auto rotate-90 rtl:group-hover:rotate-180 ltr:group-hover:rotate-0 custom-transition"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <ul
+                    class="hidden custom-transition dark-mode group-hover:flex flex-col rtl:left-auto rtl:right-[150px] rtl:border-l-0 rtl:border-r-2 rtl:border-r-purple-200 absolute top-0 z-30 p-4 bg-white border-l-2 rounded-md shadow-lg left-[150px] w-60 border-l-purple-200"
+                  >
+                    <li class="px-8 py-4 text-gray-800 li-custom-style">
+                      <a href="#"> رشته کوه البرز </a>
+                    </li>
+                    <li class="px-8 py-4 text-gray-800 li-custom-style">
+                      <a href="#"> رشته کوه زاگرس </a>
+                    </li>
+                    <li class="px-8 py-4 text-gray-800 li-custom-style">
+                      <a href="#"> کوه دماوند </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="px-8 py-4 li-custom-style">
+                  <a href="#">تور قشم</a>
+                </li>
+                <li class="px-8 py-4 li-custom-style">
+                  <a href="#">تور اصفهان</a>
+                </li>
+              </ul>
+            </li>
+            <li
+              x-data="{ open : false }"
+              @click="open=true"
+              class="relative flex items-center"
+              @click.outside="open=false"
+            >
+              <span class="text-s-w">تور های خارجی</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24px"
+                height="24px"
+                class="w-6 h-6 custom-transition"
+                x-bind:class="open ? 'rotate-180 w-5 h-5 ' : 'w-5 h-5' "
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <ul
+                x-show="open"
+                x-transition.duration.300ms
+                x-cloak
+                class="absolute left-0 z-30 w-64 p-2 list-none bg-white border-t-2 rounded-md shadow-xl dark-mode rtl:left-auto rtl:right-0 top-12 border-t-purple-100"
+              >
+                <li class="px-8 py-4 li-custom-style">
+                  <a href="#"> تور آنتالیا </a>
+                </li>
+                <li class="relative px-8 py-4 li-custom-style group">
+                  <a href="#"> تور قاره ای </a>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5 ml-auto rotate-90 rtl:group-hover:rotate-180 group-hover:rotate-0 custom-transition"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+
+                  <ul
+                    class="hidden group-hover:flex dark-mode flex-col list-none custom-transition rtl:left-auto rtl:border-l-0 rtl:border-r-2 rtl:border-r-purple-200 rtl:right-[150px] w-64 bg-white p-2 border-l-2 border-l-purple-100 shadow-xl rounded-md absolute left-[150px] top-0"
+                  >
+                    <li class="px-8 py-4 text-gray-800 li-custom-style">
+                      <a href="#"> تور آسیا </a>
+                    </li>
+                    <li class="px-8 py-4 text-gray-800 li-custom-style">
+                      <a href="#"> تور آمریکا </a>
+                    </li>
+                    <li class="px-8 py-4 text-gray-800 li-custom-style">
+                      <a href="#"> تور آفریقا </a>
+                    </li>
+                    <li class="px-8 py-4 text-gray-800 li-custom-style">
+                      <a href="#"> تور اروپا </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="px-8 py-4 li-custom-style">
+                  <a href="#"> تور هند </a>
+                </li>
+                <li class="px-8 py-4 li-custom-style">
+                  <a href="#"> تور کره </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" class="text-s-w">مجله</a>
+            </li>
+            <li>
+              <a href="#" class="text-s-w">افتخارات</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Avatar Dark-mode languages -->
+        <div class="flex flex-row-reverse items-center gap-4">
+          <!-- Avatar -->
+          <a href="#" style="width: 36px; height: 36px" class="object-cover">
+            <img
+              src="/assets/avatar-img2.cdfdb834.jpg"
+              alt="Profile"
+              class="w-full h-full rounded-full"
+            />
+          </a>
+
+          <!-- languages -->
+          <div x-data="handleActions" x-ref="dirRef" class="handle-direction">
+            <!-- right to left btn -->
+            <div
+              @click="makeRTL($refs)"
+              x-ref="dirRTL"
+              class="bg-transparent rounded-full cursor-pointer rtl-flag w-14 h-14 hover:shadow-lg custom-transition flex-center"
+            >
+              <img src="/assets/rtl.8050538f.png" alt="languages flag" />
+            </div>
+
+            <!-- left to right btn -->
+            <div
+              @click="makeLTR($refs)"
+              x-ref="dirLTR"
+              class="hidden bg-transparent rounded-full cursor-pointer ltr-flag w-14 h-14 hover:shadow-lg custom-transition flex-center"
+            >
+              <img src="/assets/ltr.009d10fb.png" alt="languages flag" />
+            </div>
+          </div>
+
+          <!-- dark mode btn -->
+          <div
+            x-data="modesHandler"
+            x-ref="modeRef"
+            class="bg-transparent rounded-full cursor-pointer select-none handle-modes w-14 h-14 hover:shadow-lg custom-transition flex-center"
+          >
+            <!-- moon svg  -->
+            <svg
+              @click="makeDark($refs)"
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-10 h-10 moon animate-wiggle"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+              />
+            </svg>
+            <!-- sun svg -->
+            <svg
+              @click="makeLight($refs)"
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-10 h-10 text-yellow-500 sun animate-wiggle"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+              />
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- mobile menu -->
+      <div
+        x-cloak
+        x-show="openMenu"
+        class="fixed inset-0 z-40 bg-gray-900 bg-opacity-50 backdrop-blur-sm"
+        x-transition:enter="transition-all ease-out duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition-all ease-in duration-300"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+      >
+        <!-- main mobile menu -->
+        <ul
+          x-show="openMenu"
+          @click.outside="closeMenuHandler()"
+          class="absolute inset-y-0 right-auto flex flex-col w-2/4 gap-3 p-6 pt-10 text-2xl font-medium bg-gray-100 dark-mode title-color"
+          x-transition:enter="transition-all ease-out duration-300"
+          x-transition:enter-start="-left-96  rtl:left-auto rtl:-right-96"
+          x-transition:enter-end="left-0  rtl:right-0 rtl:left-auto"
+          x-transition:leave="transition-all ease-in duration-300"
+          x-transition:leave-start="left-0 rtl:right-0"
+          x-transition:leave-end="-left-96 rtl:-right-96"
+        >
+          <!-- close btn -->
+          <svg
+            @click="closeMenuHandler()"
+            xmlns="http://www.w3.org/2000/svg"
+            width="30px"
+            height="30px"
+            class="w-10 h-10 cursor-pointer select-none hover:text-purple-700 dark:hover:text-indigo-400 custom-transition"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            />
+          </svg>
+
+          <div class="relative left-0 py-2">
+            <!-- get home page -->
+            <li class="p-4 li-custom-style">
+              <a href="#"> خانه </a>
+            </li>
+            <!-- inside tours -->
+            <div
+              x-data="{
+                 open:false,
+              }"
+            >
+              <li
+                @click="open=!open"
+                class="flex items-start justify-between p-4 rounded-md cursor-pointer custom-transition"
+                x-bind:class="open ? 'bg-purple-100 dark:bg-dark-500 dark:text-indigo-300  text-purple-700 pl-8 rtl:pr-8 custom-transition':''"
+              >
+                <a href="#"> تور های داخلی </a>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-5 h-5 custom-transition rtl:rotate-180"
+                  x-bind:class="open ? 'rotate-90 rtl:rotate-90 ':''"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </li>
+              <ul
+                x-show="open"
+                @click.outside="open=false"
+                class="flex flex-col gap-3 px-8 py-6"
+              >
+                <li class="py-3 li-custom-style">
+                  <a href="#"> تور کیش</a>
+                </li>
+                <div
+                  x-data="{
+                   open:false,
+                 }"
+                >
+                  <li
+                    @click="open=!open"
+                    class="relative flex items-center justify-between py-3 rounded-md cursor-pointer ltr:pr-4 rtl:pl-4 custom-transition"
+                    x-bind:class="open ? 'bg-purple-100 text-purple-700 dark:bg-dark-500 dark:text-indigo-300 ltr:pl-8 rtl:pr-8 custom-transition':''"
+                  >
+                    <a href="#"> تور کوهنوردی</a>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-5 h-5 custom-transition rtl:rotate-180"
+                      x-bind:class="open ? 'rotate-90 rtl:rotate-90 ':''"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </li>
+                  <ul
+                    x-cloak
+                    x-show="open"
+                    @click.outside="open=false"
+                    class="flex flex-col gap-3 py-4 pl-8 bg-transparent"
+                  >
+                    <li
+                      class="relative flex items-center justify-between py-3 li-custom-style"
+                    >
+                      <a href="#">رشته کوه زاگرس</a>
+                    </li>
+                    <li
+                      class="relative flex items-center justify-between py-3 li-custom-style"
+                    >
+                      <a href="#">رشته کوه البرز</a>
+                    </li>
+                    <li
+                      class="relative flex items-center justify-between py-3 li-custom-style"
+                    >
+                      <a href="#"> کوه دماوند</a>
+                    </li>
+                  </ul>
+                </div>
+                <li class="py-3 rounded-md li-custom-style">
+                  <a href="#"> تور قشم</a>
+                </li>
+                <li class="py-3 rounded-md li-custom-style">
+                  <a href="#"> تور اصفهان</a>
+                </li>
+              </ul>
+            </div>
+            <!-- foreign tours -->
+            <div
+              x-data="{
+               open:false,
+              }"
+            >
+              <li
+                @click="open=!open"
+                class="flex items-start justify-between p-4 rounded-md cursor-pointer custom-transition"
+                x-bind:class="open ? 'bg-purple-100 dark:bg-dark-500 dark:text-indigo-300  text-purple-700 pl-8 rtl:pr-8 custom-transition':''"
+              >
+                <a href="#"> تور های خارجی </a>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-5 h-5 custom-transition rtl:rotate-180"
+                  x-bind:class="open ? 'rotate-90 rtl:rotate-90 ':''"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </li>
+              <ul
+                x-show="open"
+                @click.outside="open=false"
+                class="flex flex-col gap-3 px-8 py-6"
+              >
+                <li class="py-3 li-custom-style">
+                  <a href="#"> تور آنتالیا</a>
+                </li>
+                <div
+                  x-data="{
+                     open:false,
+                 }"
+                >
+                  <li
+                    @click="open=!open"
+                    class="relative flex items-center justify-between py-3 rounded-md cursor-pointer ltr:pr-4 rtl:pl-4 custom-transition"
+                    x-bind:class="open ? 'bg-purple-100 dark:bg-dark-500 dark:text-indigo-300  text-purple-700 pl-8 rtl:pr-8 custom-transition':''"
+                  >
+                    <a href="#"> تور قاره ای</a>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-5 h-5 custom-transition rtl:rotate-180"
+                      x-bind:class="open ? 'rotate-90 rtl:rotate-90':''"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </li>
+                  <ul
+                    x-cloak
+                    x-show="open"
+                    @click.outside="open=false"
+                    class="flex flex-col gap-3 py-4 pl-8 bg-transparent"
+                  >
+                    <li
+                      class="relative flex items-center justify-between py-3 li-custom-style"
+                    >
+                      <a href="#">قاره آسیا</a>
+                    </li>
+                    <li
+                      class="relative flex items-center justify-between py-3 li-custom-style"
+                    >
+                      <a href="#">قاره آمریکا</a>
+                    </li>
+                    <li
+                      class="relative flex items-center justify-between py-3 li-custom-style"
+                    >
+                      <a href="#"> قاره آفریقا</a>
+                    </li>
+                    <li
+                      class="relative flex items-center justify-between py-3 li-custom-style"
+                    >
+                      <a href="#"> قاره اروپا</a>
+                    </li>
+                  </ul>
+                </div>
+                <li class="py-3 li-custom-style">
+                  <a href="#"> تور هند</a>
+                </li>
+                <li class="py-3 li-custom-style">
+                  <a href="#"> تور کره</a>
+                </li>
+              </ul>
+            </div>
+            <!-- magazine -->
+            <li class="p-4 li-custom-style">
+              <a href="#"> مجلات </a>
+            </li>
+            <!-- honors -->
+            <li class="p-4 li-custom-style">
+              <a href="#"> افتخارات </a>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </nav>
+    <!-- Navbar Section end -->
+
+    <main class="pb-28 md:pb-0">
+      <!-- modal section start -->
+      <!-- modal wrapper -->
+      <div
+        x-data="{
+          modal: false,
+          mainModal:false,
+
+          openModal(e){
+            setTimeout(() => {
+              this.modal= true;
+            }, 2000);
+
+            setTimeout(() => {
+              this.mainModal= true;
+            }, 2050);
+          }
+
+      }"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-300"
+        x-transition:leave-start="opacity-100 "
+        x-transition:leave-end="opacity-0"
+        x-show="modal"
+        @keyup.Escape.window="modal=false; mainModal=false"
+        @open-modal.window="openModal($event)"
+        x-cloak
+        class="fixed inset-0 z-30 bg-gray-900 bg-opacity-50 flex-center backdrop-blur-sm"
+      >
+        <!-- message box section start -->
+        <div
+          x-data="{
+            messageBox:false,
+            showTooltip: false,
+            bottomLine: false,
+            tooltipHandler(){
+
+              this.messageBox = true;
+
+              setTimeout(()=>{
+                this.showTooltip = true;
+              },100)
+
+              setTimeout(()=>{
+                  this.bottomLine = true;
+              },800)
+
+              setTimeout(()=>{
+                this.showTooltip = false;
+                
+              },2000)
+
+              setTimeout(() => {
+                this.bottomLine = false;
+              }, 2100);
+
+              setTimeout(() => {
+                this.messageBox = false;
+              }, 2600);
+              
+            }
+        }"
+          x-cloak
+          x-show="messageBox"
+          @tooltip-event.window="tooltipHandler()"
+          class="absolute flex z-30 flex-col w-2/4 md:duration-1000 sm:max-w-[200px] h-[7rem] transition-all duration-700 ease-custom-cubic pt-6 overflow-hidden bg-green-500 -translate-x-full top-6 rounded-xl text-gray-50"
+          :class="showTooltip ? ' -translate-x-32 sm:-translate-x-52  md:-translate-x-[100%] sm:rtl:translate-x-[100%] rtl:translate-x-[50%] ' : ' rtl:translate-x-[200%]  sm:rtl:translate-x-[350%] -translate-x-[150%] sm:-translate-x-[210%]  md:-translate-x-[600%]'"
+        >
+          <div class="py-6 text-xl flex-center">
+            <h4>اطلاعات دریافت شد</h4>
+          </div>
+          <div
+            class="absolute bottom-0 h-2 transition-all duration-1000 ease-linear bg-rose-200"
+            :class="bottomLine ? 'w-full':'w-0'"
+          ></div>
+        </div>
+        <!-- message box section end -->
+
+        <!-- main modal -->
+        <form
+          x-data="{
+            
+          infoReceived() {
+            setTimeout(()=> {
+              this.mainModal= false;
+              this.modal= false
+            },3000)
+          }
+          
+          }"
+          @submit.prevent
+          @click.outside="modal=false; mainModal=false"
+          @info-received.window="infoReceived()"
+          class="sm:max-w-3xl dark-mode"
+          :class="mainModal ? 'main-modal translate-y-0 custom-transition ' : 'main-modal custom-transition'"
+        >
+          <!-- list -->
+          <ul
+            class="flex flex-col items-center w-full h-full list-none dark-mode"
+          >
+            <!-- title -->
+            <li
+              class="py-4 title-color dark:odd:bg-dark-600 dark:even:bg-dark-500 odd:bg-gray-50 even:bg-gray-100"
+            >
+              <h3>ویژگی های سفرتان را انتخاب کنید</h3>
+            </li>
+            <!-- meal details -->
+            <li
+              class="flex flex-row-reverse w-full py-4 dark:odd:bg-dark-600 dark:even:bg-dark-500 odd:bg-gray-50 even:bg-gray-100"
+            >
+              <ul class="flex w-3/4 gap-3 px-4 list-none">
+                <li class="relative flex-1 bg-transparent flex-center">
+                  <input
+                    class="absolute invisible radio-checked:bg-purple-700 dark:radio-checked:bg-indigo-400 radio-checked:text-gray-50"
+                    type="checkbox"
+                    name="meal"
+                    id="breakfast"
+                  />
+                  <label
+                    class="w-full h-full text-purple-700 bg-transparent border border-purple-700 rounded-md cursor-pointer dark:text-indigo-400 dark:border-indigo-400 custom-transition flex-center"
+                    for="breakfast"
+                    >صبحانه</label
+                  >
+                </li>
+
+                <li class="relative flex-1 bg-transparent flex-center">
+                  <input
+                    class="absolute invisible radio-checked:bg-purple-700 dark:radio-checked:bg-indigo-400 radio-checked:text-gray-50"
+                    type="checkbox"
+                    name="meal"
+                    id="lunch"
+                  />
+                  <label
+                    class="w-full h-full text-purple-700 bg-transparent border border-purple-700 rounded-md cursor-pointer dark:text-indigo-400 dark:border-indigo-400 custom-transition flex-center"
+                    for="lunch"
+                    >ناهار</label
+                  >
+                </li>
+
+                <li class="relative flex-1 bg-transparent flex-center">
+                  <input
+                    class="absolute invisible radio-checked:bg-purple-700 dark:radio-checked:bg-indigo-400 radio-checked:text-gray-50"
+                    type="checkbox"
+                    name="meal"
+                    id="dinner"
+                  />
+                  <label
+                    class="w-full h-full text-purple-700 bg-transparent border border-purple-700 rounded-md cursor-pointer dark:text-indigo-400 dark:border-indigo-400 custom-transition flex-center"
+                    for="dinner"
+                    >شام</label
+                  >
+                </li>
+              </ul>
+              <div class="flex-1 py-4 bg-transparent flex-center">
+                <h4>غذا</h4>
+              </div>
+            </li>
+            <!-- visit of places details -->
+            <li
+              class="flex flex-row-reverse w-full py-4 dark:odd:bg-dark-600 dark:even:bg-dark-500 odd:bg-gray-50 even:bg-gray-100"
+            >
+              <ul class="flex w-3/4 gap-3 px-4 list-none">
+                <li class="relative flex-1 bg-transparent flex-center">
+                  <input
+                    class="absolute invisible radio-checked:bg-green-500 radio-checked:text-gray-50"
+                    type="checkbox"
+                    name="places"
+                    id="funny"
+                  />
+                  <label
+                    class="w-full h-full text-green-500 bg-transparent border border-green-500 rounded-md cursor-pointer custom-transition flex-center"
+                    for="funny"
+                    >تفریحی</label
+                  >
+                </li>
+
+                <li class="relative flex-1 bg-transparent flex-center">
+                  <input
+                    class="absolute invisible radio-checked:bg-green-500 radio-checked:text-gray-50"
+                    type="checkbox"
+                    name="places"
+                    id="historical"
+                  />
+                  <label
+                    class="w-full h-full text-green-500 bg-transparent border border-green-500 rounded-md cursor-pointer custom-transition flex-center"
+                    for="historical"
+                    >تاریخی</label
+                  >
+                </li>
+
+                <li class="relative flex-1 bg-transparent flex-center">
+                  <input
+                    class="absolute invisible radio-checked:bg-green-500 radio-checked:text-gray-50"
+                    type="checkbox"
+                    name="places"
+                    id="sports"
+                  />
+                  <label
+                    class="w-full h-full text-green-500 bg-transparent border border-green-500 rounded-md cursor-pointer custom-transition flex-center"
+                    for="sports"
+                    >ورزشی</label
+                  >
+                </li>
+              </ul>
+              <div
+                class="flex-1 py-4 bg-transparent whitespace-nowrap flex-center"
+              >
+                <h4>مکان های دیدنی</h4>
+              </div>
+            </li>
+            <!-- hotel (stars) -->
+            <li
+              class="flex flex-row-reverse w-full py-4 dark:odd:bg-dark-600 dark:even:bg-dark-500 odd:bg-gray-50 even:bg-gray-100"
+            >
+              <ul class="flex w-3/4 gap-3 px-4 list-none">
+                <li class="relative flex-1 bg-transparent flex-center">
+                  <input
+                    class="absolute invisible radio-checked:bg-yellow-500 radio-checked:text-gray-50"
+                    type="radio"
+                    name="hotel"
+                    id="three-stars"
+                  />
+                  <label
+                    class="w-full h-full text-yellow-500 bg-transparent border border-yellow-500 rounded-md cursor-pointer custom-transition flex-center"
+                    for="three-stars"
+                    >3</label
+                  >
+                </li>
+
+                <li class="relative flex-1 bg-transparent flex-center">
+                  <input
+                    class="absolute invisible radio-checked:bg-yellow-500 radio-checked:text-gray-50"
+                    type="radio"
+                    name="hotel"
+                    id="foure-stars"
+                  />
+                  <label
+                    class="w-full h-full text-yellow-500 bg-transparent border border-yellow-500 rounded-md cursor-pointer custom-transition flex-center"
+                    for="foure-stars"
+                    >4</label
+                  >
+                </li>
+
+                <li class="relative flex-1 bg-transparent flex-center">
+                  <input
+                    class="absolute invisible radio-checked:bg-yellow-500 radio-checked:text-gray-50"
+                    type="radio"
+                    name="hotel"
+                    id="five-stars"
+                  />
+                  <label
+                    class="w-full h-full text-yellow-500 bg-transparent border border-yellow-500 rounded-md cursor-pointer custom-transition flex-center"
+                    for="five-stars"
+                    >5</label
+                  >
+                </li>
+              </ul>
+              <div class="flex-1 py-4 bg-transparent flex-center">
+                <h4>هتل (ستاره)</h4>
+              </div>
+            </li>
+            <!-- Transfer details -->
+            <li
+              class="flex flex-row-reverse justify-around w-full py-4 dark:odd:bg-dark-600 dark:even:bg-dark-500 odd:bg-gray-50 even:bg-gray-100"
+            >
+              <div
+                x-data="{
+                 tab:false,
+                }"
+                class="relative flex items-center w-2/4 border border-purple-700 rounded-full dark:border-indigo-400"
+              >
+                <div
+                  @click="tab=false;$dispatch('disabled-event', { detail: true})"
+                  class="relative z-20 flex-1 bg-transparent rounded-full cursor-pointer custom-transition flex-center"
+                  x-bind:class="!tab ? 'text-white' : 'text-purple-700 dark:text-indigo-400 '"
+                >
+                  <span>هوایی</span>
+                </div>
+                <div
+                  @click="tab=true; $dispatch('disabled-event', { detail: false })"
+                  class="relative z-20 flex-1 bg-transparent rounded-full cursor-pointer flex-center"
+                  x-bind:class="tab ? 'text-white' : 'text-purple-700 dark:text-indigo-400'"
+                >
+                  <span>زمینی</span>
+                </div>
+                <input
+                  type="radio"
+                  name="transfer"
+                  id="transfer"
+                  class="absolute top-0 left-0 invisible"
+                />
+                <label
+                  for="transfer"
+                  class="absolute left-auto z-10 w-1/2 h-full transition-all duration-500 ease-linear bg-purple-700 rounded-full dark:bg-indigo-400"
+                  x-bind:class="tab ? 'right-0 rtl:right-auto rtl:left-0': 'left-0 rtl:left-auto rtl:right-0 '"
+                ></label>
+              </div>
+
+              <div class="py-4 bg-transparent flex-center">
+                <h4>انتقال</h4>
+              </div>
+            </li>
+            <!-- Transfer method -->
+            <li
+              x-data="{
+                disabled:true,
+                
+                handleDisabled(e){
+                  this.disabled = e.detail.detail;
+                }
+              }"
+              class="flex flex-row-reverse w-full py-4 dark:odd:bg-dark-600 dark:even:bg-dark-500 odd:bg-gray-50 even:bg-gray-100"
+              @disabled-event.window="handleDisabled($event)"
+              x-bind:class="disabled ? 'pointer-events-none opacity-60 ' :'pointer-events-auto'"
+            >
+              <ul class="flex w-3/4 gap-3 px-4">
+                <li class="relative flex-1 bg-transparent flex-center">
+                  <input
+                    class="absolute invisible radio-checked:bg-rose-500 radio-checked:text-gray-50"
+                    type="radio"
+                    name="landT"
+                    id="buss"
+                  />
+                  <label
+                    class="w-full h-full bg-transparent border rounded-md cursor-pointer custom-transition text-rose-600 dark:text-rose-500 border-rose-500 flex-center"
+                    for="buss"
+                    >اتوبوس</label
+                  >
+                </li>
+
+                <li class="relative flex-1 bg-transparent flex-center">
+                  <input
+                    class="absolute invisible radio-checked:bg-rose-500 radio-checked:text-gray-50"
+                    type="radio"
+                    name="landT"
+                    id="train"
+                  />
+                  <label
+                    class="w-full h-full bg-transparent border rounded-md cursor-pointer custom-transition text-rose-600 dark:text-rose-500 border-rose-500 flex-center"
+                    for="train"
+                    >قطار</label
+                  >
+                </li>
+              </ul>
+              <div class="flex-1 py-4 bg-transparent flex-center">
+                <h4>روش انتقال</h4>
+              </div>
+            </li>
+            <!-- submit btn -->
+            <div class="w-full px-3 mt-8 btn">
+              <button
+                x-data
+                @click="$dispatch('tooltip-event'); $dispatch('info-received')"
+                type="submit"
+                class="w-full py-5 text-xl font-medium shadow-lg rounded-xl bg-rose-600 text-gray-50"
+              >
+                اعمال
+              </button>
+            </div>
+          </ul>
+        </form>
+      </div>
+      <!-- modal section end -->
+
+      <!-- Slider Section start -->
+      <div class="container z-10 grid grid-cols-1 gap-4 mt-8 sm:grid-cols-3">
+        <div dir="ltr" class="relative w-full mb-8 pt-md sm:col-span-2">
+          <div class="absolute inset-0 top-swiper-container">
+            <div class="w-full h-full overflow-hidden swiper rounded-2xl">
+              <div class="swiper-wrapper">
+                <a class="w-full h-full swiper-slide" href="#">
+                  <img src="/assets/slide5.ab6d1dc4.jpg" alt="image of woods" />
+                </a>
+
+                <a class="w-full h-full swiper-slide" href="#">
+                  <img src="/assets/slide6.f6fc07db.jpg" alt="image of woods" />
+                </a>
+
+                <a class="w-full h-full swiper-slide" href="#">
+                  <img src="/assets/slide3.31ff9718.jpg" alt="image of woods" />
+                </a>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+            <!-- Swiper next and prev btn -->
+            <div
+              class="swiper-button-prev top-swiper-prev"
+              id="swiper-button-prev"
+            ></div>
+            <div
+              class="swiper-button-next top-swiper-next"
+              id="swiper-button-next"
+            ></div>
+          </div>
+        </div>
+
+        <div class="col-span-1">
+          <div class="grid grid-cols-2 gap-4 sm:grid-cols-1">
+            <a href="#" class="overflow-hidden aspect-video rounded-xl">
+              <img
+                src="/assets/slide4.496ddd16.jpg"
+                alt="image of animals"
+                class="w-full h-full"
+              />
+            </a>
+
+            <a href="#" class="overflow-hidden aspect-video rounded-xl">
+              <img
+                src="/assets/slide2.711faf1e.jpg"
+                alt="image of animals"
+                class="w-full h-full"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Slider Section end -->
+
+      <!-- Places of interest section start -->
+      <section class="container mt-10 mb-14">
+        <div class="lg:grid lg:grid-cols-4">
+          <!-- titles -->
+          <div
+            class="flex justify-between pb-8 lg:gap-5 lg:flex-center lg:flex-col title-color lg:col-span-1"
+          >
+            <div class="title-color dark-mode">
+              <h3 class="py-1 lg:text-5xl dark-mode lg:py-4">مکان های دیدنی</h3>
+              <h4 class="py-1 lg:text-4xl dark-mode lg:py-4">تور های تفریحی</h4>
+            </div>
+            <a href="#" class="self-end lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="40px"
+                height="40px"
+                class="w-8 h-8 rtl:rotate-180"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </a>
+            <a href="#" class="hidden lg:block">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="100px"
+                height="100px"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </div>
+          <!-- slider container -->
+          <div class="relative slider-container lg:col-span-3">
+            <!-- slider -->
+            <div
+              class="overflow-hidden rtl:text-ltr visits-of-places-slider"
+              style="padding: 1rem"
+              id="visits-of-places-slider"
+            >
+              <!-- Swiper next and prev btn -->
+              <div
+                class="swiper-button-prev bottom-swiper-prev"
+                id="bottom-swiper-prev"
+              ></div>
+              <div
+                class="swiper-button-next bottom-swiper-next"
+                id="bottom-swiper-next"
+              ></div>
+
+              <!-- slider wrapper -->
+              <div class="swiper-wrapper" style="height: auto">
+                <!-- slide -->
+                <div
+                  class="relative overflow-hidden bg-white shadow-xl cursor-pointer dark-mode dark:bg-dark-800 title-color swiper-slide rounded-xl group"
+                  style="width: 34rem !important"
+                >
+                  <!-- head of slider -->
+                  <div
+                    class="relative overflow-hidden rounded-tr-xl rounded-tl-xl pt-md"
+                  >
+                    <span
+                      class="absolute -left-[4rem] group-hover:left-0 custom-transition z-20 flex items-center justify-end w-32 h-12 p-2 text-xl bg-red-700 rounded-r-xl rtl:left-auto rtl:-right-[4rem] rtl:group-hover:right-0 rtl:group-hover:left-auto rtl:rounded-r-none rtl:rounded-l-xl text-gray-50 top-4"
+                    >
+                      30% تخفیف
+                    </span>
+                    <div class="absolute inset-0 z-10">
+                      <img
+                        src="/assets/1.f8e693de.jpg"
+                        alt="image of places of interest"
+                        class="w-full"
+                      />
+                    </div>
+                  </div>
+                  <!-- info -->
+                  <div class="flex flex-col gap-8 p-4 rtl:text-rtl">
+                    <h3 class="text-2xl line-clamp-2">جنگل آمازون</h3>
+                    <p class="text-xl h-14 line-clamp-2 md:line-clamp-3">
+                      تصوری که مشاهده میکنید تصویری از جنگل آمازون است که یکی از
+                      جاذبه های گردشگری قاره آمریکای جنوبی است.
+                    </p>
+                    <button
+                      class="flex flex-row-reverse items-center justify-center gap-4 py-4 text-xl border-2 custom-transition dark:hover:bg-indigo-400 dark:border-gray-500 dark:hover:text-gray-200 hover:bg-purple-600 hover:text-gray-50 hover:border-gray-50 rounded-xl"
+                    >
+                      مشاهده عکس های بیشتر
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="34px"
+                        height="34px"
+                        class="w-8 h-8"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
+                        />
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <!-- slide -->
+                <div
+                  class="relative overflow-hidden bg-white shadow-xl cursor-pointer dark-mode dark:bg-dark-800 title-color swiper-slide rounded-xl group"
+                  style="width: 34rem"
+                >
+                  <!-- head of slider -->
+                  <div
+                    class="relative overflow-hidden rounded-tr-xl rounded-tl-xl pt-md"
+                  >
+                    <span
+                      class="absolute -left-[4rem] rtl:left-auto rtl:-right-[4rem] rtl:group-hover:right-0 rtl:group-hover:left-auto rtl:rounded-r-none rtl:rounded-l-xl group-hover:left-0 custom-transition z-20 flex items-center justify-end w-32 h-12 p-2 text-xl bg-red-700 rounded-tr-xl rounded-br-xl text-gray-50 top-4"
+                    >
+                      30% تخفیف
+                    </span>
+                    <div class="absolute inset-0 z-10">
+                      <img
+                        src="/assets/2.7be92c61.jpg"
+                        alt="image of places of interest"
+                        class="w-full"
+                      />
+                    </div>
+                  </div>
+                  <!-- info -->
+                  <div class="flex flex-col gap-8 p-4 rtl:text-rtl">
+                    <h3 class="text-2xl line-clamp-2">جنگل آمازون</h3>
+                    <p class="text-xl h-14 line-clamp-2 md:line-clamp-3">
+                      تصوری که مشاهده میکنید تصویری از جنگل آمازون است که یکی از
+                      جاذبه های گردشگری قاره آمریکای جنوبی است.
+                    </p>
+                    <button
+                      class="flex flex-row-reverse items-center justify-center gap-4 py-4 text-xl border-2 border-gray-500 dark:hover:bg-indigo-400 dark:border-gray-500 dark:hover:text-gray-200 custom-transition hover:bg-purple-600 hover:text-gray-50 hover:border-gray-50 rounded-xl"
+                    >
+                      مشاهده عکس های بیشتر
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="34px"
+                        height="34px"
+                        class="w-8 h-8"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
+                        />
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <!-- slide -->
+                <div
+                  class="relative overflow-hidden bg-white shadow-xl cursor-pointer dark-mode dark:bg-dark-800 title-color swiper-slide rounded-xl group"
+                  style="width: 34rem"
+                >
+                  <!-- head of slider -->
+                  <div
+                    class="relative overflow-hidden rounded-tr-xl rounded-tl-xl pt-md"
+                  >
+                    <span
+                      class="absolute -left-[4rem] rtl:left-auto rtl:-right-[4rem] rtl:group-hover:right-0 rtl:group-hover:left-auto rtl:rounded-r-none rtl:rounded-l-xl group-hover:left-0 custom-transition z-20 flex items-center justify-end w-32 h-12 p-2 text-xl bg-red-700 rounded-tr-xl rounded-br-xl text-gray-50 top-4"
+                    >
+                      30% تخفیف
+                    </span>
+                    <div class="absolute inset-0 z-10">
+                      <img
+                        src="/assets/3-min.df2397d8.jpg"
+                        alt="image of places of interest"
+                        class="w-full"
+                      />
+                    </div>
+                  </div>
+                  <!-- info -->
+                  <div class="flex flex-col gap-8 p-4 rtl:text-rtl">
+                    <h3 class="text-2xl line-clamp-2">جنگل آمازون</h3>
+                    <p class="text-xl h-14 line-clamp-2 md:line-clamp-3">
+                      تصوری که مشاهده میکنید تصویری از جنگل آمازون است که یکی از
+                      جاذبه های گردشگری قاره آمریکای جنوبی است.
+                    </p>
+                    <button
+                      class="flex flex-row-reverse items-center justify-center gap-4 py-4 text-xl border-2 border-gray-500 custom-transition dark:hover:bg-indigo-400 dark:border-gray-500 dark:hover:text-gray-200 hover:bg-purple-600 hover:text-gray-50 hover:border-gray-50 rounded-xl"
+                    >
+                      مشاهده عکس های بیشتر
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="34px"
+                        height="34px"
+                        class="w-8 h-8"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
+                        />
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <!-- slide -->
+                <div
+                  class="relative overflow-hidden bg-white shadow-xl cursor-pointer dark-mode dark:bg-dark-800 title-color swiper-slide rounded-xl group"
+                  style="width: 34rem"
+                >
+                  <!-- head of slider -->
+                  <div
+                    class="relative overflow-hidden rounded-tr-xl rounded-tl-xl pt-md"
+                  >
+                    <span
+                      class="absolute -left-[4rem] rtl:left-auto rtl:-right-[4rem] rtl:group-hover:right-0 rtl:group-hover:left-auto rtl:rounded-r-none rtl:rounded-l-xl group-hover:left-0 custom-transition z-20 flex items-center justify-end w-32 h-12 p-2 text-xl bg-red-700 rounded-tr-xl rounded-br-xl text-gray-50 top-4"
+                    >
+                      30% تخفیف
+                    </span>
+                    <div class="absolute inset-0 z-10">
+                      <img
+                        src="/assets/slide4.496ddd16.jpg"
+                        alt="image of places of interest"
+                        class="w-full"
+                      />
+                    </div>
+                  </div>
+                  <!-- info -->
+                  <div class="flex flex-col gap-8 p-4 rtl:text-rtl">
+                    <h3 class="text-2xl line-clamp-2">جنگل آمازون</h3>
+                    <p class="text-xl h-14 line-clamp-2 md:line-clamp-3">
+                      تصوری که مشاهده میکنید تصویری از جنگل آمازون است که یکی از
+                      جاذبه های گردشگری قاره آمریکای جنوبی است.
+                    </p>
+                    <button
+                      class="flex flex-row-reverse items-center justify-center gap-4 py-4 text-xl border-2 border-gray-500 custom-transition dark:hover:bg-indigo-400 dark:border-gray-500 dark:hover:text-gray-200 hover:bg-purple-600 hover:text-gray-50 hover:border-gray-50 rounded-xl"
+                    >
+                      مشاهده عکس های بیشتر
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="34px"
+                        height="34px"
+                        class="w-8 h-8"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
+                        />
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <!-- slide -->
+                <div
+                  class="relative overflow-hidden bg-white shadow-xl cursor-pointer dark-mode dark:bg-dark-800 title-color swiper-slide rounded-xl group"
+                  style="width: 34rem"
+                >
+                  <!-- head of slider -->
+                  <div
+                    class="relative overflow-hidden rounded-tr-xl rounded-tl-xl pt-md"
+                  >
+                    <span
+                      class="absolute -left-[4rem] rtl:left-auto rtl:-right-[4rem] rtl:group-hover:right-0 rtl:group-hover:left-auto rtl:rounded-r-none rtl:rounded-l-xl group-hover:left-0 custom-transition z-20 flex items-center justify-end w-32 h-12 p-2 text-xl bg-red-700 rounded-tr-xl rounded-br-xl text-gray-50 top-4"
+                    >
+                      30% تخفیف
+                    </span>
+                    <div class="absolute inset-0 z-10">
+                      <img
+                        src="/assets/slide5.ab6d1dc4.jpg"
+                        alt="image of places of interest"
+                        class="w-full"
+                      />
+                    </div>
+                  </div>
+                  <!-- info -->
+                  <div class="flex flex-col gap-8 p-4 rtl:text-rtl">
+                    <h3 class="text-2xl line-clamp-2">جنگل آمازون</h3>
+                    <p class="text-xl h-14 line-clamp-2 md:line-clamp-3">
+                      تصوری که مشاهده میکنید تصویری از جنگل آمازون است که یکی از
+                      جاذبه های گردشگری قاره آمریکای جنوبی است.
+                    </p>
+                    <button
+                      class="flex flex-row-reverse items-center justify-center gap-4 py-4 text-xl border-2 border-gray-500 custom-transition dark:hover:bg-indigo-400 dark:border-gray-500 dark:hover:text-gray-200 hover:bg-purple-600 hover:text-gray-50 hover:border-gray-50 rounded-xl"
+                    >
+                      مشاهده عکس های بیشتر
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="34px"
+                        height="34px"
+                        class="w-8 h-8"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
+                        />
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Places of interest section end -->
+
+      <!-- Most visited places section start -->
+      <section class="container mb-14">
+        <div class="mb-10 title-color">
+          <h2>مکان های پر بازدید</h2>
+        </div>
+        <!-- card wrapper -->
+        <div class="grid gap-6 grid-cols-auto-fit">
+          <!-- card -->
+          <div
+            class="relative overflow-hidden bg-white shadow-xl cursor-pointer dark-mode dark:bg-dark-800 group rounded-xl"
+          >
+            <!-- head of card -->
+            <div class="relative overflow-hidden pt-md">
+              <div class="absolute inset-0 z-10 overflow-hidden">
+                <div
+                  class="absolute inset-0 z-20 bg-purple-200 bg-opacity-0 flex-center custom-transition group-hover:bg-opacity-40"
+                >
+                  <a
+                    href="#"
+                    class="h-12 px-8 py-8 m-auto text-xl font-bold bg-purple-800 rounded-lg opacity-0 group-hover:opacity-100 custom-transition w-42 flex-center text-gray-50"
+                  >
+                    ادامه مطلب
+                  </a>
+                </div>
+                <img
+                  src="/assets/place1.8005bdf4.jpg"
+                  alt="image of place"
+                  class="w-full group-hover:scale-125 custom-transition"
+                />
+              </div>
+            </div>
+            <!-- desc -->
+            <div class="flex flex-col gap-4 p-4 title-color">
+              <h3 class="line-clamp-1">جنگل آمازون</h3>
+              <p class="h-16 line-clamp-2">
+                تصویری که در حال مشاهده هستید متعلق به جنگل آمازون است که یکی از
+                جاذبه های گردشگری قاره آمریکای جنوبی است!
+              </p>
+              <a href="#" class="text-xl font-bold text-purple-500">
+                ادامه مطلب...
+              </a>
+            </div>
+          </div>
+          <!-- card -->
+          <div
+            class="relative overflow-hidden bg-white shadow-xl cursor-pointer dark-mode dark:bg-dark-800 group rounded-xl"
+          >
+            <!-- head of card -->
+            <div class="relative overflow-hidden pt-md">
+              <div class="absolute inset-0 z-10 overflow-hidden">
+                <div
+                  class="absolute inset-0 z-20 bg-purple-200 bg-opacity-0 flex-center custom-transition group-hover:bg-opacity-40"
+                >
+                  <a
+                    href="#"
+                    class="h-12 px-8 py-8 m-auto text-xl font-bold bg-purple-800 rounded-lg opacity-0 group-hover:opacity-100 custom-transition w-42 flex-center text-gray-50"
+                  >
+                    ادامه مطلب
+                  </a>
+                </div>
+                <img
+                  src="/assets/place2.0c226252.jpg"
+                  alt="image of place"
+                  class="w-full group-hover:scale-125 custom-transition"
+                />
+              </div>
+            </div>
+            <!-- desc -->
+            <div class="flex flex-col gap-4 p-4 title-color">
+              <h3 class="line-clamp-1">جنگل آمازون</h3>
+              <p class="h-16 line-clamp-2">
+                تصویری که در حال مشاهده هستید متعلق به جنگل آمازون است که یکی از
+                جاذبه های گردشگری قاره آمریکای جنوبی است!
+              </p>
+              <a href="#" class="text-xl font-bold text-purple-500">
+                ادامه مطلب...
+              </a>
+            </div>
+          </div>
+          <!-- card -->
+          <div
+            class="relative overflow-hidden bg-white shadow-xl cursor-pointer dark-mode dark:bg-dark-800 group rounded-xl"
+          >
+            <!-- head of card -->
+            <div class="relative overflow-hidden pt-md">
+              <div class="absolute inset-0 z-10 overflow-hidden">
+                <div
+                  class="absolute inset-0 z-20 bg-purple-200 bg-opacity-0 flex-center custom-transition group-hover:bg-opacity-40"
+                >
+                  <a
+                    href="#"
+                    class="h-12 px-8 py-8 m-auto text-xl font-bold bg-purple-800 rounded-lg opacity-0 group-hover:opacity-100 custom-transition w-42 flex-center text-gray-50"
+                  >
+                    ادامه مطلب
+                  </a>
+                </div>
+                <img
+                  src="/assets/palce3.c3e5786f.jpg"
+                  alt="image of place"
+                  class="w-full group-hover:scale-125 custom-transition"
+                />
+              </div>
+            </div>
+            <!-- desc -->
+            <div class="flex flex-col gap-4 p-4 title-color">
+              <h3 class="line-clamp-1">جنگل آمازون</h3>
+              <p class="h-16 line-clamp-2">
+                تصویری که در حال مشاهده هستید متعلق به جنگل آمازون است که یکی از
+                جاذبه های گردشگری قاره آمریکای جنوبی است!
+              </p>
+              <a href="#" class="text-xl font-bold text-purple-500">
+                ادامه مطلب...
+              </a>
+            </div>
+          </div>
+          <!-- card -->
+          <div
+            class="relative overflow-hidden bg-white shadow-xl cursor-pointer dark-mode dark:bg-dark-800 group rounded-xl"
+          >
+            <!-- head of card -->
+            <div class="relative overflow-hidden pt-md">
+              <div class="absolute inset-0 z-10 overflow-hidden">
+                <div
+                  class="absolute inset-0 z-20 bg-purple-200 bg-opacity-0 flex-center custom-transition group-hover:bg-opacity-40"
+                >
+                  <a
+                    href="#"
+                    class="h-12 px-8 py-8 m-auto text-xl font-bold bg-purple-800 rounded-lg opacity-0 group-hover:opacity-100 custom-transition w-42 flex-center text-gray-50"
+                  >
+                    ادامه مطلب
+                  </a>
+                </div>
+                <img
+                  src="/assets/place4.d058466a.jpg"
+                  alt="image of place"
+                  class="w-full group-hover:scale-125 custom-transition"
+                />
+              </div>
+            </div>
+            <!-- desc -->
+            <div class="flex flex-col gap-4 p-4 title-color">
+              <h3 class="line-clamp-1">جنگل آمازون</h3>
+              <p class="h-16 line-clamp-2">
+                تصویری که در حال مشاهده هستید متعلق به جنگل آمازون است که یکی از
+                جاذبه های گردشگری قاره آمریکای جنوبی است!
+              </p>
+              <a href="#" class="text-xl font-bold text-purple-500">
+                ادامه مطلب...
+              </a>
+            </div>
+          </div>
+          <!-- card -->
+          <div
+            class="relative overflow-hidden bg-white shadow-xl cursor-pointer dark-mode dark:bg-dark-800 group rounded-xl"
+          >
+            <!-- head of card -->
+            <div class="relative overflow-hidden pt-md">
+              <div class="absolute inset-0 z-10 overflow-hidden">
+                <div
+                  class="absolute inset-0 z-20 bg-purple-200 bg-opacity-0 flex-center custom-transition group-hover:bg-opacity-40"
+                >
+                  <a
+                    href="#"
+                    class="h-12 px-8 py-8 m-auto text-xl font-bold bg-purple-800 rounded-lg opacity-0 group-hover:opacity-100 custom-transition w-42 flex-center text-gray-50"
+                  >
+                    ادامه مطلب
+                  </a>
+                </div>
+                <img
+                  src="/assets/place5.18a71c0d.jpg"
+                  alt="image of place"
+                  class="w-full group-hover:scale-125 custom-transition"
+                />
+              </div>
+            </div>
+            <!-- desc -->
+            <div class="flex flex-col gap-4 p-4 title-color">
+              <h3 class="line-clamp-1">جنگل آمازون</h3>
+              <p class="h-16 line-clamp-2">
+                تصویری که در حال مشاهده هستید متعلق به جنگل آمازون است که یکی از
+                جاذبه های گردشگری قاره آمریکای جنوبی است!
+              </p>
+              <a href="#" class="text-xl font-bold text-purple-500">
+                ادامه مطلب...
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Most visited places section end -->
+
+      <!-- Request for going on a journey section start  -->
+      <section class="py-8 bg-gray-200 dark-mode dark:bg-dark-800">
+        <div class="container">
+          <!-- request form -->
+          <form
+            x-data
+            @submit.prevent
+            class="flex flex-col px-8 py-2 dark-mode bg-white shadow-xl sm:max-w-[60rem] md:max-w-[70rem] lg:max-w-[80rem] sm:mx-auto rounded-xl"
+          >
+            <!-- title -->
+            <div
+              class="h-20 py-2 border-b border-b-gray-400 title-color flex-center"
+            >
+              <h3>درخواست سفر</h3>
+            </div>
+            <!-- count of people wrapper -->
+            <div
+              class="grid grid-cols-1 border-b border-gray-400 border-dashed sm:grid-cols-2"
+            >
+              <!-- select count of people -->
+              <div class="sm:py-8">
+                <div
+                  class="py-8 border-b sm:py-0 sm:border-b-0 sm:border-r sm:rtl:border-r-0 sm:rtl:border-l sm:border-r-gray-300 sm:px-4 border-b-gray-400"
+                >
+                  <h3 class="pb-6 font-thin title-color">تعداد افراد</h3>
+                  <div class="flex gap-4 pb-6">
+                    <div
+                      class="relative flex-1 text-xl font-bold text-gray-700 shadow-lg dark:text-indigo-400 numberFontP"
+                    >
+                      <input
+                        class="absolute invisible radio-checked:bg-purple-700 dark:radio-checked:bg-indigo-400 radio-checked:text-gray-50"
+                        type="radio"
+                        name="count"
+                        id="one"
+                      />
+                      <label
+                        class="w-full h-full py-4 border border-purple-800 rounded-md cursor-pointer dark:border-indigo-400 custom-transition flex-center"
+                        for="one"
+                        >1</label
+                      >
+                    </div>
+                    <div
+                      class="relative flex-1 text-xl font-bold text-gray-700 shadow-lg dark:text-indigo-400"
+                    >
+                      <input
+                        class="absolute invisible radio-checked:bg-purple-700 dark:radio-checked:bg-indigo-400 radio-checked:text-gray-50"
+                        type="radio"
+                        name="count"
+                        id="tow"
+                      />
+                      <label
+                        class="w-full h-full py-4 border border-purple-800 rounded-md cursor-pointer dark:border-indigo-400 custom-transition flex-center"
+                        for="tow"
+                        >2</label
+                      >
+                    </div>
+                    <div
+                      class="relative flex-1 text-xl font-bold text-gray-700 shadow-lg dark:text-indigo-400"
+                    >
+                      <input
+                        class="absolute invisible radio-checked:bg-purple-700 dark:radio-checked:bg-indigo-400 radio-checked:text-gray-50"
+                        type="radio"
+                        name="count"
+                        id="three"
+                      />
+                      <label
+                        class="w-full h-full py-4 border border-purple-800 rounded-md cursor-pointer dark:border-indigo-400 custom-transition flex-center"
+                        for="three"
+                        >3</label
+                      >
+                    </div>
+                    <div
+                      class="relative flex-1 text-xl font-bold text-gray-700 shadow-lg dark:text-indigo-400"
+                    >
+                      <input
+                        class="absolute invisible w-full h-full radio-checked:bg-purple-700 dark:radio-checked:bg-indigo-400 radio-checked:text-gray-50"
+                        type="radio"
+                        name="count"
+                        id="foure"
+                      />
+                      <label
+                        class="w-full h-full py-4 border border-purple-800 rounded-md cursor-pointer dark:border-indigo-400 custom-transition flex-center"
+                        for="foure"
+                        >4</label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- input the counts over 4 counts of people -->
+              <div class="py-8 sm:px-4 border-b-gray-400">
+                <h3 class="pb-6 font-thin title-color">تعداد دلخواه</h3>
+                <div class="relative">
+                  <input
+                    placeholder="5"
+                    type="number"
+                    class="w-full py-4 text-lg font-bold text-purple-700 border border-gray-300 rounded-md shadow-sm outline-none dark:bg-dark-500 dark:border-gray-600 rtl:pr-14 focus:border-purple-400 dark:focus:border-indigo-400 focus:ring-0 custom-transition focus:shadow-md placeholder:text-purple-300 dark:placeholder:text-indigo-400 dark:input-focused:text-indigo-400 input-focused:text-purple-700 pl-14"
+                  />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20px"
+                    height="20px"
+                    class="absolute w-8 h-8 text-gray-700 dark:text-indigo-200 svg top-3 left-4 rtl:left-auto rtl:right-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <!-- personal info and payment method wrapper -->
+            <div class="grid grid-cols-1 py-4 sm:grid-cols-2">
+              <!-- input personal inof  -->
+              <div
+                class="border-b border-gray-300 sm:py-8 sm:border-b-0 sm:border-r sm:rtl:border-r-0 sm:rtl:border-l"
+              >
+                <div class="px-4 py-4 sm:py-0">
+                  <h3 class="pb-6 title-color">اطلاعات شخصی</h3>
+                  <div class="flex flex-col gap-4">
+                    <input
+                      placeholder="نام ..."
+                      class="w-full px-4 py-4 text-lg font-bold text-gray-700 border border-gray-300 rounded-md shadow-sm outline-none dark:focus:border-indigo-400 dark:text-gray-300 dark:bg-dark-500 dark:border-gray-600 focus:border focus:border-purple-400 focus:ring-0 custom-transition focus:shadow-md"
+                      type="text"
+                      name="name"
+                    />
+                    <input
+                      placeholder="نام خانوادگی..."
+                      class="w-full px-4 py-4 text-lg font-bold text-gray-700 border border-gray-300 rounded-md shadow-sm outline-none dark:focus:border-indigo-400 dark:text-gray-300 dark:bg-dark-500 dark:border-gray-600 focus:border-purple-400 focus:ring-0 custom-transition focus:shadow-md"
+                      type="text"
+                      name="family"
+                    />
+                    <input
+                      placeholder="ایمیل..."
+                      class="w-full px-4 py-4 text-lg font-bold text-gray-700 border border-gray-300 rounded-md shadow-sm outline-none dark:focus:border-indigo-400 dark:text-gray-300 dark:bg-dark-500 dark:border-gray-600 focus:border-purple-400 focus:ring-0 invalid:text-rose-600 invalid:border-rose- peer custom-transition focus:shadow-md"
+                      type="email"
+                      name="email"
+                    />
+                    <span class="invisible text-rose-600 peer-invalid:visible">
+                      The email is invalid!
+                    </span>
+
+                    <div class="flex items-center gap-3">
+                      <h4 class="txt-2xl title-color">جنسیت</h4>
+                      <input
+                        class="cursor-pointer focus:ring-offset-0 focus:ring-0"
+                        type="radio"
+                        name="gender"
+                        id="male"
+                      />
+                      <label class="text-xl cursor-pointer" for="male">
+                        آقا
+                      </label>
+                      <input
+                        class="cursor-pointer focus:ring-offset-0 focus:ring-0"
+                        type="radio"
+                        name="gender"
+                        id="female"
+                      />
+                      <label class="text-xl cursor-pointer" for="female"
+                        >خانوم</label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- payment method -->
+              <div class="px-4 py-8">
+                <h3 class="pb-6 font-thin title-color">روش پرداخت</h3>
+                <select
+                  name="payment"
+                  class="w-full py-4 text-xl border-gray-400 rounded-md outline-none dark:focus:border-indigo-400 dark:text-gray-300 dark:bg-dark-500 dark:border-gray-600 rtl:bg-left-center focus:ring-0 focus:shadow-md custom-transition focus:border-purple-500 title-color"
+                >
+                  <option class="relative w-full h-12 text-xl" value="PayPal">
+                    پی پال
+                  </option>
+                  <option
+                    class="relative w-full h-12 text-xl"
+                    value="visa-credit"
+                  >
+                    ویزا کارت یا کردیت کارت
+                  </option>
+                </select>
+                <!-- suggest  inputs -->
+                <div class="flex flex-col py-8">
+                  <h4 class="py-4 text-xl title-color">
+                    از طرح های تخفیف بعدی با خبرم کن!
+                  </h4>
+                  <div class="flex items-center gap-3">
+                    <input
+                      class="cursor-pointer focus:ring-offset-0 focus:ring-0"
+                      type="radio"
+                      name="suggest"
+                      id="yes"
+                    />
+                    <label class="text-xl cursor-pointer" for="yes">
+                      بله
+                    </label>
+                    <input
+                      class="cursor-pointer focus:ring-offset-0 focus:ring-0"
+                      type="radio"
+                      name="suggest"
+                      id="no"
+                    />
+                    <label class="text-xl cursor-pointer" for="no">خیر</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              x-data="{
+                  openModal:false,
+                  
+                  callOpenModal(){
+                    this.openModal= true;
+                      $dispatch('open-modal');
+                      setTimeout(()=>{
+                        this.openModal=false;
+                      },2000)
+                  }
+             }"
+              class="w-full py-2 sm:w-52"
+            >
+              <button
+                type="submit"
+                @click="callOpenModal()"
+                x-data
+                class="relative flex items-center justify-center w-full h-[58px] gap-3 py-4 text-xl font-bold rounded-lg bg-amber-500 text-gray-50"
+              >
+                <svg
+                  x-show="!openModal"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24px"
+                  height="24px"
+                  class="hidden w-6 h-6 sm:flex"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+                <!-- waiting svg -->
+                <svg
+                  x-show="openModal"
+                  x-cloak
+                  width="28"
+                  height="28"
+                  viewBox="0 0 44 44"
+                  xmlns="http://www.w3.org/2000/svg"
+                  stroke="#fff"
+                >
+                  <g fill="none" fill-rule="evenodd" stroke-width="2">
+                    <circle cx="22" cy="22" r="1">
+                      <animate
+                        attributeName="r"
+                        begin="0s"
+                        dur="1.8s"
+                        values="1; 20"
+                        calcMode="spline"
+                        keyTimes="0; 1"
+                        keySplines="0.165, 0.84, 0.44, 1"
+                        repeatCount="indefinite"
+                      />
+                      <animate
+                        attributeName="stroke-opacity"
+                        begin="0s"
+                        dur="1.8s"
+                        values="1; 0"
+                        calcMode="spline"
+                        keyTimes="0; 1"
+                        keySplines="0.3, 0.61, 0.355, 1"
+                        repeatCount="indefinite"
+                      />
+                    </circle>
+                    <circle cx="22" cy="22" r="1">
+                      <animate
+                        attributeName="r"
+                        begin="-0.9s"
+                        dur="1.8s"
+                        values="1; 20"
+                        calcMode="spline"
+                        keyTimes="0; 1"
+                        keySplines="0.165, 0.84, 0.44, 1"
+                        repeatCount="indefinite"
+                      />
+                      <animate
+                        attributeName="stroke-opacity"
+                        begin="-0.9s"
+                        dur="1.8s"
+                        values="1; 0"
+                        calcMode="spline"
+                        keyTimes="0; 1"
+                        keySplines="0.3, 0.61, 0.355, 1"
+                        repeatCount="indefinite"
+                      />
+                    </circle>
+                  </g>
+                </svg>
+
+                <span x-text="openModal ? 'لطفا صبرکنید...' : ' بعدی'"></span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+      <!-- Request for going on a journey section end  -->
+
+      <!-- flex table section start -->
+      <section class="container">
+        <div class="grid grid-cols-1 py-20">
+          <!-- title of cards -->
+          <div class="hidden grid-cols-12 py-3 text-xl lg:grid title-color">
+            <!-- company name -->
+            <div class="col-span-3 px-8">
+              <h4>نام شرکت</h4>
+            </div>
+            <!-- company info -->
+            <div class="flex justify-center col-span-2">
+              <h4>مترجم</h4>
+            </div>
+            <div class="flex justify-center col-span-2">
+              <h4>هتل</h4>
+            </div>
+            <div class="flex justify-center col-span-2">
+              <h4>مقصد</h4>
+            </div>
+
+            <div class="flex justify-end col-span-3 px-8">
+              <h4>اقدامات</h4>
+            </div>
+          </div>
+          <!-- flex tables -->
+          <div
+            class="flex flex-col gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-1"
+          >
+            <!-- table one -->
+            <div
+              class="relative grid grid-cols-1 py-5 border border-gray-300 shadow-lg lg:grid-cols-12 dark-mode bg-gray-50 rounded-xl"
+            >
+              <!-- profile and info  -->
+              <div
+                class="flex flex-col items-center lg:col-span-3 lg:flex-row lg:px-8 lg:gap-4"
+              >
+                <!-- profile avatar wrapper -->
+                <div class="relative w-20 h-20">
+                  <!-- profile atatar container -->
+                  <div
+                    class="relative w-full h-full overflow-hidden rounded-full flex-center"
+                  >
+                    <!-- proflie avatar -->
+                    <img
+                      src="/assets/fly-min.0e7e1d3f.jpg"
+                      alt="avatar"
+                      class="object-fill w-full h-full"
+                    />
+                  </div>
+                  <!-- activi sign -->
+                  <span
+                    class="absolute z-20 w-4 h-4 rounded-full bottom-1 right-1 rtl:right-auto rtl:left-1 bg-lime-500"
+                  >
+                    <span
+                      class="absolute z-10 w-4 h-4 rounded-full bg-lime-600 animate-ping"
+                    ></span>
+                  </span>
+                </div>
+                <!-- info -->
+                <div class="py-4 text-xl text-center title-color">
+                  <h4 class="font-medium">فلایتو</h4>
+                  <h5 class="font-medium">همه روزه</h5>
+                </div>
+              </div>
+
+              <!-- destination info -->
+              <div
+                class="flex justify-between px-6 py-4 text-xl font-medium whitespace-nowrap lg:col-span-2 lg:flex-center dark:odd:bg-dark-600 dark:even:bg-dark-500 lg:dark:odd:bg-transparent lg:dark:even:bg-transparent odd:bg-gray-50 lg:odd:bg-transparent lg:even:bg-transparent even:bg-gray-100 title-color"
+              >
+                <h4 class="font-medium lg:hidden">مقصد</h4>
+                <h5 class="font-medium">پاریس</h5>
+              </div>
+              <!-- hotel info -->
+              <div
+                class="flex justify-between px-6 py-4 text-xl font-medium whitespace-nowrap lg:col-span-2 lg:flex-center dark:odd:bg-dark-600 dark:even:bg-dark-500 lg:dark:odd:bg-transparent lg:dark:even:bg-transparent odd:bg-gray-50 lg:odd:bg-transparent lg:even:bg-transparent even:bg-gray-100 title-color"
+              >
+                <h4 class="font-medium lg:hidden">هتل</h4>
+                <h5 class="font-medium">Hôtel 9Confidentiel</h5>
+              </div>
+              <!-- translator info -->
+              <div
+                class="flex justify-between px-6 py-4 text-xl font-medium whitespace-nowrap lg:col-span-2 lg:flex-center dark:odd:bg-dark-600 dark:even:bg-dark-500 lg:dark:odd:bg-transparent lg:dark:even:bg-transparent odd:bg-gray-50 lg:odd:bg-transparent lg:even:bg-transparent even:bg-gray-100 title-color"
+              >
+                <h4 class="font-medium lg:hidden">مترجم</h4>
+                <h5
+                  class="w-24 px-6 py-2 font-medium text-center text-green-600 bg-green-200 rounded-lg"
+                >
+                  دارد
+                </h5>
+              </div>
+
+              <!-- actions btn -->
+              <div
+                class="w-full px-6 py-4 lg:flex lg:items-center lg:justify-end lg:gap-4 lg:col-span-3"
+              >
+                <!-- submit btn -->
+                <button
+                  class="w-full py-4 text-lg font-bold text-purple-700 bg-transparent border border-purple-700 rounded-md shadow-md dark:text-indigo-400 dark:border-indigo-400 dark:hover:bg-indigo-400 dark:hover:text-gray-200 lg:w-2/4 hover:shadow-xl hover:bg-purple-700 hover:text-gray-50 custom-transition"
+                >
+                  ثبت نام
+                </button>
+                <!-- save btn -->
+                <button
+                  class="absolute w-16 h-16 bg-purple-100 rounded-full cursor-pointer dark:bg-zinc-500 dark-mode group lg:top-0 lg:right-0 lg:relative title-color top-5 right-5 flex-center"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24px"
+                    height="24px"
+                    class="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+                    />
+                  </svg>
+
+                  <!-- tooltip -->
+                  <span
+                    class="absolute top-0 hidden px-6 py-2 bg-purple-700 rounded-full shadow-md opacity-0 dark:bg-indigo-400 group-hover:-top-12 group-hover:opacity-100 custom-transition lg:block text-gray-50"
+                    >ذخیره</span
+                  >
+                </button>
+              </div>
+            </div>
+
+            <!-- table tow -->
+            <div
+              class="relative grid grid-cols-1 py-5 border border-gray-300 shadow-lg lg:grid-cols-12 dark-mode bg-gray-50 rounded-xl"
+            >
+              <!-- profile and info  -->
+              <div
+                class="flex flex-col items-center lg:col-span-3 lg:flex-row lg:px-8 lg:gap-4"
+              >
+                <!-- profile avatar wrapper -->
+                <div class="relative w-20 h-20">
+                  <!-- profile atatar container -->
+                  <div
+                    class="relative w-full h-full overflow-hidden rounded-full flex-center"
+                  >
+                    <!-- proflie avatar -->
+                    <img
+                      src="/assets/fly2-min.e6184812.jpg"
+                      alt="avatar"
+                      class="object-fill w-full h-full"
+                    />
+                  </div>
+                  <!-- activi sign -->
+                  <span
+                    class="absolute z-20 w-4 h-4 rounded-full bottom-1 right-1 rtl:right-auto rtl:left-1 bg-rose-500"
+                  >
+                    <span
+                      class="absolute z-10 w-4 h-4 rounded-full bg-rose-600 animate-ping"
+                    ></span>
+                  </span>
+                </div>
+                <!-- info -->
+                <div class="py-4 text-xl text-center title-color">
+                  <h4 class="font-medium">فلایتو</h4>
+                  <h5 class="font-medium">همه روزه</h5>
+                </div>
+              </div>
+
+              <!-- destination info -->
+              <div
+                class="flex justify-between px-6 py-4 text-xl font-medium whitespace-nowrap lg:col-span-2 lg:flex-center dark:odd:bg-dark-600 dark:even:bg-dark-500 lg:dark:odd:bg-transparent lg:dark:even:bg-transparent odd:bg-gray-50 lg:odd:bg-transparent lg:even:bg-transparent even:bg-gray-100 title-color"
+              >
+                <h4 class="font-medium lg:hidden">مقصد</h4>
+                <h5 class="font-medium">برلین</h5>
+              </div>
+              <!-- hotel info -->
+              <div
+                class="flex justify-between px-6 py-4 text-xl font-medium whitespace-nowrap lg:col-span-2 lg:flex-center dark:odd:bg-dark-600 dark:even:bg-dark-500 lg:dark:odd:bg-transparent lg:dark:even:bg-transparent odd:bg-gray-50 lg:odd:bg-transparent lg:even:bg-transparent even:bg-gray-100 title-color"
+              >
+                <h4 class="font-medium lg:hidden">هتل</h4>
+                <h5 class="font-medium">Alexanderplatz</h5>
+              </div>
+              <!-- translator info -->
+              <div
+                class="flex justify-between px-6 py-4 text-xl font-medium whitespace-nowrap lg:col-span-2 lg:flex-center dark:odd:bg-dark-600 dark:even:bg-dark-500 lg:dark:odd:bg-transparent lg:dark:even:bg-transparent odd:bg-gray-50 lg:odd:bg-transparent lg:even:bg-transparent even:bg-gray-100 title-color"
+              >
+                <h4 class="font-medium lg:hidden">مترجم</h4>
+                <h5
+                  class="w-24 px-6 py-2 font-medium text-center text-green-600 bg-green-200 rounded-lg"
+                >
+                  دارد
+                </h5>
+              </div>
+
+              <!-- actions btn -->
+              <div
+                class="w-full px-6 py-4 lg:flex lg:items-center lg:justify-end lg:gap-4 lg:col-span-3"
+              >
+                <!-- submit btn -->
+                <button
+                  class="w-full py-4 text-lg font-bold text-purple-700 bg-transparent border border-purple-700 rounded-md shadow-md dark:text-indigo-400 dark:border-indigo-400 dark:hover:bg-indigo-400 dark:hover:text-gray-200 lg:w-2/4 hover:shadow-xl hover:bg-purple-700 hover:text-gray-50 custom-transition"
+                >
+                  ثبت نام
+                </button>
+                <!-- save btn -->
+                <button
+                  class="absolute w-16 h-16 bg-purple-100 rounded-full cursor-pointer dark:bg-zinc-500 dark-mode group lg:top-0 lg:right-0 lg:relative title-color top-5 right-5 flex-center"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24px"
+                    height="24px"
+                    class="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+                    />
+                  </svg>
+
+                  <!-- tooltip -->
+                  <span
+                    class="absolute top-0 hidden px-6 py-2 bg-purple-700 rounded-full shadow-md opacity-0 dark:bg-indigo-400 group-hover:-top-12 group-hover:opacity-100 custom-transition lg:block text-gray-50"
+                    >ذخیره</span
+                  >
+                </button>
+              </div>
+            </div>
+
+            <!-- table three -->
+            <div
+              class="relative grid grid-cols-1 py-5 border border-gray-300 shadow-lg lg:grid-cols-12 dark-mode bg-gray-50 rounded-xl"
+            >
+              <!-- profile and info  -->
+              <div
+                class="flex flex-col items-center lg:col-span-3 lg:flex-row lg:px-8 lg:gap-4"
+              >
+                <!-- profile avatar wrapper -->
+                <div class="relative w-20 h-20">
+                  <!-- profile atatar container -->
+                  <div
+                    class="relative w-full h-full overflow-hidden rounded-full flex-center"
+                  >
+                    <!-- proflie avatar -->
+                    <img
+                      src="/assets/fly3.e921db06.jpg"
+                      alt="avatar"
+                      class="object-fill w-full h-full"
+                    />
+                  </div>
+                  <!-- activi sign -->
+                  <span
+                    class="absolute z-20 w-4 h-4 rounded-full bottom-1 right-1 rtl:right-auto rtl:left-1 bg-lime-500"
+                  >
+                    <span
+                      class="absolute z-10 w-4 h-4 rounded-full bg-lime-600 animate-ping"
+                    ></span>
+                  </span>
+                </div>
+                <!-- info -->
+                <div class="py-4 text-xl text-center title-color">
+                  <h4 class="font-medium">فلایتو</h4>
+                  <h5 class="font-medium">همه روزه</h5>
+                </div>
+              </div>
+
+              <!-- destination info -->
+              <div
+                class="flex justify-between px-6 py-4 text-xl font-medium whitespace-nowrap lg:col-span-2 lg:flex-center dark:odd:bg-dark-600 dark:even:bg-dark-500 lg:dark:odd:bg-transparent lg:dark:even:bg-transparent odd:bg-gray-50 lg:odd:bg-transparent lg:even:bg-transparent even:bg-gray-100 title-color"
+              >
+                <h4 class="font-medium lg:hidden">مقصد</h4>
+                <h5 class="font-medium">لندن</h5>
+              </div>
+              <!-- hotel info -->
+              <div
+                class="flex justify-between px-6 py-4 text-xl font-medium whitespace-nowrap lg:col-span-2 lg:flex-center dark:odd:bg-dark-600 dark:even:bg-dark-500 lg:dark:odd:bg-transparent lg:dark:even:bg-transparent odd:bg-gray-50 lg:odd:bg-transparent lg:even:bg-transparent even:bg-gray-100 title-color"
+              >
+                <h4 class="font-medium lg:hidden">هتل</h4>
+                <h5 class="font-medium">Britannia International Hotel</h5>
+              </div>
+              <!-- translator info -->
+              <div
+                class="flex justify-between px-6 py-4 text-xl font-medium whitespace-nowrap lg:col-span-2 lg:flex-center dark:odd:bg-dark-600 dark:even:bg-dark-500 lg:dark:odd:bg-transparent lg:dark:even:bg-transparent odd:bg-gray-50 lg:odd:bg-transparent lg:even:bg-transparent even:bg-gray-100 title-color"
+              >
+                <h4 class="font-medium lg:hidden">مترجم</h4>
+                <h5
+                  class="w-24 px-6 py-2 font-medium text-center rounded-lg text-rose-600 bg-rose-200"
+                >
+                  ندارد
+                </h5>
+              </div>
+
+              <!-- actions btn -->
+              <div
+                class="w-full px-6 py-4 lg:flex lg:items-center lg:justify-end lg:gap-4 lg:col-span-3"
+              >
+                <!-- submit btn -->
+                <button
+                  class="w-full py-4 text-lg font-bold text-purple-700 bg-transparent border border-purple-700 rounded-md shadow-md dark:text-indigo-400 dark:border-indigo-400 dark:hover:bg-indigo-400 dark:hover:text-gray-200 lg:w-2/4 hover:shadow-xl hover:bg-purple-700 hover:text-gray-50 custom-transition"
+                >
+                  ثبت نام
+                </button>
+                <!-- save btn -->
+                <button
+                  class="absolute w-16 h-16 bg-purple-100 rounded-full cursor-pointer dark:bg-zinc-500 dark-mode group lg:top-0 lg:right-0 lg:relative title-color top-5 right-5 flex-center"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24px"
+                    height="24px"
+                    class="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+                    />
+                  </svg>
+
+                  <!-- tooltip -->
+                  <span
+                    class="absolute top-0 hidden px-6 py-2 bg-purple-700 rounded-full shadow-md opacity-0 dark:bg-indigo-400 group-hover:-top-12 group-hover:opacity-100 custom-transition lg:block text-gray-50"
+                    >ذخیره</span
+                  >
+                </button>
+              </div>
+            </div>
+
+            <!-- table foure -->
+            <div
+              class="relative grid grid-cols-1 py-5 border border-gray-300 shadow-lg lg:grid-cols-12 dark-mode bg-gray-50 rounded-xl"
+            >
+              <!-- profile and info  -->
+              <div
+                class="flex flex-col items-center lg:col-span-3 lg:flex-row lg:px-8 lg:gap-4"
+              >
+                <!-- profile avatar wrapper -->
+                <div class="relative w-20 h-20">
+                  <!-- profile atatar container -->
+                  <div
+                    class="relative w-full h-full overflow-hidden rounded-full flex-center"
+                  >
+                    <!-- proflie avatar -->
+                    <img
+                      src="/assets/fly4.debd60f8.jpg"
+                      alt="avatar"
+                      class="object-fill w-full h-full"
+                    />
+                  </div>
+                  <!-- activi sign -->
+                  <span
+                    class="absolute z-20 w-4 h-4 rounded-full bottom-1 right-1 rtl:right-auto rtl:left-1 bg-lime-500"
+                  >
+                    <span
+                      class="absolute z-10 w-4 h-4 rounded-full bg-lime-600 animate-ping"
+                    ></span>
+                  </span>
+                </div>
+                <!-- info -->
+                <div class="py-4 text-xl text-center title-color">
+                  <h4 class="font-medium">فلایتو</h4>
+                  <h5 class="font-medium">همه روزه</h5>
+                </div>
+              </div>
+
+              <!-- destination info -->
+              <div
+                class="flex justify-between px-6 py-4 text-xl font-medium whitespace-nowrap lg:col-span-2 lg:flex-center dark:odd:bg-dark-600 dark:even:bg-dark-500 lg:dark:odd:bg-transparent lg:dark:even:bg-transparent odd:bg-gray-50 lg:odd:bg-transparent lg:even:bg-transparent even:bg-gray-100 title-color"
+              >
+                <h4 class="font-medium lg:hidden">مقصد</h4>
+                <h5 class="font-medium">لندن</h5>
+              </div>
+              <!-- hotel info -->
+              <div
+                class="flex justify-between px-6 py-4 text-xl font-medium whitespace-nowrap lg:col-span-2 lg:flex-center dark:odd:bg-dark-600 dark:even:bg-dark-500 lg:dark:odd:bg-transparent lg:dark:even:bg-transparent odd:bg-gray-50 lg:odd:bg-transparent lg:even:bg-transparent even:bg-gray-100 title-color"
+              >
+                <h4 class="font-medium lg:hidden">هتل</h4>
+                <h5 class="font-medium">Britannia International Hotel</h5>
+              </div>
+              <!-- translator info -->
+              <div
+                class="flex justify-between px-6 py-4 text-xl font-medium whitespace-nowrap lg:col-span-2 lg:flex-center dark:odd:bg-dark-600 dark:even:bg-dark-500 lg:dark:odd:bg-transparent lg:dark:even:bg-transparent odd:bg-gray-50 lg:odd:bg-transparent lg:even:bg-transparent even:bg-gray-100 title-color"
+              >
+                <h4 class="font-medium lg:hidden">مترجم</h4>
+                <h5
+                  class="w-24 px-6 py-2 font-medium text-center rounded-lg text-rose-600 bg-rose-200"
+                >
+                  ندارد
+                </h5>
+              </div>
+
+              <!-- actions btn -->
+              <div
+                class="w-full px-6 py-4 lg:flex lg:items-center lg:justify-end lg:gap-4 lg:col-span-3"
+              >
+                <!-- submit btn -->
+                <button
+                  class="w-full py-4 text-lg font-bold text-purple-700 bg-transparent border border-purple-700 rounded-md shadow-md dark:text-indigo-400 dark:border-indigo-400 dark:hover:bg-indigo-400 dark:hover:text-gray-200 lg:w-2/4 hover:shadow-xl hover:bg-purple-700 hover:text-gray-50 custom-transition"
+                >
+                  ثبت نام
+                </button>
+                <!-- save btn -->
+                <button
+                  class="absolute w-16 h-16 bg-purple-100 rounded-full cursor-pointer dark:bg-zinc-500 dark-mode group lg:top-0 lg:right-0 lg:relative title-color top-5 right-5 flex-center"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24px"
+                    height="24px"
+                    class="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+                    />
+                  </svg>
+
+                  <!-- tooltip -->
+                  <span
+                    class="absolute top-0 hidden px-6 py-2 bg-purple-700 rounded-full shadow-md opacity-0 dark:bg-indigo-400 group-hover:-top-12 group-hover:opacity-100 custom-transition lg:block text-gray-50"
+                    >ذخیره</span
+                  >
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- flex table section end -->
+
+      <!-- navigartion footer-bar section start -->
+
+      <section
+        class="fixed inset-x-0 bottom-0 top-auto z-50 w-full py-8 border-t md:hidden h-28 bg-gray-50 dark-mode dark:bg-dark-800 border-t-gray-400 dark:border-t-indigo-400"
+      >
+        <div class="container">
+          <div class="flex flex-row-reverse items-center">
+            <!-- item one -->
+            <div class="flex-1 group title-color">
+              <a
+                href="#"
+                class="flex flex-col items-center gap-1 font-bold navbar_item active group-hover:text-purple-700 custom-transition dark:group-hover:text-indigo-400"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-8 h-8"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
+                  />
+                </svg>
+                <span>خانه</span>
+              </a>
+            </div>
+            <!-- item two -->
+            <div class="flex-1 group title-color">
+              <a
+                href="#"
+                class="flex flex-col items-center gap-1 font-bold navbar_item group-hover:text-purple-700 custom-transition dark:group-hover:text-indigo-400"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-8 h-8"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
+                  />
+                </svg>
+                <span>لحظه آخری</span>
+              </a>
+            </div>
+            <div class="flex-1 group title-color">
+              <a
+                href="#"
+                class="flex flex-col items-center gap-1 font-bold navbar_item group-hover:text-purple-700 custom-transition dark:group-hover:text-indigo-400"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-8 h-8"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                <span>خروج</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- navigartion footer-bar section end -->
+
+      <!-- footer section start -->
+
+      <footer
+        class="w-full pt-8 border-t bg-gray-50 dark-mode border-t-gray-400 dark:border-t-indigo-300 dark:bg-dark-800"
+      >
+        <div class="px-8 lg:container">
+          <div class="grid grid-cols-1 py-4 sm:grid-cols-3 lg:gap-20">
+            <div class="col-span-1 px-4">
+              <h3
+                class="py-4 font-medium text-purple-700 border-b-2 title-color border-b-purple-400 dark:border-b-indigo-300 dark:text-indigo-300"
+              >
+                توضیحات متخصر
+              </h3>
+              <p class="px-2 py-4 text-justify">
+                این قالب توسط حمید حسنی پیاده سازی شده است. هدف پیاده سازی این
+                قالب نشان دادن مهارت بنده در استفاده از فرمورک تلویند
+                (TailwindCss) بوده است. برای پیاده سازی این قالب از فرمورک
+                آلپاین جی اس (Alpine js) نیز استفاده شده است تا یک قالب داینامیک
+                و زیبا داشته باشیم. قالب کاملا ریسپانسیو بوده و برای ریسپانسیو
+                کردن قالب از ویژگی فلکس (Flex) و ویژگی فوق العاده سی اس اس گرید
+                (CSS grid) نیز استفاده شده امیدوارم که توانسته باشم مهارت خود را
+                در استفاده از تلویند سی اس اس (TailwindCss) با پیاده سازی این
+                قالب به شما عزیزان نشان دهم.🙂
+              </p>
+            </div>
+            <div class="col-span-1 px-4">
+              <h3
+                class="py-4 font-medium text-purple-700 border-b-2 title-color border-b-purple-400 dark:border-b-indigo-300 dark:text-indigo-300"
+              >
+                لینک نمونه کار های دیگر
+              </h3>
+              <div
+                class="flex flex-col gap-4 px-2 py-6 text-lg font-bold whitespace-nowrap sm:whitespace-normal"
+              >
+                <a
+                  href="https://leafy-cendol-f6ede3.netlify.app/"
+                  target="_blank"
+                  class="hover:text-purple-700 custom-transition dark:hover:text-indigo-300"
+                >
+                  برای دیدن نمونه کار HTML5 ,CSS3 (SCSS) کلیک کنید.
+                </a>
+                <a
+                  href="https://leafy-cendol-f6ede3.netlify.app/"
+                  target="_blank"
+                  class="hover:text-purple-700 custom-transition dark:hover:text-indigo-300"
+                >
+                  برای دیدن نمونه کار HTML5 ,CSS3 (SCSS) کلیک کنید.
+                </a>
+                <a
+                  href="https://leafy-cendol-f6ede3.netlify.app/"
+                  target="_blank"
+                  class="hover:text-purple-700 custom-transition dark:hover:text-indigo-300"
+                >
+                  برای دیدن نمونه کار HTML5 ,CSS3 (SCSS) کلیک کنید.
+                </a>
+                <a
+                  href="https://leafy-cendol-f6ede3.netlify.app/"
+                  target="_blank"
+                  class="hover:text-purple-700 custom-transition dark:hover:text-indigo-300"
+                >
+                  برای دیدن نمونه کار HTML5 ,CSS3 (SCSS) کلیک کنید.
+                </a>
+                <a
+                  href="https://leafy-cendol-f6ede3.netlify.app/"
+                  target="_blank"
+                  class="hover:text-purple-700 custom-transition dark:hover:text-indigo-300"
+                >
+                  برای دیدن نمونه کار HTML5 ,CSS3 (SCSS) کلیک کنید.
+                </a>
+              </div>
+            </div>
+            <div class="col-span-1 px-4">
+              <h3
+                class="py-4 font-medium text-purple-700 border-b-2 title-color border-b-purple-400 dark:border-b-indigo-300 dark:text-indigo-300"
+              >
+                راه های ارتباطی با من
+              </h3>
+              <div class="flex flex-col">
+                <a
+                  class="flex items-center gap-4 px-4 py-4 text-xl font-bold custom-transition title-color hover:text-purple-600 dark:hover:text-indigo-300"
+                  href="mailto:hamidhassaniofficial@gmail.com"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-8 h-8"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                  <span>hamidhassaniofficial@gmail.com</span>
+                </a>
+                <a
+                  target="_blank"
+                  class="flex items-center gap-4 px-4 py-4 text-xl font-bold custom-transition title-color hover:text-purple-600 dark:hover:text-indigo-300"
+                  href="tel:+989014693924 "
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-8 h-8"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    />
+                  </svg>
+                  <span dir="ltr"> +989014693924 </span>
+                </a>
+                <a
+                  target="_blank"
+                  class="flex items-center gap-4 px-4 py-4 text-xl font-bold custom-transition title-color hover:text-purple-600 dark:hover:text-indigo-300"
+                  href="https://t.me/Hamit2002"
+                >
+                  <i class="text-3xl fa-brands fa-telegram"></i>
+                  <span dir="ltr"> +989014693924 </span>
+                </a>
+
+                <a
+                  target="_blank"
+                  class="flex items-center gap-4 px-4 py-4 text-xl font-bold custom-transition title-color hover:text-purple-600 dark:hover:text-indigo-300"
+                  href="http://instagram.com/hamid.programmer.js"
+                >
+                  <i class="text-3xl fa-brands fa-instagram"></i>
+                  <span dir="ltr"> اکانت انستاگرام </span>
+                </a>
+                <a
+                  target="_blank"
+                  class="flex items-center gap-4 px-4 py-4 text-xl font-bold custom-transition title-color hover:text-purple-600 dark:hover:text-indigo-300"
+                  href="https://github.com/hamit19"
+                >
+                  <i class="text-3xl fa-brands fa-github"></i>
+                  <span dir="ltr"> اکانت گیت هاب </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          dir="ltr"
+          class="relative bottom-0 w-full h-20 py-6 text-xl bg-gray-100 border-t flex-center border-t-gray-400 dark:bg-dark-600 dark:border-y-indigo-400"
+        >
+          <h4>
+            &copy;
+            <a
+              target="_blank"
+              href="https://github.com/hamit19"
+              class="text-purple-700 dark:text-indigo-300"
+            >
+              Hamid Hassani Github profile
+            </a>
+            All rights reserved.
+          </h4>
+        </div>
+      </footer>
+
+      <!-- footer section end -->
+    </main>
+
+    <!-- Scripts -->
+    <script src="../js/swiper-bundle.min.js"></script>
+
+    <script>
+      // after reload fixs the direction
+      document.documentElement.dir = localStorage.getItem("dir");
+
+      // after reload fixs the flag rtl or ltr dir!
+      if (localStorage.getItem("dir") === "rtl") {
+        document.querySelector(".handle-direction").classList.add("rtl");
+      }
+
+      //checking for the Dark mode or Light mode!
+      if (localStorage.getItem("mode") === "dark") {
+        document.documentElement.classList.add("dark");
+        document.querySelector(".handle-modes").classList.add("darkMode");
+      } else {
+        document.documentElement.classList.remove("dark");
+        document.querySelector(".handle-modes").classList.remove("darkMode");
+      }
+
+      // window.pageYOffset === window.scrollY;
+
+      window.onscroll = () => {
+        let navBar = document.getElementById("nav-bar");
+        if (window.scrollY >= 150) {
+          navBar.setAttribute("opacity", "0");
+
+          navBar.classList.add("scroll-handler");
+        } else {
+          navBar.classList.remove("scroll-handler");
+        }
+      };
+
+      const swiper = new Swiper(".swiper", {
+        loop: true,
+
+        pagination: {
+          el: ".swiper-pagination",
+        },
+
+        navigation: {
+          nextEl: "#swiper-button-next",
+          prevEl: "#swiper-button-prev",
+        },
+      });
+
+      let visits_of_places_slider = new Swiper(".visits-of-places-slider", {
+        slidesPerView: "auto",
+        spaceBetween: 16,
+        navigation: {
+          nextEl: "#bottom-swiper-next",
+          prevEl: "#bottom-swiper-prev",
+        },
+        breakpoints: {
+          640: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 3,
+          },
+        },
+      });
+
+      // mobile menu handler function
+      function openMobileMenuHandler() {
+        return {
+          openMenu: false,
+
+          openMenuHandler() {
+            this.openMenu = true;
+
+            document.body.classList.add("disable-scroll");
+          },
+
+          closeMenuHandler() {
+            this.openMenu = false;
+
+            document.body.classList.remove("disable-scroll");
+          },
+        };
+      }
+
+      //handle actions such as directions, and languages function
+      function handleActions() {
+        return {
+          // handle the right to left direction
+          makeRTL(refs) {
+            // this is make the dir right to left
+            document.documentElement.dir = "rtl";
+
+            localStorage.setItem("dir", "rtl");
+
+            refs.dirRef.classList.add("rtl");
+          },
+
+          // handle the  left to right  direction
+          makeLTR(refs) {
+            // this is make the dir left to right
+            document.documentElement.dir = "ltr";
+
+            localStorage.setItem("dir", "ltr");
+
+            refs.dirRef.classList.remove("rtl");
+          },
+        };
+      }
+
+      // modes handler function
+      function modesHandler() {
+        return {
+          makeDark(refs) {
+            refs.modeRef.classList.add("darkMode");
+            document.documentElement.classList.add("dark");
+            localStorage.setItem("mode", "dark");
+          },
+
+          makeLight(refs) {
+            refs.modeRef.classList.remove("darkMode");
+            document.documentElement.classList.remove("dark");
+            localStorage.setItem("mode", "light");
+          },
+        };
+      }
+    </script>
+    <!-- Scripts -->
+  </body>
+</html>
