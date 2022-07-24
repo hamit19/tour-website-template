@@ -6,6 +6,6 @@
     "tailwindcss": "^3.1.4"
   },
   "scripts": {
-    "start": "npx tailwindcss -i ./src/css/app.css -o ./dist/output.css --watch"
+    "start": "npx tailwindcss -i ./src/css/app.css -o ./dist/output.css --minify"
   }
 }
