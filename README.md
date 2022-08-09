@@ -2,7 +2,7 @@
 <h2> checkout the template online : <a href="https://tourism-sho.netlify.app" > Click here to redirect! </a> </h2>
 
 
-![Shopping Card - Google Chrome 8_1_2022 5_35_19 PM-min](https://user-images.githubusercontent.com/96312176/182159508-8c6f820b-700f-480b-922d-c5c0467bd93b.png)
+![Shopping Card - Google Chrome 8_1_2022 5_35_19 PM-min (2)](https://user-images.githubusercontent.com/96312176/183645694-c6ba827f-0146-4935-8eb1-28355ccc88ea.jpg)
 
 
 <hr>
